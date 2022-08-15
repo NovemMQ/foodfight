@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Liminal/TemplateSetup/liminal_setup.meta
 guid: 3a0153bca5d2bbf4f88aa7c9aa1d190d
+=======
+guid: 1c2cce24214a8344682ecc9b53f70b82
+>>>>>>> Stashed changes:Assets/Examples/SerializableDictionary/Editor.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
