@@ -1,7 +1,7 @@
+using Liminal.SDK.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //Singleton
@@ -30,11 +30,16 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    [Space(10)]
+    [Header("Liminal game manager methods")]
+    [SerializeField] private ExperienceApp myExperienceApp;
+
     // holds current game time
     [Space(10)]
     [Header("Game Time")]
     [TextArea]
-    public string Notes = "time in seconds";
+    public string Notes = "time in seconds, do not use 'dontDestoryonLoad'";
     [Space(10)]
     [Tooltip("time in seconds")]
     [SerializeField] private float timeLimit = 180f; //secs
@@ -50,7 +55,6 @@ public class GameManager : MonoBehaviour
     void Start(){
         //set up before update
         //set timer = 0
-        
     }
 
     void Update() {
@@ -62,11 +66,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void pauseGame()
+    {
+        myExperienceApp.Pause();
+    }
+
+    public void resumeGame()
+    {
+        myExperienceApp.Resume();
+    }
+
     public void endGame(){
         //end the game when timer finishes
         //get scores
         //launch ending UI, score display
         //stop enemy
+        // only in UI myExperienceApp.EndExperience();
     }
 
     private void getScores(){
