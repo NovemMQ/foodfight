@@ -9,6 +9,7 @@ namespace Liminal.Experience
     /// </summary>
     public class MyExperienceApp : ExperienceApp
     {
+
         public override void Pause()
         {
             base.Pause();
