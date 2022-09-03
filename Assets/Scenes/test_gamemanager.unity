@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd8fe937857484cb43314ca0f9e8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myExperienceApp: {fileID: 1869652839}
   Notes: time in seconds
   timeLimit: 180
 --- !u!4 &582993248
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8066ed3b2e9e4c64f9c11142d910e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildType: 2
+  BuildType: 1
   EditorType: 1
 --- !u!114 &1869652839
 MonoBehaviour:
