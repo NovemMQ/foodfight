@@ -1,6 +1,6 @@
 {
-    "PreviousScene": "",
-    "TargetScene": "",
+    "PreviousScene": "Assets/Examples/Scenes/ControllerInput.unity",
+    "TargetScene": "Assets/Scenes/Main.unity",
     "AdditionalReferences": [],
     "SelectedPlatform": 0
 }
