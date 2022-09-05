@@ -4,7 +4,9 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 16
-  productGUID: 1be0438d759c2974c9b467c7911c1189
+
+  productGUID: 720a3d13a65af3044b533b1193b4dcea
+
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,8 +14,10 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
+
   companyName: Novem
   productName: FoodFight
+
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -160,8 +164,10 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+
     Android: com.Novem.FoodFight
     Standalone: com.Novem.FoodFight
+
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -276,8 +282,13 @@ PlayerSettings:
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings:
-  - m_BuildTarget: Standalone
+
+  - m_BuildTarget: Android
     m_Enabled: 1
+    m_Devices: []
+
+  - m_BuildTarget: Standalone
+    m_Enabled: 0
     m_Devices:
     - OpenVR
     - Oculus
