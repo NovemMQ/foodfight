@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 16
+<<<<<<< HEAD
   productGUID: 1be0438d759c2974c9b467c7911c1189
+=======
+  productGUID: 720a3d13a65af3044b533b1193b4dcea
+>>>>>>> PrototypeRoom
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -12,12 +16,17 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
+<<<<<<< HEAD
   companyName: Novem
   productName: FoodFight
+=======
+  companyName: DefaultCompany
+  productName: foodfight
+>>>>>>> PrototypeRoom
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 0
+  m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
@@ -47,7 +56,11 @@ PlayerSettings:
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
   m_StereoRenderingPath: 0
+<<<<<<< HEAD
   m_ActiveColorSpace: 1
+=======
+  m_ActiveColorSpace: 0
+>>>>>>> PrototypeRoom
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
@@ -68,7 +81,7 @@ PlayerSettings:
   androidBlitType: 0
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 1
+  runInBackground: 0
   captureSingleScreen: 0
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
@@ -80,10 +93,10 @@ PlayerSettings:
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
   useFlipModelSwapchain: 1
-  resizableWindow: 1
+  resizableWindow: 0
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
-  gpuSkinning: 1
+  gpuSkinning: 0
   graphicsJobs: 0
   xboxPIXTextureCapture: 0
   xboxEnableAvatar: 0
@@ -160,8 +173,12 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+<<<<<<< HEAD
     Android: com.Novem.FoodFight
     Standalone: com.Novem.FoodFight
+=======
+    Android: com.oculus.UnitySample
+>>>>>>> PrototypeRoom
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -276,8 +293,14 @@ PlayerSettings:
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings:
-  - m_BuildTarget: Standalone
+<<<<<<< HEAD
+=======
+  - m_BuildTarget: Android
     m_Enabled: 1
+    m_Devices: []
+>>>>>>> PrototypeRoom
+  - m_BuildTarget: Standalone
+    m_Enabled: 0
     m_Devices:
     - OpenVR
     - Oculus
