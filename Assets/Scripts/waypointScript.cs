@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class waypointScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool isOccupied = false;
+    private enemyMovement occupiedBy;
 
-    // Update is called once per frame
-    void Update()
+    public enemyMovement OccupiedBy {set { occupiedBy = value; }}
+    public bool IsOccupied { get { return isOccupied; } set{ isOccupied = value; } }
+
+    void OnTriggerExit(Collider other)
     {
-        
+        Debug.Log("Here----- waypoints 2" + other.gameObject.name +" and is the same as "+ occupiedBy.gameObject.name);
+        if (other.gameObject.name.Equals(occupiedBy.gameObject.name))
+        {
+
+            isOccupied = false;
+        }
     }
 }

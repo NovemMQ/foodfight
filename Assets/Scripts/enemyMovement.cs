@@ -8,18 +8,22 @@ public class enemyMovement : MonoBehaviour
     //public Transform goal;
     public bool moving = false;
     public NavMeshAgent agent;
+    private waypointScript destination;  
+    public waypointScript Destination { set { destination = value; } get { return destination; } }
 
     void Start()
     { 
         agent = GetComponent<NavMeshAgent>();
-        //agent.destination = goal.position;
     }
 
-    void Update()
+
+    void OnTriggerEnter(Collider other)
     {
-        if((gameObject.transform.position.x == agent.destination.x) && (gameObject.transform.position.z == agent.destination.z))
+        Debug.Log("Here------------2 " + other.gameObject.name);
+        if (other.gameObject.name.Equals(destination.gameObject.name))
         {
             moving = false;
         }
     }
+
 }

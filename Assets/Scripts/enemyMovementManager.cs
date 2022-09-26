@@ -7,12 +7,11 @@ public class enemyMovementManager : MonoBehaviour
 
     public GameObject enemyListOb;
     public enemyMovement[] enemyList;
-    public Transform[] waypointList;
-    private int current = 0;
+    public waypointScript[] waypointList;
 
     void Start()
     {
-        waypointList = gameObject.GetComponentsInChildren<Transform>();
+        waypointList = gameObject.GetComponentsInChildren<waypointScript>();
         enemyList = enemyListOb.GetComponentsInChildren<enemyMovement>();
     }
 
@@ -22,14 +21,27 @@ public class enemyMovementManager : MonoBehaviour
         foreach (enemyMovement enemy in enemyList) {
             if (enemy.moving == false)
             {
-                current++;
-                if (current >= waypointList.Length)
+                    waypointScript wp = waypointList[Random.Range(0, waypointList.Length)];
+  
+                if (wp.IsOccupied == false)
                 {
-                    current = 1;
+                    setDestination(enemy, wp);
                 }
-                enemy.agent.destination = waypointList[current].position;
-                enemy.moving = true;
-            } }
+            }
+        }
+    }
+
+    private void setDestination(enemyMovement enemy, waypointScript wp)
+    {
+        Vector3 nextdestination = enemy.transform.position;
+        wp.IsOccupied = true;
+        wp.OccupiedBy = enemy;
+        nextdestination = wp.transform.position;
+        enemy.Destination = wp;
+        enemy.moving = true;
+        enemy.agent.destination = nextdestination;
+        Debug.Log("EM is " + wp.gameObject.name);
+        
     }
 
 }
