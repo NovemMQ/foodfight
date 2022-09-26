@@ -12,10 +12,8 @@ public class waypointScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Debug.Log("Here----- waypoints 2" + other.gameObject.name +" and is the same as "+ occupiedBy.gameObject.name);
-        if (other.gameObject.name.Equals(occupiedBy.gameObject.name))
+        if (other.name.Equals(occupiedBy.name))
         {
-
             isOccupied = false;
         }
     }

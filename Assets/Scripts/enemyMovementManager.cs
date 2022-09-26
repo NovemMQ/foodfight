@@ -5,9 +5,9 @@ using UnityEngine;
 public class enemyMovementManager : MonoBehaviour
 {
 
-    public GameObject enemyListOb;
-    public enemyMovement[] enemyList;
-    public waypointScript[] waypointList;
+    [SerializeField] private GameObject enemyListOb;
+    [SerializeField] private enemyMovement[] enemyList;
+    [SerializeField] private waypointScript[] waypointList;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class enemyMovementManager : MonoBehaviour
         foreach (enemyMovement enemy in enemyList) {
             if (enemy.moving == false)
             {
-                    waypointScript wp = waypointList[Random.Range(0, waypointList.Length)];
+                waypointScript wp = waypointList[Random.Range(0, waypointList.Length)];
   
                 if (wp.IsOccupied == false)
                 {
@@ -33,13 +33,11 @@ public class enemyMovementManager : MonoBehaviour
 
     private void setDestination(enemyMovement enemy, waypointScript wp)
     {
-        Vector3 nextdestination = enemy.transform.position;
         wp.IsOccupied = true;
         wp.OccupiedBy = enemy;
-        nextdestination = wp.transform.position;
         enemy.Destination = wp;
         enemy.moving = true;
-        enemy.agent.destination = nextdestination;
+        enemy.Agent.destination = wp.transform.position;
         Debug.Log("EM is " + wp.gameObject.name);
         
     }
