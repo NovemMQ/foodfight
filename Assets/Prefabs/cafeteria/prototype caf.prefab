@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Points:
   - {x: 0, y: 0, z: 0}
   m_Extrude: 0
-  m_EditMode: 1
+  m_EditMode: 0
   m_FlipNormals: 0
   isOnGrid: 0
 --- !u!23 &2391294575071295909
