@@ -12,9 +12,11 @@ public class waypointScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.name.Equals(occupiedBy.name))
-        {
-            isOccupied = false;
+        if (occupiedBy) {
+            if (other.name.Equals(occupiedBy.name))
+            {
+                isOccupied = false;
+            }
         }
     }
 }

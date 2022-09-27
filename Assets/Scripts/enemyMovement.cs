@@ -27,9 +27,7 @@ public class enemyMovement : MonoBehaviour
         resetDestCounter -= Time.deltaTime;
         if(resetDestCounter <= 0)
         {
-            resetDestCounter = travelTimelimit;
-            waitCounter = pauseWaitTime;
-            moving = false;//get new destination 
+            resetValues();
         }
     }
 
@@ -44,11 +42,17 @@ public class enemyMovement : MonoBehaviour
             }
             if (other.name.Equals(destination.name) && waitCounter <= 0f)
             {
-                moving = false;
-                waitCounter += pauseWaitTime;
-                resetDestCounter = travelTimelimit;
+                resetValues();
             }
         }
+    }
+
+    private void resetValues()
+    {
+        moving = false; //get new destination
+        waitCounter = pauseWaitTime;
+        resetDestCounter = travelTimelimit;
+        Destination.IsOccupied = false; //cancle waypoint occupied booking
     }
     
 }
