@@ -13,20 +13,26 @@ public class enemyMovement : MonoBehaviour
     public NavMeshAgent Agent { set { agent = value; } get { return agent; } }
     [SerializeField] private float pauseWaitTime = 3; // secs
     private float waitCounter = 0; //secs
+    [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
+    private float resetDestCounter = 0;
     void Start()
     { 
         agent = GetComponent<NavMeshAgent>();
         waitCounter = pauseWaitTime;
+        resetDestCounter = travelTimelimit;
     }
-    /*
-    void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if (other.name.Equals(destination.name) && waitCounter <= 0f)
+        resetDestCounter -= Time.deltaTime;
+        if(resetDestCounter <= 0)
         {
-            moving = false;
-            waitCounter += pauseWaitTime;
+            resetDestCounter = travelTimelimit;
+            waitCounter = pauseWaitTime;
+            moving = false;//get new destination 
         }
-    }*/
+    }
+
     void OnTriggerStay(Collider other)
     {
         //Debug.Log("dest name is: " + destination.name + " time is "+ waitCounter);
@@ -40,6 +46,7 @@ public class enemyMovement : MonoBehaviour
             {
                 moving = false;
                 waitCounter += pauseWaitTime;
+                resetDestCounter = travelTimelimit;
             }
         }
     }
