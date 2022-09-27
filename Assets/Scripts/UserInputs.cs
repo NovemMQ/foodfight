@@ -1,13 +1,24 @@
 using Liminal.SDK.VR;
 using Liminal.SDK.VR.Avatars;
+using Liminal.SDK.VR.Input;
 using UnityEngine;
 
 public class UserInputs : MonoBehaviour
 {
     private static UserInputs instance;
+
+    [SerializeField]
+    private Transform rightHandTransform;
+    [SerializeField]
+    private Transform leftHandTransform;
+
+    public static UserInputs Instance { get => instance;}
+    public Transform RightHandTransform { get => rightHandTransform;}
+    public Transform LeftHandTransform { get => leftHandTransform;}
+
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             instance = this;
         }
@@ -15,19 +26,10 @@ public class UserInputs : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        IVRDevice device = VRDevice.Device;    
     }
 
-
-    [SerializeField]
-    private VRAvatarHand rightHand;
-    [SerializeField]
-    private VRAvatarHand leftHand;
-    public VRAvatarHand LeftHand { get => leftHand;/* set => leftHand = value; */}
-    public VRAvatarHand RightHand { get => rightHand;/* set => rightHand = value;*/ }
-    public static UserInputs Instance { get => instance;}
-    
-    
+      
 
     //VR controller inputs here
 
