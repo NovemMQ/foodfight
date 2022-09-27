@@ -40,7 +40,7 @@ public class LauncherTest : MonoBehaviour
                 GameObject food = Instantiate(foodPrefab);
                 food.transform.position = leftHandTransform.position;
                 Rigidbody foodRB = food.GetComponent<Rigidbody>();
-                foodRB.AddForce(Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10, ForceMode.Impulse);
+                foodRB.velocity = (Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10);
             }
         }
   
