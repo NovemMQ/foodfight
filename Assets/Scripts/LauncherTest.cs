@@ -7,6 +7,9 @@ using UnityEngine;
 public class LauncherTest : MonoBehaviour
 {
     [SerializeField]
+    [Range(1, 30)]
+    private float foodVelocity;
+    [SerializeField]
     private GameObject point2;
     [SerializeField]
     private GameObject foodPrefab;
@@ -24,14 +27,14 @@ public class LauncherTest : MonoBehaviour
     void Update()
     {
 
-        trajectooryTrace.UpdateTrajectory(Vector3.Normalize(point2.transform.position - transform.position) * 10, foodPrefab.GetComponent<Rigidbody>(), transform.position);
+        trajectooryTrace.UpdateTrajectory((point2.transform.position - transform.position).normalized * foodVelocity, foodPrefab.GetComponent<Rigidbody>(), transform.position);
         if (Input.GetButtonDown("Fire1"))
         {
             GameObject food = Instantiate(foodPrefab);
             food.transform.position = transform.position;
             Rigidbody foodRB = food.GetComponent<Rigidbody>();
-            foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
-
+            //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
+            foodRB.velocity = (point2.transform.position - transform.position).normalized * 20;
         }
         if (leftHandTransform != null && rightHandTransform != null)
         {
@@ -43,7 +46,7 @@ public class LauncherTest : MonoBehaviour
                 foodRB.velocity = (Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10);
             }
         }
-  
+
 
     }
 }

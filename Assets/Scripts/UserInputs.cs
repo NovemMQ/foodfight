@@ -11,10 +11,16 @@ public class UserInputs : MonoBehaviour
     private Transform rightHandTransform;
     [SerializeField]
     private Transform leftHandTransform;
+    private IVRDevice device;
+    private IVRInputDevice leftHand;
+    private IVRInputDevice rightHand;
 
     public static UserInputs Instance { get => instance;}
     public Transform RightHandTransform { get => rightHandTransform;}
     public Transform LeftHandTransform { get => leftHandTransform;}
+    public IVRDevice Device { get => device; set => device = value; }
+    public IVRInputDevice LeftHand { get => leftHand;}
+    public IVRInputDevice RightHand { get => rightHand;}
 
     private void Awake()
     {
@@ -26,7 +32,9 @@ public class UserInputs : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        IVRDevice device = VRDevice.Device;    
+        device = VRDevice.Device;
+        leftHand = device.SecondaryInputDevice;
+        rightHand = device.PrimaryInputDevice;
     }
 
       

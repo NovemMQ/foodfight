@@ -11,20 +11,13 @@ public class TrajectooryTrace : MonoBehaviour
     private float lineSegmentCount = 20;
 
     private List<Vector3> linePoints = new List<Vector3>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool allowTrajectory=false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool AllowTrajectory { get => allowTrajectory; set => allowTrajectory = value; }
+
     public void UpdateTrajectory(Vector3 forceVector, Rigidbody rigidbody, Vector3 startingPoint)
     {
-        Vector3 velocity = forceVector;
+        Vector3 velocity =forceVector;
         float FlightDuration = (2 * velocity.y) / Physics.gravity.y;
         float stepTime = FlightDuration / lineSegmentCount;
         linePoints.Clear();
