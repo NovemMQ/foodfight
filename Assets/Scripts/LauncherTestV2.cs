@@ -21,8 +21,7 @@ public class LauncherTestV2 : MonoBehaviour
     private TrajectooryTrace trajectooryTrace;
     private void Awake()
     {
-  //      leftHandTransform = UserInputs.Instance.LeftHandTransform;
-  //      rightHandTransform = UserInputs.Instance.RightHandTransform;
+    
     }
 
     // Update is called once per frame
@@ -38,17 +37,15 @@ public class LauncherTestV2 : MonoBehaviour
             //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
             foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
         }
-        /*       if (leftHandTransform != null && rightHandTransform != null)
-               {
-                   if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
-                   {
-                       GameObject food = Instantiate(foodPrefab);
-                       food.transform.position = leftHandTransform.position;
-                       Rigidbody foodRB = food.GetComponent<Rigidbody>();
-                       foodRB.velocity = (Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10);
-                   }
-               }
-         */
+        if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
+        {
+            GameObject food = Instantiate(foodPrefab);
+            food.transform.position = leftHandTransform.position;
+            Rigidbody foodRB = food.GetComponent<Rigidbody>();
+            foodRB.velocity = (Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10);
+        }
+               
+         
 
     }
 }

@@ -20,12 +20,7 @@ public class FollowHandGrips : MonoBehaviour
     void FixedUpdate()
     {
 
-        /*float currentSize = Vector3.Magnitude(backGrip.position - foreGrip.position);
-        if(currentSize >= initialSize+1 || currentSize <= initialSize - 1)
-        {
-            initialSize = currentSize;
-            transform.localScale = transform.localScale*initialSize;
-        }*/
+        
         SetPos(backGrip.position, foreGrip.position);
     }
 
