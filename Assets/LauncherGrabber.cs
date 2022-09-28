@@ -14,7 +14,7 @@ public class LauncherGrabber : MonoBehaviour
         VRAvatarHand hand = other.gameObject.GetComponent<VRAvatarHand>();
         if (!isHeld)
         {
-            if (hand != null && UserInputs.Instance.LeftHand.GetButtonDown(VRButton.One))
+            if (hand != null && (UserInputs.Instance.LeftHand.GetButtonDown(VRButton.One)|| UserInputs.Instance.RightHand.GetButtonDown(VRButton.One)))
             {
                 this.transform.SetParent(hand.transform);
                 isHeld = true;
