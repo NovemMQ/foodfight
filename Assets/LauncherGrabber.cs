@@ -10,7 +10,7 @@ public class LauncherGrabber : MonoBehaviour
     private bool isHeld=false;
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("TriggerActivated");
         VRAvatarHand hand = other.gameObject.GetComponent<VRAvatarHand>();
         if (!isHeld)
         {
@@ -18,6 +18,7 @@ public class LauncherGrabber : MonoBehaviour
             {
                 this.transform.SetParent(hand.transform);
                 isHeld = true;
+                Debug.Log("button works");
             }
         }
     }
