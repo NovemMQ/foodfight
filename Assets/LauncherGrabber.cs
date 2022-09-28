@@ -8,6 +8,14 @@ using UnityEngine;
 public class LauncherGrabber : MonoBehaviour
 {
     private bool isHeld=false;
+    public bool isBack = false;
+    private void Start()
+    {
+        if (isBack)
+            UserInputs.Instance.LeftHandAvatarHand.Attach(this.gameObject);
+        else
+            UserInputs.Instance.RightHandAvatarHand.Attach(this.gameObject);
+    }
     private void OnTriggerEnter(Collider other)
     {
         
