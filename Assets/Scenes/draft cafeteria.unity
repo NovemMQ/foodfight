@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150d8c8ea0ce98b4fb9534f7610251bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBack: 0
 --- !u!114 &17071731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,11 +1532,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 463057852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b145ab5182c486b4d9604fbb2086dc90, type: 3}
+  m_Script: {fileID: 11500000, guid: 5305df744c4f20b4c922d5e6c22c5c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandTransform: {fileID: 1250399253}
-  leftHandTransform: {fileID: 727531332}
+  rightHandAvatarHand: {fileID: 1250399254}
+  leftHandAvatarHand: {fileID: 727531333}
 --- !u!4 &463057854
 Transform:
   m_ObjectHideFlags: 0
@@ -2127,6 +2128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150d8c8ea0ce98b4fb9534f7610251bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBack: 1
 --- !u!4 &606937568
 Transform:
   m_ObjectHideFlags: 0
@@ -2323,12 +2325,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1329790778}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &727531332 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1260162969354081712, guid: 22276a8657744e04cba8ad0a2caf4195,
+--- !u!114 &727531333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1260162969354081719, guid: 22276a8657744e04cba8ad0a2caf4195,
     type: 3}
   m_PrefabInstance: {fileID: 1329790778}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727531331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1913601763, guid: 1661fa78af9aece459a3302206a05902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &727531334
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2505,49 +2513,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &931723683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 931723684}
-  - component: {fileID: 931723685}
-  m_Layer: 0
-  m_Name: Testobject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &931723684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931723683}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9320489, y: 1.4083292, z: 4.746445}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1250399253}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &931723685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931723683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75f98ac527508944a0223e5972945c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1004902745
 Mesh:
   m_ObjectHideFlags: 0
@@ -2961,22 +2926,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1329790778}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1250399253 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1260162968871696498, guid: 22276a8657744e04cba8ad0a2caf4195,
+--- !u!114 &1250399254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1260162968871696497, guid: 22276a8657744e04cba8ad0a2caf4195,
     type: 3}
   m_PrefabInstance: {fileID: 1329790778}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1250399254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250399252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a75f98ac527508944a0223e5972945c0, type: 3}
+  m_Script: {fileID: -1913601763, guid: 1661fa78af9aece459a3302206a05902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &1250399255
