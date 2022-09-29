@@ -1,7 +1,22 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/StreamingAssets/SteamVR.meta
 guid: 448d57cafb3d7814fa72cdadd6885611
 folderAsset: yes
+=======
+guid: 50573035c92c7ed43ad620a5d36b2e35
+>>>>>>> Enemy:Assets/Scenes/Enemy_test_Scene.unity.meta
 DefaultImporter:
+=======
+<<<<<<<< HEAD:Assets/StreamingAssets/SteamVR.meta
+guid: 4c2774b841b336b4fbdc9107b8e9ad94
+folderAsset: yes
+DefaultImporter:
+========
+guid: 222148c92d18eeb47a51ab545ddd4bc4
+PrefabImporter:
+>>>>>>>> PrototypeRoom:Assets/Prefabs/cafeteria/Chair.prefab.meta
+>>>>>>> Enemy
   externalObjects: {}
   userData: 
   assetBundleName: 
