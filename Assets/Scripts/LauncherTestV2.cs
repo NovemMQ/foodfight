@@ -40,12 +40,13 @@ public class LauncherTestV2 : MonoBehaviour
         if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
         {
             GameObject food = Instantiate(foodPrefab);
-            food.transform.position = leftHandTransform.position;
+            food.transform.position = launchPoint.transform.position;
             Rigidbody foodRB = food.GetComponent<Rigidbody>();
-            foodRB.velocity = (Vector3.Normalize(rightHandTransform.position - leftHandTransform.position) * 10);
+            //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
+            foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
         }
-               
-         
+
+
 
     }
 }
