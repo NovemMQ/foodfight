@@ -8,20 +8,12 @@ public class DestroyerEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("yeet");
-        typeCheck = other.gameObject.GetComponent<Destroyer>();
-        if (typeCheck != null)
-        {
-            Destroy(this.gameObject);
-        }
+            Destroy(other.gameObject);
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("yeet");
-        typeCheck = collision.gameObject.GetComponent<Destroyer>();
-        if (typeCheck != null)
-        {
-            Destroy(this.gameObject);
-        }
+            Destroy(collision.gameObject);
+        
     }
 }
