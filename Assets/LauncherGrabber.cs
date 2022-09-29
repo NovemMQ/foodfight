@@ -16,7 +16,7 @@ public class LauncherGrabber : MonoBehaviour
         else
             UserInputs.Instance.RightHandAvatarHand.Attach(this.gameObject);
     }
-    private void OnTriggerEnter(Collider other)
+ /*   private void OnTriggerEnter(Collider other)
     {
         
         Debug.Log("TriggerActivated");
@@ -30,5 +30,5 @@ public class LauncherGrabber : MonoBehaviour
                 Debug.Log("button works");
             }
         }
-    }
+    }*/
 }
