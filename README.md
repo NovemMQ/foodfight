@@ -1,3 +1,11 @@
+#Foof Fight! 
+This is a student PACE project at Macquarie University. 
+
+
+
+
+--------------------------------------------------------------------
+#Set Up the project Here.
 # Limapp Template
 This is a Unity Project template with the Liminal SDK installed.
 
