@@ -8,6 +8,7 @@ public class DestroyerEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("yeet");
         typeCheck = other.gameObject.GetComponent<Destroyer>();
         if (typeCheck != null)
         {
@@ -16,6 +17,7 @@ public class DestroyerEnemy : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("yeet");
         typeCheck = collision.gameObject.GetComponent<Destroyer>();
         if (typeCheck != null)
         {
