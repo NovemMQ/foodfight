@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
-    
+    #region "SINGLETON"
     //Singleton
     private static ScoreKeeper instance;
     public static ScoreKeeper Instance
@@ -31,9 +31,18 @@ public class ScoreKeeper : MonoBehaviour
             instance = this;
         }
     }
+    #endregion
+
+    private int foodThrown;
+    private int enemyDeath;
+    private int playerGotHit; 
 
     void Start()
     {
-        
+        foodThrown = 0;
+        enemyDeath = 0;
+        playerGotHit = 0;
     }
+
+
 }

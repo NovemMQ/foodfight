@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
+    #region singleton
     //Singleton
     private static GameManager instance;
     public static GameManager Instance
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    #endregion
 
     [Space(10)]
     [Header("Liminal game manager methods")]
