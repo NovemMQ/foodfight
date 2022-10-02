@@ -1707,6 +1707,7 @@ Transform:
   m_Children:
   - {fileID: 524066753}
   - {fileID: 1924693719}
+  - {fileID: 1298493782}
   - {fileID: 810012576}
   - {fileID: 345834502}
   - {fileID: 1308985002}
@@ -3849,7 +3850,7 @@ Transform:
   - {fileID: 1668137095}
   - {fileID: 1417684806}
   m_Father: {fileID: 39172754}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &156668744
 MonoBehaviour:
@@ -4768,7 +4769,7 @@ Transform:
   - {fileID: 2094508718}
   - {fileID: 136496346}
   m_Father: {fileID: 39172754}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &192377251
 Mesh:
@@ -5309,7 +5310,7 @@ PrefabInstance:
     - target: {fileID: 5667262009089914593, guid: e982d7a2ea1670c488228b7e67290ec7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5667262009089914593, guid: e982d7a2ea1670c488228b7e67290ec7,
         type: 3}
@@ -8132,7 +8133,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
   m_Children: []
   m_Father: {fileID: 39172754}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!108 &345834503
 Light:
@@ -19133,7 +19134,7 @@ PrefabInstance:
     - target: {fileID: 1260162969423114810, guid: 22276a8657744e04cba8ad0a2caf4195,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1260162969423114810, guid: 22276a8657744e04cba8ad0a2caf4195,
         type: 3}
@@ -23030,7 +23031,7 @@ Transform:
   - {fileID: 1285443445}
   - {fileID: 1155854750}
   m_Father: {fileID: 39172754}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978927689
 GameObject:
@@ -27937,7 +27938,7 @@ PrefabInstance:
     - target: {fileID: 6664023397873521563, guid: b84f4a176407fb24db76e1704263e0dd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6664023397873521563, guid: b84f4a176407fb24db76e1704263e0dd,
         type: 3}
@@ -35226,6 +35227,49 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!1 &1298493781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298493782}
+  - component: {fileID: 1298493783}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298493782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298493781}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1160326, y: 1.8595505, z: 17.573624}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 39172754}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298493783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298493781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1980da9419caa744786a65d8d8400c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1299895844
 Mesh:
   m_ObjectHideFlags: 0
@@ -35582,7 +35626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 39172754}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &1308985003
 AudioListener:
@@ -35848,7 +35892,7 @@ PrefabInstance:
     - target: {fileID: 7116523728971280165, guid: 083a11a834860514cb3954f3a8ecca60,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7116523728971280165, guid: 083a11a834860514cb3954f3a8ecca60,
         type: 3}
