@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private TextMeshProUGUI foodThrownText;
+    [SerializeField] private TextMeshProUGUI foodThrownText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,6 @@ public class UIManager : MonoBehaviour
 
     public void setFoodThrownUI(int foodThrown)
     {
-        foodThrownText.text = foodThrown.ToString();
+        foodThrownText.text += " "+foodThrown.ToString();
     }
 }

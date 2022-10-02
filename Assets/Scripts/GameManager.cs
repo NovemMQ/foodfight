@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         // only in UI myExperienceApp.EndExperience();
     }
 
-    private void getScores(){
+    public void setScores(){
         //set the 3 scores here.
         foodThrown = scorekeeper.FoodThrown;
         enemyDeath = scorekeeper.EnemyDeath;
