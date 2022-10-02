@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     private int enemyDeath;
     private int playerGotHit;
 
+    //UI
+    private UIManager uiManager;
+
     void Start(){
         //set up before update
         //set timer = 0
@@ -92,6 +95,14 @@ public class GameManager : MonoBehaviour
         foodThrown = scorekeeper.FoodThrown;
         enemyDeath = scorekeeper.EnemyDeath;
         playerGotHit = scorekeeper.PlayerGotHit;
+        sendScoresToUI();
+    }
+
+    //grab the scorekeeper data and send to Ui
+    private void sendScoresToUI ()
+    {
+        //UI manager score display ui method
+        uiManager.setFoodThrownUI(foodThrown);
     }
 
    private void startLetterScoreEvent()
