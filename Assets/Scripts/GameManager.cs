@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour
     [Tooltip("time in seconds")]
     [SerializeField] private float timeLimit = 180f; //secs
     private float gameTime;
-    public float GameTime
-    {
-        get
-        {
-            return gameTime;
-        }
-    }
+    public float GameTime {get { return gameTime; }}
+
+    //score
+    private ScoreKeeper scorekeeper;
+    private int foodThrown;
+    private int enemyDeath;
+    private int playerGotHit;
 
     void Start(){
         //set up before update
@@ -89,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     private void getScores(){
         //set the 3 scores here.
+        foodThrown = scorekeeper.FoodThrown;
+        enemyDeath = scorekeeper.EnemyDeath;
+        playerGotHit = scorekeeper.PlayerGotHit;
     }
 
    private void startLetterScoreEvent()
