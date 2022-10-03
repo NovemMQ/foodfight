@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     private float gameTime;
     public float GameTime {get { return gameTime; }}
 
+    private UIManager uiMnanager;
     //score
     private ScoreKeeper scorekeeper;
     private int foodThrown;
@@ -89,6 +90,11 @@ public class GameManager : MonoBehaviour
         //stop enemy
         // only in UI myExperienceApp.EndExperience();
     }
+    /**
+    public void addScore()
+    {
+        scorekeeper.addFoodThrown();
+    }
 
     public void setScores(){
         //set the 3 scores here.
@@ -99,12 +105,12 @@ public class GameManager : MonoBehaviour
     }
 
     //grab the scorekeeper data and send to Ui
-    private void sendScoresToUI ()
+    private void sendScoresToUI()
     {
         //UI manager score display ui method
         uiManager.setFoodThrownUI(foodThrown);
     }
-
+    */
    private void startLetterScoreEvent()
     {
         //launch ending UI event in UI manager

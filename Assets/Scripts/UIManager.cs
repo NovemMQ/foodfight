@@ -1,20 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI foodThrownText;
+    public delegate void UIUpdate();
+    public static event UIUpdate UIUpdateFood;
     // Start is called before the first frame update
-    void Start()
+    void Start ()
     {
-        
     }
+
 
     public void setFoodThrownUI(int foodThrown)
     {
-        foodThrownText.text += " "+foodThrown.ToString();
+        Debug.Log("food thrown here "+ foodThrown);
+        foodThrownText.text = "Food Thrown " +foodThrown.ToString();
     }
+
+
 }

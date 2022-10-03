@@ -33,6 +33,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     #endregion
 
+    [SerializeField]
     private int foodThrown;
     public int FoodThrown{ get { return foodThrown; }}
     private int enemyDeath;
@@ -48,7 +49,7 @@ public class ScoreKeeper : MonoBehaviour
     }
 
     //increment foodThrown
-    public void addFoodThrown ()
+    public void addFoodThrown()
     {
         foodThrown += 1;
     }
