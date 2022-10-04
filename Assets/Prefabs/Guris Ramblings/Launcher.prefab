@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7116523727282141476}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 7116523728971280165}
   m_RootOrder: 0
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7116523728971280166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.73, z: 2.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -369,9 +369,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivotPoint: {fileID: 7116523728363358557}
   launchPoint: {fileID: 7116523728981579500}
-  foodPrefab: {fileID: 5971709144598409224, guid: 9625cddddf2f0794d921e38c44361933,
-    type: 3}
+  foodPrefab:
+  - {fileID: 7517528361275558460, guid: 2a9dd52458fda4d4390509d20f2ba8db, type: 3}
+  - {fileID: 8305354577563745283, guid: 8be2c10291850574aa035c55844d3df2, type: 3}
+  - {fileID: 5426715753570769205, guid: 37aeaf34fa5c4df419b29fe5cc71a452, type: 3}
+  - {fileID: 8177483021904723214, guid: 80abd07ada8e5f440942e4ace1433a62, type: 3}
+  - {fileID: 8484965000773509619, guid: 43996b9be49b04742b59bc9429a687f9, type: 3}
   foodVelocity: 15
+  rotatePower: 12.3
   trajectooryTrace: {fileID: 7116523728981579504}
 --- !u!135 &7116523728981579510
 SphereCollider:

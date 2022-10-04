@@ -10,11 +10,13 @@ public class LauncherTestV2 : MonoBehaviour
     private GameObject pivotPoint;
     [SerializeField]
     private GameObject launchPoint;
-    [SerializeField]
-    private GameObject foodPrefab;
+    public List<GameObject> foodPrefab;
     [SerializeField]
     [Range(2,40)]
     private float foodVelocity;
+    [SerializeField]
+    [Range(2, 20)]
+    private float rotatePower;
     private Transform leftHandTransform;
     private Transform rightHandTransform;
     [SerializeField]
@@ -28,10 +30,11 @@ public class LauncherTestV2 : MonoBehaviour
     void Update()
     {
 
-        trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab.GetComponent<Rigidbody>(), launchPoint.transform.position);
+        trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab[0].GetComponent<Rigidbody>(), launchPoint.transform.position);
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject food = Instantiate(foodPrefab);
+            GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
+            GameObject food = Instantiate(randomFoodRandom);
             food.transform.position = launchPoint.transform.position;
             Rigidbody foodRB = food.GetComponent<Rigidbody>();
             //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
@@ -39,11 +42,14 @@ public class LauncherTestV2 : MonoBehaviour
         }
         if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
         {
-            GameObject food = Instantiate(foodPrefab);
+            GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
+            GameObject food = Instantiate(randomFoodRandom);
             food.transform.position = launchPoint.transform.position;
             Rigidbody foodRB = food.GetComponent<Rigidbody>();
             //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
             foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
+            foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
+            //foodRB.AddTorque(Vector3.left*rotatePower, ForceMode.Impulse);
         }
 
 
