@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8305354577564803075}
   - component: {fileID: 8305354577565934275}
   - component: {fileID: 7283585080752433701}
-  m_Layer: 0
+  - component: {fileID: 9186261804462587583}
+  m_Layer: 8
   m_Name: cakeLaunchable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,3 +95,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9186261804462587583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305354577563745283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d65315d68c31648a7313e6a24b2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 3

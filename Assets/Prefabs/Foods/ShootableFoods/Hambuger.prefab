@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5426715753571796277}
   - component: {fileID: 5426715753572763637}
   - component: {fileID: 5162079059261884894}
-  m_Layer: 0
+  - component: {fileID: 5917629189087926950}
+  m_Layer: 8
   m_Name: Hambuger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,3 +95,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5917629189087926950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426715753570769205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d65315d68c31648a7313e6a24b2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 3
