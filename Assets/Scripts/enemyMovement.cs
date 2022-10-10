@@ -46,7 +46,20 @@ public class enemyMovement : MonoBehaviour
             }
         }
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Projectile")
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void resetValues()
     {
         moving = false; //get new destination

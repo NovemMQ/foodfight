@@ -29,9 +29,9 @@ public class FollowHandGrips : MonoBehaviour
         var dir = end - start;
         var mid = (dir) / 2.0f + start;
         transform.position = mid;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        Vector3 scale = transform.localScale;
-        scale.y = dir.magnitude * 0.5f;
-        transform.localScale = scale;
+        transform.rotation = Quaternion.FromToRotation(Vector3.forward, dir);
+  //      Vector3 scale = transform.localScale;
+ //       scale.z = dir.magnitude * 0.5f;
+ //       transform.localScale = scale;
     }
 }
