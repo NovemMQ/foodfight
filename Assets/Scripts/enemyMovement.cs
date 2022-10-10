@@ -17,6 +17,7 @@ public class enemyMovement : MonoBehaviour
     private float resetDestCounter = 0;
     void Start()
     { 
+        //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
@@ -24,6 +25,7 @@ public class enemyMovement : MonoBehaviour
 
     private void Update()
     {
+        //if enemy is still travling to destination after timelimit, choose a new destination
         resetDestCounter -= Time.deltaTime;
         if(resetDestCounter <= 0)
         {
@@ -34,15 +36,16 @@ public class enemyMovement : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         //Debug.Log("dest name is: " + destination.name + " time is "+ waitCounter);
+        //when enemy is at destination, start idle/wait counter
         if (destination)
         {
             if (other.name.Equals(destination.name))
             {
                 waitCounter -= Time.deltaTime;
-            }
-            if (other.name.Equals(destination.name) && waitCounter <= 0f)
-            {
-                resetValues();
+                if (waitCounter <= 0f)
+                {
+                    resetValues();
+                }
             }
         }
     }
