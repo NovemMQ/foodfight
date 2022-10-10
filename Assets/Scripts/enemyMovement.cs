@@ -1,10 +1,11 @@
 ﻿// MoveTo.cs
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class enemyMovement : MonoBehaviour
 {
-
+    public ThirdPersonCharacter charactor;
     //public Transform goal;
     public bool moving = false;
     private NavMeshAgent agent;
@@ -19,6 +20,7 @@ public class enemyMovement : MonoBehaviour
     { 
         //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
     }
@@ -31,6 +33,18 @@ public class enemyMovement : MonoBehaviour
         {
             resetValues();
         }
+
+        // Unity NavMesh Tutorial - Animated Character https://www.youtube.com/watch?v=blPglabGueM by Brackeys
+
+        if (agent.remainingDistance > agent.stoppingDistance)
+        {
+            charactor.Move(agent.desiredVelocity, false, true);
+        }
+        else
+        {
+            charactor.Move(Vector3.zero, false, false);
+        }
+        
     }
 
     void OnTriggerStay(Collider other)
