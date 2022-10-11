@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 738607958973482292}
   - component: {fileID: 6448197460760197581}
   - component: {fileID: 2441034148090437060}
+  - component: {fileID: 3188589715470313290}
   m_Layer: 0
   m_Name: ChairBlue
   m_TagString: Untagged
@@ -92,3 +93,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -6224953987796416769, guid: 5be44b40398667d4fba1062c30851480, type: 3}
+--- !u!208 &3188589715470313290
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701845291282582801}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25500003, y: 0.56, z: 0.29200003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.56, z: -0.036000002}
+  m_TimeToStationary: 0.5
