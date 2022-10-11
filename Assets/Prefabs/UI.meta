@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Prefabs/UI.meta
-guid: a1a300e9410f33f48898d3c6436e6014
-=======
-guid: ea7663b56ff3ff94186c9b5e6231f1df
->>>>>>> origin/NutsAnimation:Assets/Prefabs/cafeteria/LowPoly3DAnimatedNutBrothers_RollerSkatesPackage/UsedFbxModels_Jim.meta
+guid: ac8c5c11d181f97438dedf5398004aac
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
