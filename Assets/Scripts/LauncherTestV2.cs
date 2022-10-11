@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LauncherTestV2 : MonoBehaviour
 {
+    [SerializeField] private GameManager gameMnager;
+   
     [SerializeField]
     private GameObject pivotPoint;
     [SerializeField]

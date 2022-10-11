@@ -9,14 +9,19 @@ namespace Liminal.Experience
     /// </summary>
     public class MyExperienceApp : ExperienceApp
     {
+        [SerializeField] private GameObject PauseMenuUI;
+    
         public override void Pause()
         {
             base.Pause();
+            PauseMenuUI.SetActive(true);
         }
         
         public override void Resume()
         {
+
             base.Resume();
+            PauseMenuUI.SetActive(false);
         }
         
         public override void EndExperience()

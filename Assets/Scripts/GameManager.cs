@@ -1,9 +1,12 @@
-using Liminal.SDK.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Liminal.Core.Fader;
+using Liminal.SDK.Core;
+
 public class GameManager : MonoBehaviour
 {
+    #region singleton
     //Singleton
     private static GameManager instance;
     public static GameManager Instance
@@ -31,6 +34,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     [Space(10)]
     [Header("Liminal game manager methods")]
     [SerializeField] private ExperienceApp myExperienceApp;
@@ -43,14 +48,18 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Tooltip("time in seconds")]
     [SerializeField] private float timeLimit = 180f; //secs
-    private float gameTime;
-    public float GameTime
-    {
-        get
-        {
-            return gameTime;
-        }
-    }
+    [SerializeField] private float gameTime = 0f;
+    public float GameTime {get { return gameTime; }}
+
+    private UIManager uiMnanager;
+    //score
+    private ScoreKeeper scorekeeper;
+    private int foodThrown;
+    private int enemyDeath;
+    private int playerGotHit;
+
+    //UI
+    private UIManager uiManager;
 
     void Start(){
         //set up before update
@@ -59,39 +68,81 @@ public class GameManager : MonoBehaviour
 
     void Update() {
         //update timer
-        gameTime = Time.timeSinceLevelLoad;
+        gameTime += Time.deltaTime;
         //if timer is more than time limit, end the game.    
         if(gameTime > timeLimit){
-            endGame();
+            gameTime = -1000000;
+            EndGame();
         }
     }
 
-    public void pauseGame()
+    public void PauseGame()
     {
         myExperienceApp.Pause();
     }
 
-    public void resumeGame()
+    public void ResumeGame()
     {
         myExperienceApp.Resume();
     }
 
-    public void endGame(){
+    public void EndGame(){
         //end the game when timer finishes
         //get scores
         //launch ending UI, score display
         //stop enemy
         // only in UI myExperienceApp.EndExperience();
+        Debug.Log("end game now!");
+        StartCoroutine(FadeAndExit(2f));
+    }
+    /**
+    public void addScore()
+    {
+        scorekeeper.addFoodThrown();
     }
 
-    private void getScores(){
+    public void setScores(){
         //set the 3 scores here.
+        foodThrown = scorekeeper.FoodThrown;
+        enemyDeath = scorekeeper.EnemyDeath;
+        playerGotHit = scorekeeper.PlayerGotHit;
+        sendScoresToUI();
     }
 
-   private void startLetterScoreEvent()
+    //grab the scorekeeper data and send to Ui
+    private void sendScoresToUI()
+    {
+        //UI manager score display ui method
+        uiManager.setFoodThrownUI(foodThrown);
+    }
+    */
+   private void StartLetterScoreEvent()
     {
         //launch ending UI event in UI manager
         // send scores to UI manager to display them on the letter
     }
 
+ 
+
+    // This coroutine fades the camera and audio simultaneously over the same length of time.
+    IEnumerator FadeAndExit(float fadeTime)
+    {
+        var elapsedTime = 0f; //instantiate a float with a value of 0 for use as a timer.
+        var startingVolume = AudioListener.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
+
+        ScreenFader.Instance.FadeTo(Color.black, fadeTime); // Tell the system to fade the camera to black over X seconds where X is the value of fadeTime.
+
+        while (elapsedTime < fadeTime)
+        {
+            elapsedTime += Time.deltaTime; // Count up
+            AudioListener.volume = Mathf.Lerp(startingVolume, 0f, elapsedTime / fadeTime); // This uses linear interpolation to change the volume of AudioListener over time.
+            yield return new WaitForEndOfFrame(); // Tell the coroutine to wait for a frame to avoid completing this loop in a single frame.
+        }
+
+        // when the while-loop has ended, the audiolistener volume should be 0 and the screen completely black. However, for safety's sake, we should manually set AudioListener volume to 0.
+        AudioListener.volume = 0f;
+
+        ExperienceApp.End(); // This tells the platform to exit the experience.
+
+    }
 }
