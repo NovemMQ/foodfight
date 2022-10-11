@@ -1,29 +1,12 @@
 fileFormatVersion: 2
-guid: bf6db238090bbb74ca7998ac4f6fd8a4
+guid: 46da1a8bb5c5b034ba2f355c1d45f84d
 ModelImporter:
   serializedVersion: 25
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MacadamiaNJ_Arms
-    second: {fileID: 2100000, guid: c7269549ba01dc843abb5d3dd757794b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MacadamiaNJ_Body
-    second: {fileID: 2100000, guid: da00321aff02b294a96e52a0803e65d4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MacadamiaNJ_Eyes
-    second: {fileID: 2100000, guid: 41ccce9cc3dc7a948a04ed0519a76500, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MacadamiaNJ_Legs
-    second: {fileID: 2100000, guid: 3f6534dad315932439ed3e811be436c9, type: 2}
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Jump
+      takeName: mixamo.com
+      internalID: -203655887218126122
+      firstFrame: 0
+      lastFrame: 46
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -86,10 +98,9 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 1b6beeae8356f4344b3d9a8cf13cc667
-  importAnimation: 0
-  copyAvatar: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 3
     human:
@@ -349,7 +360,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: bf6db238090bbb74ca7998ac4f6fd8a4,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0

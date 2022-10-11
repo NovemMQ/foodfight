@@ -1,10 +1,11 @@
 ﻿// MoveTo.cs
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class enemyMovement : MonoBehaviour
 {
-
+    public ThirdPersonCharacter charactor;
     //public Transform goal;
     public bool moving = false;
     private NavMeshAgent agent;
@@ -17,32 +18,48 @@ public class enemyMovement : MonoBehaviour
     private float resetDestCounter = 0;
     void Start()
     { 
+        //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
     }
 
     private void Update()
     {
+        //if enemy is still travling to destination after timelimit, choose a new destination
         resetDestCounter -= Time.deltaTime;
         if(resetDestCounter <= 0)
         {
             resetValues();
         }
+
+        // Unity NavMesh Tutorial - Animated Character https://www.youtube.com/watch?v=blPglabGueM by Brackeys
+
+        if (agent.remainingDistance > agent.stoppingDistance)
+        {
+            charactor.Move(agent.desiredVelocity, false, true);
+        }
+        else
+        {
+            charactor.Move(Vector3.zero, false, false);
+        }
+        
     }
 
     void OnTriggerStay(Collider other)
     {
         //Debug.Log("dest name is: " + destination.name + " time is "+ waitCounter);
+        //when enemy is at destination, start idle/wait counter
         if (destination)
         {
             if (other.name.Equals(destination.name))
             {
                 waitCounter -= Time.deltaTime;
-            }
-            if (other.name.Equals(destination.name) && waitCounter <= 0f)
-            {
-                resetValues();
+                if (waitCounter <= 0f)
+                {
+                    resetValues();
+                }
             }
         }
     }
