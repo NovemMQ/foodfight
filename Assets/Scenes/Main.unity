@@ -2489,7 +2489,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 225411399}
   m_PrefabAsset: {fileID: 0}
---- !u!208 &124956929
+--- !u!208 &124956933
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12240,6 +12240,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8947834688750508615, guid: b84f4a176407fb24db76e1704263e0dd,
+        type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b84f4a176407fb24db76e1704263e0dd, type: 3}
 --- !u!4 &235968688 stripped
@@ -15256,7 +15261,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 225411399}
   m_PrefabAsset: {fileID: 0}
---- !u!208 &317638040
+--- !u!208 &317638041
 NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
