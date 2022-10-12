@@ -10,15 +10,13 @@ public class LauncherGrabber : MonoBehaviour
 {
     [SerializeField]
     VRAvatarController controller;
+    [SerializeField]
+    VRAvatarHand Hand;
     public bool isBack = false;
     private void Start()
     {
         
-        //UserInputs.Instance.LeftHandAvatarHand.Attach(this.gameObject);
+        Hand.Attach(this.gameObject);
     }
-    private void FixedUpdate()
-    {
-        transform.position = controller.transform.position;
-        transform.rotation = controller.transform.rotation;
-    }
+    
 }
