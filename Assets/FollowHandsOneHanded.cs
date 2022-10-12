@@ -6,7 +6,10 @@ public class FollowHandsOneHanded : MonoBehaviour
 {
     [SerializeField]
     Transform HandHook;
-
+    private void Awake()
+    {
+        transform.position = HandHook.position;
+    }
     private void FixedUpdate()
     {
         SetPos();
@@ -14,7 +17,6 @@ public class FollowHandsOneHanded : MonoBehaviour
 
     private void SetPos()
     {
-        transform.position = HandHook.position;
         transform.SetParent(HandHook);
     }
 
