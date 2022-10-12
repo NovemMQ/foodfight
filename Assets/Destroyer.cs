@@ -5,6 +5,8 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     [SerializeField]
+    GameObject sparklePFX;
+    [SerializeField]
     private float deathTimer = 3f;
     private float timer;
     // Start is called before the first frame update
@@ -20,6 +22,17 @@ public class Destroyer : MonoBehaviour
         if (timer <= 0)
         {
             Destroy(this.gameObject);
+
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("penis");
+        GameObject spFX = Instantiate(sparklePFX);
+        spFX.transform.position = transform.position;
+        ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
+        spFXPFX.Play();
+
+        Destroy(this.gameObject);
     }
 }
