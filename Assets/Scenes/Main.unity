@@ -44369,50 +44369,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1384478970
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1384478971}
-  - component: {fileID: 1384478972}
-  m_Layer: 0
-  m_Name: RearGrip
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1384478971
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384478970}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54787517, y: 0.54787517, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1946254857}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1384478972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384478970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150d8c8ea0ce98b4fb9534f7610251bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBack: 0
 --- !u!43 &1388934379
 Mesh:
   m_ObjectHideFlags: 0
@@ -50119,12 +50075,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623203845}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.413}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: -3.7134075, y: 0.16078758, z: 2.949}
   m_LocalScale: {x: 0.54787517, y: 0.54787517, z: 1}
   m_Children: []
-  m_Father: {fileID: 1946254857}
-  m_RootOrder: 1
+  m_Father: {fileID: 1787907547}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1623203847
 MonoBehaviour:
@@ -53883,6 +53839,7 @@ Transform:
   - {fileID: 1946254857}
   - {fileID: 1476374290}
   - {fileID: 1717787772}
+  - {fileID: 1623203846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57165,8 +57122,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 937579200721489152}
-  - {fileID: 1623203846}
-  - {fileID: 1384478971}
   m_Father: {fileID: 1787907547}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
@@ -57183,7 +57138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foreGrip: {fileID: 1623203846}
-  backGrip: {fileID: 1384478971}
+  backGrip: {fileID: 0}
 --- !u!114 &1946254859
 MonoBehaviour:
   m_ObjectHideFlags: 0
