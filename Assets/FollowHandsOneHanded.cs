@@ -13,6 +13,7 @@ public class FollowHandsOneHanded : MonoBehaviour
     {
         transform.position = HandHook.position;
         transform.rotation = HandHook.rotation;
+        
     }
 
     
