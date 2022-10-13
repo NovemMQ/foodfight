@@ -45867,11 +45867,8 @@ MonoBehaviour:
   pivotPoint: {fileID: 1526891374}
   launchPoint: {fileID: 1413082698}
   foodPrefab:
-  - {fileID: 7517528361275558460, guid: 2a9dd52458fda4d4390509d20f2ba8db, type: 3}
-  - {fileID: 8305354577563745283, guid: 8be2c10291850574aa035c55844d3df2, type: 3}
   - {fileID: 5426715753570769205, guid: 37aeaf34fa5c4df419b29fe5cc71a452, type: 3}
-  - {fileID: 8177483021904723214, guid: 80abd07ada8e5f440942e4ace1433a62, type: 3}
-  - {fileID: 8484965000773509619, guid: 43996b9be49b04742b59bc9429a687f9, type: 3}
+  - {fileID: 8305354577563745283, guid: 8be2c10291850574aa035c55844d3df2, type: 3}
   foodVelocity: 24.2
   rotatePower: 12.34
   trajectooryTrace: {fileID: 1413082700}
@@ -50999,14 +50996,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623203845}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 150d8c8ea0ce98b4fb9534f7610251bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 2910446066418462801}
   Hand: {fileID: 1260162969628527848}
-  isBack: 1
+  isBack: 0
 --- !u!4 &1628558047 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8db774d63ffa4304fb8dddd6116ead54,

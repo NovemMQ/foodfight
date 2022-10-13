@@ -176,8 +176,6 @@ MonoBehaviour:
   foodVelocity: 13
   rotatePower: 4.81
   foodPrefabs:
-  - {fileID: 5426715753570769205, guid: 37aeaf34fa5c4df419b29fe5cc71a452, type: 3}
-  - {fileID: 8305354577563745283, guid: 8be2c10291850574aa035c55844d3df2, type: 3}
   - {fileID: 7517528361275558460, guid: 2a9dd52458fda4d4390509d20f2ba8db, type: 3}
   - {fileID: 8177483021904723214, guid: 80abd07ada8e5f440942e4ace1433a62, type: 3}
   - {fileID: 8484965000773509619, guid: 43996b9be49b04742b59bc9429a687f9, type: 3}
@@ -188,6 +186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878281908875872867}
     m_Modifications:
+    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
+        type: 3}
+      propertyPath: m_Name
+      value: MacEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4700504936077528275, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,11 +260,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
-        type: 3}
-      propertyPath: m_Name
-      value: MacEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 306588489432114162, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
