@@ -42,7 +42,7 @@ public class LauncherTestV2 : MonoBehaviour
             //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
             foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
         }
-        if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
+        if (VRDevice.Device.PrimaryInputDevice.GetButtonDown(VRButton.One))
         {
             GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
             GameObject food = Instantiate(randomFoodRandom);

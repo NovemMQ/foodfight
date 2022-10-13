@@ -11,9 +11,10 @@ public class FollowHandsOneHanded : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position = HandHook.position;
+        transform.position = HandHook.position + (Vector3.down*0.05f);
         transform.rotation = HandHook.rotation;
         transform.Rotate(Vector3.up, 180f);
+        
         
     }
 
