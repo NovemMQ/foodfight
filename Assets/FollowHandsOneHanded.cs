@@ -15,8 +15,6 @@ public class FollowHandsOneHanded : MonoBehaviour
         transform.rotation = HandHook.rotation;
     }
 
-    private void SetPos()
-    {
-    }
+    
 
 }
