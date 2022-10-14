@@ -38,8 +38,8 @@ public class UserInputs : MonoBehaviour
         device = VRDevice.Device;
         leftHandTransform = leftHandAvatarHand.transform;
         rightHandTransform = rightHandAvatarHand.transform;
-        //       leftHand = device.SecondaryInputDevice;
-        //       rightHand = device.PrimaryInputDevice;
+        leftHand = device.SecondaryInputDevice;
+        rightHand = device.PrimaryInputDevice;
     }
     
     private void Update()

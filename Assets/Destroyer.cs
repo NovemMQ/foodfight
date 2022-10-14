@@ -9,6 +9,7 @@ public class Destroyer : MonoBehaviour
     [SerializeField]
     private float deathTimer = 3f;
     private float timer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +28,14 @@ public class Destroyer : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("penis");
-        GameObject spFX = Instantiate(sparklePFX);
-        spFX.transform.position = transform.position;
-        ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
-        spFXPFX.Play();
-
-        Destroy(this.gameObject);
+        if (!TagManager.CompareTags(collision.gameObject, "playerFood"))
+        {
+            Debug.Log("penis");
+            GameObject spFX = Instantiate(sparklePFX);
+            spFX.transform.position = transform.position;
+            ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
+            spFXPFX.Play();
+            Destroy(this.gameObject);
+        }
     }
 }
