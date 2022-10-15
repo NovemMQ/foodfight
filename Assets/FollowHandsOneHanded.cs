@@ -9,7 +9,9 @@ public class FollowHandsOneHanded : MonoBehaviour
     [SerializeField]
     Transform HandHook;
     [SerializeField]
-    LauncherTestV2 launcher;
+    FollowHandsOneHanded Gun;
+    [SerializeField]
+    FollowHandsOneHanded Shield;
   
     private void FixedUpdate()
     {
