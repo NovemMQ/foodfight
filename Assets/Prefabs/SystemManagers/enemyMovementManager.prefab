@@ -966,7 +966,9 @@ MonoBehaviour:
   waypointList: []
   startSpwanPoint: {fileID: 5816699579682199237}
   endSpwanPoint: {fileID: 329155147736609717}
-  maxEnemyInScene: 3
+  spawnRateChangeTime: 10
+  minEnemyInScene: 3
+  maxEnemyInScene: 8
 --- !u!1 &2867743614415526267
 GameObject:
   m_ObjectHideFlags: 0

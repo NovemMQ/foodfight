@@ -14,11 +14,14 @@ public class enemyMovementManager : MonoBehaviour
     [SerializeField] private waypointScript[] waypointList;
     [SerializeField] private Transform startSpwanPoint;
     [SerializeField] private Transform endSpwanPoint;
-    [SerializeField] private float spawnRateChangeTime = 30;//sec, random number of enemy in the scene every #secs
-    [SerializeField] private float spawnRateChangeCounter;
-    [SerializeField] private int minEnemyInScene = 3;
+    [Range(0,60)]
+    [SerializeField] private float spawnRateChangeTime = 10;//sec, random number of enemy in the scene every #secs
+    private float spawnRateChangeCounter;
+    [Range(0, 10)]
+    [SerializeField] private int minEnemyInScene = 5;
+    [Range(0, 10)]
     [SerializeField] private int maxEnemyInScene = 10;
-    [SerializeField] private int numEnemyInScene;
+    private int numEnemyInScene;
     private bool maxInScene = false;
 
     public Transform StartSpwanPoint { get => startSpwanPoint; }
@@ -38,9 +41,9 @@ public class enemyMovementManager : MonoBehaviour
         spawnRateChangeCounter -= Time.deltaTime;
         if (spawnRateChangeCounter <= 0)
         {
-            spawnRateChangeCounter += spawnRateChangeTime;
-            numEnemyInScene = Random.Range(minEnemyInScene, maxEnemyInScene+1);
+            numEnemyInScene = (int) Random.Range(minEnemyInScene, (maxEnemyInScene+1));
             IsMaxEnemyInScene();
+            spawnRateChangeCounter += spawnRateChangeTime;
         }
         sendEnemiesIntoScene();
         SetAllEnemyMovementInList(enemyInSceneList);
@@ -90,6 +93,7 @@ public class enemyMovementManager : MonoBehaviour
         {
             enemyPoolList[i].GetComponent<NavMeshAgent>().enabled = true;
             enemyPoolList[i].moving = false;
+            enemyPoolList[i].resetInSceneCounter();// reset the enemy scene time limit
             enemyPoolList[i].SetLauncherActive(true);//turn on launcher
             enemyPoolList[i].gameObject.transform.SetParent(enemyInSceneListOb.transform);//move enemy into scene
             //upodate the array lists 

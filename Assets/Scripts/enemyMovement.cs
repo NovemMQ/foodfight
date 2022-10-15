@@ -6,6 +6,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 public class enemyMovement : MonoBehaviour
 {
     private enemyMovementManager EnemyMovementManager;
+    private ScoreKeeper ScoreManager;
     public ThirdPersonCharacter charactor;
     //public Transform goal;
     public bool moving = false;
@@ -27,6 +28,7 @@ public class enemyMovement : MonoBehaviour
     void Start()
     {
         EnemyMovementManager = FindObjectOfType<enemyMovementManager>();
+        ScoreManager = FindObjectOfType<ScoreKeeper>();
         //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -89,6 +91,7 @@ public class enemyMovement : MonoBehaviour
         {
             //Destroy(this.gameObject);
             EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+            ScoreManager.addEnemyDeath();
         }
     }
 
@@ -97,7 +100,6 @@ public class enemyMovement : MonoBehaviour
         moving = false; //get new destination
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
-        resetInSceneCounter();
         Destination.IsOccupied = false; //cancle waypoint occupied booking
     }
     

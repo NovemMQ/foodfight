@@ -36,9 +36,9 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField]
     private int foodThrown;
     public int FoodThrown{ get { return foodThrown; }}
-    private int enemyDeath;
+    [SerializeField] private int enemyDeath;
     public int EnemyDeath { get { return enemyDeath; }}
-    private int playerGotHit;
+    [SerializeField] private int playerGotHit;
     public int PlayerGotHit { get { return playerGotHit; }}
 
     void Start()

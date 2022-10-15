@@ -40881,16 +40881,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961438162}
     m_Modifications:
-    - target: {fileID: 9039401429750222734, guid: d2bdb253c49774947b8100d25b4e9277,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5506402264114306127, guid: d2bdb253c49774947b8100d25b4e9277,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enemyListOb
       value: 
@@ -40959,9 +40949,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9039401429750222734, guid: d2bdb253c49774947b8100d25b4e9277,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506402264114306127, guid: d2bdb253c49774947b8100d25b4e9277,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6854452744989285672, guid: d2bdb253c49774947b8100d25b4e9277,
         type: 3}
-      propertyPath: enemyListOb
+      propertyPath: enemyPoolListOb
       value: 
       objectReference: {fileID: 504229393}
     - target: {fileID: 6854452744989285672, guid: d2bdb253c49774947b8100d25b4e9277,
@@ -40969,10 +40969,5 @@ PrefabInstance:
       propertyPath: enemyInSceneListOb
       value: 
       objectReference: {fileID: 943242335}
-    - target: {fileID: 6854452744989285672, guid: d2bdb253c49774947b8100d25b4e9277,
-        type: 3}
-      propertyPath: enemyPoolListOb
-      value: 
-      objectReference: {fileID: 504229393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2bdb253c49774947b8100d25b4e9277, type: 3}
