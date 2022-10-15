@@ -5,6 +5,7 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class enemyMovement : MonoBehaviour
 {
+    private enemyMovementManager EnemyMovementManager;
     public ThirdPersonCharacter charactor;
     //public Transform goal;
     public bool moving = false;
@@ -21,7 +22,8 @@ public class enemyMovement : MonoBehaviour
     [SerializeField] private EnemyLauncher enemyLauncher;
 
     void Start()
-    { 
+    {
+        EnemyMovementManager = FindObjectOfType<enemyMovementManager>();
         //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -69,14 +71,19 @@ public class enemyMovement : MonoBehaviour
         }
     }
   
+    //die when hit by food
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("enemy death: trigger");
         if(TagManager.CompareTags(other.gameObject, "playerFood"))
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+
+            //this.gameObject.transform.position = EnemyMovementManager.StartSpwanPoint.position;
+            EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
         }
     }
+
     private void resetValues()
     {
         moving = false; //get new destination
