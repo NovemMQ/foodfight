@@ -46,3 +46,4 @@ MonoBehaviour:
   myExperienceApp: {fileID: 0}
   Notes: time in seconds, do not use 'dontDestoryonLoad'
   timeLimit: 180
+  gameTime: 0

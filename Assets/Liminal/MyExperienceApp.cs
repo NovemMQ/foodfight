@@ -26,6 +26,7 @@ namespace Liminal.Experience
         
         public override void EndExperience()
         {
+            Debug.Log("In EndExperience function");
             End();
         }
     }

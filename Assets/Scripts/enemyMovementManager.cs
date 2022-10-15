@@ -38,7 +38,7 @@ public class enemyMovementManager : MonoBehaviour
         enemy.Destination = wp;
         enemy.moving = true;
         enemy.Agent.destination = wp.transform.position;
-        Debug.Log("EM is " + wp.gameObject.name);
+        //Debug.Log("EM is " + wp.gameObject.name);
         
     }
 
