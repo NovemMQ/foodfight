@@ -5,33 +5,36 @@ using UnityEngine;
 public class enemyMovementManager : MonoBehaviour
 {
 
-    [SerializeField] private GameObject enemyListOb;
-    [SerializeField] private enemyMovement[] enemyList;
+    [SerializeField] private GameObject enemyPoolListOb; //enemy object pool
+    [SerializeField] private GameObject enemyInSceneListOb; //enemy in the scene list
+    [SerializeField] private enemyMovement[] enemyPoolList;
+    [SerializeField] private enemyMovement[] enemyInSceneList;
     [SerializeField] private waypointScript[] waypointList;
+    [SerializeField] private int maxEnemyInScene = 3;
+    private bool maxInScene = false;
 
     void Start()
     {
         waypointList = gameObject.GetComponentsInChildren<waypointScript>();
-        enemyList = enemyListOb.GetComponentsInChildren<enemyMovement>();
+        enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (enemyMovement enemy in enemyList) {
-            if (enemy.moving == false)
-            {
-                waypointScript wp = waypointList[Random.Range(0, waypointList.Length)];
-  
-                if (wp.IsOccupied == false)
-                {
-                    setDestination(enemy, wp);
-                }
-            }
+        IsMaxEnemyInScene();
+        for (int i = 0; i < enemyPoolList.Length && !maxInScene; i++)
+        {
+            enemyPoolList[i].SetLauncherActive(true);//turn on launcher
+            enemyPoolList[i].gameObject.transform.SetParent(enemyInSceneListOb.transform);
+            enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
+            enemyInSceneList = enemyInSceneListOb.GetComponentsInChildren<enemyMovement>();
+            IsMaxEnemyInScene();
         }
+        SetAllEnemyMovementInList(enemyInSceneList);
     }
 
-    private void setDestination(enemyMovement enemy, waypointScript wp)
+    private void SetDestination(enemyMovement enemy, waypointScript wp)
     {
         wp.IsOccupied = true;
         wp.OccupiedBy = enemy;
@@ -40,6 +43,28 @@ public class enemyMovementManager : MonoBehaviour
         enemy.Agent.destination = wp.transform.position;
         //Debug.Log("EM is " + wp.gameObject.name);
         
+    }
+
+    private void SetAllEnemyMovementInList (enemyMovement[] enemyList)
+    {
+        foreach (enemyMovement enemy in enemyList)
+        {
+            if (enemy.moving == false)
+            {
+                waypointScript wp = waypointList[Random.Range(0, waypointList.Length)];
+
+                if (wp.IsOccupied == false)
+                {
+                    SetDestination(enemy, wp);
+                }
+            }
+        }
+    }
+
+    private bool IsMaxEnemyInScene()
+    {
+        maxInScene = enemyInSceneList.Length >= maxEnemyInScene;
+        return maxInScene;
     }
 
 }

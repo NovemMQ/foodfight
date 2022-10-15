@@ -16,6 +16,10 @@ public class enemyMovement : MonoBehaviour
     private float waitCounter = 0; //secs
     [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
     private float resetDestCounter = 0;
+
+    //launcher script 
+    [SerializeField] private EnemyLauncher enemyLauncher;
+
     void Start()
     { 
         //get nav mesh agent AI, set wait time, and counter
@@ -23,6 +27,7 @@ public class enemyMovement : MonoBehaviour
         agent.updateRotation = false;
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
+        enemyLauncher.enabled = false;//turn off launcher
     }
 
     private void Update()
@@ -63,16 +68,11 @@ public class enemyMovement : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Projectile")
-        {
-            Destroy(this.gameObject);
-        }
-    }
+  
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Projectile")
+        Debug.Log("enemy death: trigger");
+        if(TagManager.CompareTags(other.gameObject, "playerFood"))
         {
             Destroy(this.gameObject);
         }
@@ -85,4 +85,8 @@ public class enemyMovement : MonoBehaviour
         Destination.IsOccupied = false; //cancle waypoint occupied booking
     }
     
+    public void SetLauncherActive(bool active)
+    {
+        enemyLauncher.enabled = active;
+    }
 }
