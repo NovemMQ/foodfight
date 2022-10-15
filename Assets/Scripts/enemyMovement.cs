@@ -18,6 +18,9 @@ public class enemyMovement : MonoBehaviour
     [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
     private float resetDestCounter = 0;
 
+    [SerializeField] private float inSceneTimelimit = 15; // after this timelimit the enemy goes to end spwan point and despawns/leaves the scene
+    private float inSceneCounter = 0;
+
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;
 
@@ -29,11 +32,19 @@ public class enemyMovement : MonoBehaviour
         agent.updateRotation = false;
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
+        inSceneCounter = inSceneTimelimit;
         enemyLauncher.enabled = false;//turn off launcher
     }
 
     private void Update()
     {
+        inSceneCounter -= Time.deltaTime; //the Max time for the enemy to be in scene
+        if (inSceneCounter <= 0)
+        {
+            resetInSceneCounter(); //incase enemy was trapped try again.
+            resetDestCounter = travelTimelimit; //reset timer for trival limit, incase enemy was trapped, go to a waypoint instead
+            EnemyMovementManager.SendEnemyToEndSpwanPoint(this);
+        }
         //if enemy is still travling to destination after timelimit, choose a new destination
         resetDestCounter -= Time.deltaTime;
         if(resetDestCounter <= 0)
@@ -74,12 +85,9 @@ public class enemyMovement : MonoBehaviour
     //die when hit by food
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enemy death: trigger");
         if(TagManager.CompareTags(other.gameObject, "playerFood"))
         {
             //Destroy(this.gameObject);
-
-            //this.gameObject.transform.position = EnemyMovementManager.StartSpwanPoint.position;
             EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
         }
     }
@@ -89,11 +97,17 @@ public class enemyMovement : MonoBehaviour
         moving = false; //get new destination
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
+        resetInSceneCounter();
         Destination.IsOccupied = false; //cancle waypoint occupied booking
     }
     
     public void SetLauncherActive(bool active)
     {
         enemyLauncher.enabled = active;
+    }
+
+    public void resetInSceneCounter()
+    {
+        inSceneCounter = inSceneTimelimit;
     }
 }

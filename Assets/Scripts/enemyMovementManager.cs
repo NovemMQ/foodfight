@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class enemyMovementManager : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class enemyMovementManager : MonoBehaviour
     [SerializeField] private waypointScript[] waypointList;
     [SerializeField] private Transform startSpwanPoint;
     [SerializeField] private Transform endSpwanPoint;
-    [SerializeField] private int maxEnemyInScene = 3;
+    [SerializeField] private float spawnRateChangeTime = 30;//sec, random number of enemy in the scene every #secs
+    [SerializeField] private float spawnRateChangeCounter;
+    [SerializeField] private int minEnemyInScene = 3;
+    [SerializeField] private int maxEnemyInScene = 10;
+    [SerializeField] private int numEnemyInScene;
     private bool maxInScene = false;
 
     public Transform StartSpwanPoint { get => startSpwanPoint; }
@@ -21,14 +26,22 @@ public class enemyMovementManager : MonoBehaviour
 
     void Start()
     {
+        spawnRateChangeCounter = spawnRateChangeTime;
         waypointList = waypointListOb.GetComponentsInChildren<waypointScript>();
         enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
+        numEnemyInScene = minEnemyInScene;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //IsMaxEnemyInScene();
+        spawnRateChangeCounter -= Time.deltaTime;
+        if (spawnRateChangeCounter <= 0)
+        {
+            spawnRateChangeCounter += spawnRateChangeTime;
+            numEnemyInScene = Random.Range(minEnemyInScene, maxEnemyInScene+1);
+            IsMaxEnemyInScene();
+        }
         sendEnemiesIntoScene();
         SetAllEnemyMovementInList(enemyInSceneList);
     }
@@ -67,7 +80,7 @@ public class enemyMovementManager : MonoBehaviour
     {
         enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
         enemyInSceneList = enemyInSceneListOb.GetComponentsInChildren<enemyMovement>();
-        maxInScene = enemyInSceneList.Length >= maxEnemyInScene;
+        maxInScene = enemyInSceneList.Length >= numEnemyInScene;
         return maxInScene;
     }
     
@@ -75,6 +88,8 @@ public class enemyMovementManager : MonoBehaviour
     {
         for (int i = 0; i < enemyPoolList.Length && !maxInScene; i++)
         {
+            enemyPoolList[i].GetComponent<NavMeshAgent>().enabled = true;
+            enemyPoolList[i].moving = false;
             enemyPoolList[i].SetLauncherActive(true);//turn on launcher
             enemyPoolList[i].gameObject.transform.SetParent(enemyInSceneListOb.transform);//move enemy into scene
             //upodate the array lists 
@@ -87,10 +102,19 @@ public class enemyMovementManager : MonoBehaviour
     {
         enemy.gameObject.transform.SetParent(enemyPoolListOb.transform);//move enemy into scene
         enemy.transform.position = startSpwanPoint.position;
+        enemy.GetComponent<NavMeshAgent>().enabled = false;
         SetDestination(enemy, startSpwanPoint.GetComponent<waypointScript>());
         enemy.SetLauncherActive(false);//turn on launcher
+        enemy.resetInSceneCounter();
         //upodate the array lists 
         IsMaxEnemyInScene(); //update and check if there are max number of enemies in scene
+    }
+
+    public void SendEnemyToEndSpwanPoint(enemyMovement enemy)
+
+    {
+        SetDestination(enemy, endSpwanPoint.GetComponent<waypointScript>());
+        enemy.SetLauncherActive(false);//turn off launcher
     }
 
 }
