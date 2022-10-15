@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 878281908875872867}
   - component: {fileID: 878281908875872879}
   - component: {fileID: 878281908875872878}
-  - component: {fileID: 878281908875872877}
   - component: {fileID: 878281908875872876}
   - component: {fileID: 335429703053374316}
   - component: {fileID: 6599914288277055288}
@@ -77,19 +76,6 @@ MonoBehaviour:
   moving: 0
   pauseWaitTime: 3
   travelTimelimit: 10
---- !u!65 &878281908875872877
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878281908875872866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!54 &878281908875872876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,12 +100,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878281908875872866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &6599914288277055288
 Animator:
   serializedVersion: 3
@@ -186,11 +172,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878281908875872867}
     m_Modifications:
-    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
-        type: 3}
-      propertyPath: m_Name
-      value: MacEnemy
-      objectReference: {fileID: 0}
     - target: {fileID: 4700504936077528275, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -260,6 +241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
+        type: 3}
+      propertyPath: m_Name
+      value: MacEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 306588489432114162, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
