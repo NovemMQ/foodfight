@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class LauncherTestV2 : MonoBehaviour
 {
+    private enum GunSide
+    {
+        primary,
+        secondary
+    }
+
     [SerializeField] private GameManager gameMnager;
    
     [SerializeField]
@@ -20,9 +26,10 @@ public class LauncherTestV2 : MonoBehaviour
     [Range(2, 20)]
     private float rotatePower;
     [SerializeField]
-    private bool isPrimary;
-    [SerializeField]
     private TrajectooryTrace trajectooryTrace;
+    private float timer = 0f;
+    [SerializeField]
+    private GunSide gunSide;
     private void Awake()
     {
     
@@ -31,34 +38,30 @@ public class LauncherTestV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        timer -= Time.deltaTime;
         trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab[0].GetComponent<Rigidbody>(), launchPoint.transform.position);
-        /*      if (Input.GetButtonDown("Fire1"))
-              {
-                  GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
-                  GameObject food = Instantiate(randomFoodRandom);
-                  food.transform.position = launchPoint.transform.position;
-                  Rigidbody foodRB = food.GetComponent<Rigidbody>();
-                  //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
-                  foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
-              }*/
-        if (isPrimary)
+        if (timer <= 0)
         {
-            if (VRDevice.Device.PrimaryInputDevice.GetButtonDown(VRButton.One))
+
+            if (gunSide.Equals(GunSide.primary))
             {
-                Shoot();
+                if (VRDevice.Device.PrimaryInputDevice.GetButton(VRButton.Trigger))
+                {
+                    Shoot();
+                }
             }
-        }
-        else
-        {
-            if (VRDevice.Device.SecondaryInputDevice.GetButtonDown(VRButton.One))
+            else if(gunSide.Equals(GunSide.secondary))
             {
-                Shoot();
+                if (VRDevice.Device.SecondaryInputDevice.GetButton(VRButton.Trigger))
+                {
+                    Shoot();
+                }
             }
         }
     }
     public void Shoot()
     {
+        timer = 0.2f;
         GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
         GameObject food = Instantiate(randomFoodRandom);
         food.transform.position = launchPoint.transform.position;

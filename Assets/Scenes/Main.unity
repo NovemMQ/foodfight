@@ -2315,6 +2315,7 @@ MonoBehaviour:
   foodVelocity: 24.2
   rotatePower: 12.34
   trajectooryTrace: {fileID: 104941650}
+  gunSide: 1
 --- !u!120 &104941652
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -27898,7 +27899,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandHook: {fileID: 1623203846}
-  isPrimary: 1
   launcher: {fileID: 1719670776}
 --- !u!43 &768091964
 Mesh:
@@ -46578,6 +46578,7 @@ MonoBehaviour:
   foodVelocity: 24.2
   rotatePower: 12.34
   trajectooryTrace: {fileID: 1413082700}
+  gunSide: 0
 --- !u!120 &1413082702
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -53887,6 +53888,7 @@ MonoBehaviour:
   foodVelocity: 24.2
   rotatePower: 12.34
   trajectooryTrace: {fileID: 1719670775}
+  gunSide: 0
 --- !u!120 &1719670777
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -60511,7 +60513,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandHook: {fileID: 118214955}
-  isPrimary: 0
   launcher: {fileID: 104941651}
 --- !u!43 &2016881653
 Mesh:
@@ -63569,7 +63570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandHook: {fileID: 1623203846}
-  isPrimary: 0
   launcher: {fileID: 0}
 --- !u!4 &4829603296169516950
 Transform:
