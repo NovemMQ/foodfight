@@ -33,8 +33,7 @@ public class ScoreKeeper : MonoBehaviour
     }
     #endregion
 
-    [SerializeField]
-    private int foodThrown;
+    [SerializeField] private int foodThrown;
     public int FoodThrown{ get { return foodThrown; }}
     [SerializeField] private int enemyDeath;
     public int EnemyDeath { get { return enemyDeath; }}

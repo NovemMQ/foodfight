@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Liminal.Core.Fader;
 using Liminal.SDK.Core;
+using Liminal.Experience;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     [Header("Liminal game manager methods")]
-    [SerializeField] private ExperienceApp myExperienceApp;
+    private MyExperienceApp myExperienceApp;
 
     // holds current game time
     [Space(10)]
@@ -51,19 +52,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameTime = 0f;
     public float GameTime {get { return gameTime; }}
 
-    private UIManager uiMnanager;
+    //UI
+    private UIManager uiManager;
     //score
     private ScoreKeeper scorekeeper;
     private int foodThrown;
     private int enemyDeath;
     private int playerGotHit;
 
-    //UI
-    private UIManager uiManager;
-
     void Start(){
         //set up before update
-        //set timer = 0
+        uiManager = FindObjectOfType<UIManager>();
+        scorekeeper = FindObjectOfType<ScoreKeeper>();
+        myExperienceApp = FindObjectOfType<MyExperienceApp>();
     }
 
     void Update() {
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         //if timer is more than time limit, end the game.    
         if(gameTime > timeLimit){
             gameTime = -1000000;
-            EndGame();
+            StartLetterScoreEvent();// call UImanager for score display
         }
     }
 
@@ -90,12 +91,13 @@ public class GameManager : MonoBehaviour
         //end the game when timer finishes
         //get scores
         //launch ending UI, score display
-        //stop enemy
+        //stop enemy pause game
+       // myExperienceApp.IsEndGame = true;
         // only in UI myExperienceApp.EndExperience();
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
     }
-    /**
+    
     public void addScore()
     {
         scorekeeper.addFoodThrown();
@@ -106,20 +108,26 @@ public class GameManager : MonoBehaviour
         foodThrown = scorekeeper.FoodThrown;
         enemyDeath = scorekeeper.EnemyDeath;
         playerGotHit = scorekeeper.PlayerGotHit;
-        sendScoresToUI();
     }
 
     //grab the scorekeeper data and send to Ui
     private void sendScoresToUI()
     {
+        setScores();//get and set the score from score keeper
         //UI manager score display ui method
-        uiManager.setFoodThrownUI(foodThrown);
+        uiManager.SetScoreUIText(foodThrown, enemyDeath, playerGotHit);
     }
-    */
+    
    private void StartLetterScoreEvent()
     {
+        Debug.Log("starting the score UI event");
         //launch ending UI event in UI manager
         // send scores to UI manager to display them on the letter
+        sendScoresToUI(); // get the scores form scorekeeper
+        uiManager.ActivateScoreUI(); // turns on score UI
+        myExperienceApp.IsGameOver = true; // turnes off pause menu UI
+        PauseGame(); //pause the game
+        //end game button in the menu will fade and exit the game.
     }
 
  
@@ -144,7 +152,7 @@ public class GameManager : MonoBehaviour
         AudioListener.volume = 0f;
 
         ExperienceApp.End(); // This tells the platform to exit the experience.
-        //myExperienceApp.EndExperience();
+        //MyExperienceApp.EndExperience();
 
     }
 }
