@@ -55,14 +55,16 @@ public class enemyMovement : MonoBehaviour
         }
 
         // Unity NavMesh Tutorial - Animated Character https://www.youtube.com/watch?v=blPglabGueM by Brackeys
-
-        if (agent.remainingDistance > agent.stoppingDistance)
+        if (agent.isActiveAndEnabled)
         {
-            charactor.Move(agent.desiredVelocity, false, true);
-        }
-        else
-        {
-            charactor.Move(Vector3.zero, false, false);
+            if (agent.remainingDistance > agent.stoppingDistance)
+            {
+                charactor.Move(agent.desiredVelocity, false, true);
+            }
+            else
+            {
+                charactor.Move(Vector3.zero, false, false);
+            }
         }
         
     }
@@ -87,11 +89,14 @@ public class enemyMovement : MonoBehaviour
     //die when hit by food
     private void OnTriggerEnter(Collider other)
     {
-        if(TagManager.CompareTags(other.gameObject, "playerFood"))
+        if (other.GetComponent<TagObject>())
         {
-            //Destroy(this.gameObject);
-            EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
-            ScoreManager.addEnemyDeath();
+            if (TagManager.CompareTags(other.gameObject, "playerFood"))
+            {
+                //Destroy(this.gameObject);
+                EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+                ScoreManager.addEnemyDeath();
+            }
         }
     }
 

@@ -25,15 +25,18 @@ public class DestroyerV2 : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (!TagManager.CompareTags(collision.gameObject, "enemyFood"))
+        if (collision.gameObject.GetComponent<TagObject>())
         {
-            Debug.Log("penis");
-            //       GameObject spFX = Instantiate(sparklePFX);
-            //       spFX.transform.position = transform.position;
-            //       ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
-            //       spFXPFX.Play();
+            if (!TagManager.CompareTags(collision.gameObject, "enemyFood"))
+            {
+                Debug.Log("penis");
+                //       GameObject spFX = Instantiate(sparklePFX);
+                //       spFX.transform.position = transform.position;
+                //       ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
+                //       spFXPFX.Play();
 
-            Destroy(this.gameObject);
+                Destroy(this.gameObject);
+            }
         }
     }
 }
