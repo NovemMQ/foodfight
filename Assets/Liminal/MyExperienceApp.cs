@@ -9,31 +9,18 @@ namespace Liminal.Experience
     /// </summary>
     public class MyExperienceApp : ExperienceApp
     {
-        [SerializeField] private GameObject PauseMenuUI;
-        private bool isGameOver = false;
-        public bool IsGameOver { set => isGameOver = value; }
-
         public override void Pause()
         {
             base.Pause();
-            if (!isGameOver)
-            {
-                PauseMenuUI.SetActive(true);
-            }
         }
         
         public override void Resume()
         {
             base.Resume();
-            if (!isGameOver)
-            {
-                PauseMenuUI.SetActive(false);
-            }
         }
         
         public override void EndExperience()
         {
-            Debug.Log("In EndExperience function");
             End();
         }
     }

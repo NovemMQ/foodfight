@@ -79,12 +79,13 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        myExperienceApp.Pause();
+        //not using liminal's pausegame
+        //turn off enemy and player launcher
     }
 
     public void ResumeGame()
     {
-        myExperienceApp.Resume();
+        
     }
 
     public void EndGame(){
@@ -125,7 +126,6 @@ public class GameManager : MonoBehaviour
         // send scores to UI manager to display them on the letter
         sendScoresToUI(); // get the scores form scorekeeper
         uiManager.ActivateScoreUI(); // turns on score UI
-        myExperienceApp.IsGameOver = true; // turnes off pause menu UI
         PauseGame(); //pause the game
         //end game button in the menu will fade and exit the game.
     }
