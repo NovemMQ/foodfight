@@ -26,11 +26,11 @@ public class Destroyer : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<TagObject>())
+        if (other.gameObject.GetComponent<TagObject>())
         {
-            if (!TagManager.CompareTags(collision.gameObject, "playerFood"))
+            if (!TagManager.CompareTags(other.gameObject, "playerFood"))
             {
                 Debug.Log("penis");
                 GameObject spFX = Instantiate(sparklePFX);
