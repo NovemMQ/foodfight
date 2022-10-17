@@ -30,7 +30,7 @@ public class Destroyer : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<TagObject>())
         {
-            if (!TagManager.CompareTags(collision.gameObject, "playerFood") || !TagManager.CompareTags(collision.gameObject, "enemy"))
+            if (!TagManager.CompareTags(collision.gameObject, "playerFood") || TagManager.CompareTags(collision.gameObject, "enemy"))
             {
                 Debug.Log("penis");
                 GameObject spFX = Instantiate(sparklePFX);
