@@ -598,6 +598,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a171c191595ea944fa32a83f0ecaf357, type: 3}
+--- !u!114 &27259769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
+    type: 3}
+  m_PrefabInstance: {fileID: 27259768}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdd8fe937857484cb43314ca0f9e8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &42456827
 Mesh:
   m_ObjectHideFlags: 0
@@ -28869,11 +28881,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 270305538}
+      objectReference: {fileID: 27259769}
     - target: {fileID: 6376541043052929909, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndExperience
+      value: EndGame
       objectReference: {fileID: 0}
     - target: {fileID: 6376541043052929909, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
@@ -28968,7 +28980,7 @@ PrefabInstance:
     - target: {fileID: 3982163316459760149, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3982163317400577933, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
