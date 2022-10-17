@@ -73,8 +73,7 @@ public class GameManager : MonoBehaviour
         //if timer is more than time limit, end the game.    
         if(gameTime > timeLimit){
             gameTime = -1000000;
-            //StartLetterScoreEvent();// call UImanager for score display
-            EndGame();
+            StartLetterScoreEvent();// call UImanager for score display
         }
     }
 
