@@ -48,6 +48,14 @@ public class LauncherTestV2 : MonoBehaviour
         currentAmmo = maxAmmoCount;
     }
 
+    //scorekeeper
+    ScoreKeeper scoreManager;
+
+    private void Start()
+    {
+        scoreManager = FindObjectOfType<ScoreKeeper>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -95,5 +103,7 @@ public class LauncherTestV2 : MonoBehaviour
             foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
             foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
             currentAmmo--;
+            scoreManager.addFoodThrown();
+        }
     }
 }

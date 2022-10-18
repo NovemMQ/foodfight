@@ -12,7 +12,7 @@ public class AddFoodThrowScript : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         scoreKeeper.addFoodThrown();
         uiManager = FindObjectOfType<UIManager>();
-        uiManager.setFoodThrownUI(scoreKeeper.FoodThrown);
+        uiManager.SetFoodThrownUI(scoreKeeper.FoodThrown);
 
     }
 

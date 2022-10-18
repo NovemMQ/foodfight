@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 878281908875872867}
   - component: {fileID: 878281908875872879}
   - component: {fileID: 878281908875872878}
-  - component: {fileID: 878281908875872877}
   - component: {fileID: 878281908875872876}
   - component: {fileID: 335429703053374316}
   - component: {fileID: 6599914288277055288}
   - component: {fileID: 8441226532317841429}
   - component: {fileID: 3074904734167609149}
+  - component: {fileID: 3734698183960290240}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -46,7 +46,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878281908875872866}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 5
@@ -77,19 +77,8 @@ MonoBehaviour:
   moving: 0
   pauseWaitTime: 3
   travelTimelimit: 10
---- !u!65 &878281908875872877
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 878281908875872866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  inSceneTimelimit: 15
+  enemyLauncher: {fileID: 3074904734167609149}
 --- !u!54 &878281908875872876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,12 +103,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878281908875872866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
+  m_Radius: 1
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!95 &6599914288277055288
 Animator:
   serializedVersion: 3
@@ -166,7 +155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878281908875872866}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf92126ed6c2ce94095b4f5356be761a, type: 3}
   m_Name: 
@@ -179,6 +168,20 @@ MonoBehaviour:
   - {fileID: 7517528361275558460, guid: 2a9dd52458fda4d4390509d20f2ba8db, type: 3}
   - {fileID: 8177483021904723214, guid: 80abd07ada8e5f440942e4ace1433a62, type: 3}
   - {fileID: 8484965000773509619, guid: 43996b9be49b04742b59bc9429a687f9, type: 3}
+--- !u!114 &3734698183960290240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878281908875872866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8058476f7c940f74895b95fca56d50a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tags:
+  - enemy
 --- !u!1001 &6075616065526861093
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class enemyMovement : MonoBehaviour
 {
+    private enemyMovementManager EnemyMovementManager;
+    private ScoreKeeper ScoreManager;
     public ThirdPersonCharacter charactor;
     //public Transform goal;
     public bool moving = false;
@@ -16,17 +18,35 @@ public class enemyMovement : MonoBehaviour
     private float waitCounter = 0; //secs
     [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
     private float resetDestCounter = 0;
+
+    [SerializeField] private float inSceneTimelimit = 15; // after this timelimit the enemy goes to end spwan point and despawns/leaves the scene
+    private float inSceneCounter = 0;
+
+    //launcher script 
+    [SerializeField] private EnemyLauncher enemyLauncher;
+
     void Start()
-    { 
+    {
+        EnemyMovementManager = FindObjectOfType<enemyMovementManager>();
+        ScoreManager = FindObjectOfType<ScoreKeeper>();
         //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
+        inSceneCounter = inSceneTimelimit;
+        enemyLauncher.enabled = false;//turn off launcher
     }
 
     private void Update()
     {
+        inSceneCounter -= Time.deltaTime; //the Max time for the enemy to be in scene
+        if (inSceneCounter <= 0)
+        {
+            resetInSceneCounter(); //incase enemy was trapped try again.
+            resetDestCounter = travelTimelimit; //reset timer for trival limit, incase enemy was trapped, go to a waypoint instead
+            EnemyMovementManager.SendEnemyToEndSpwanPoint(this);
+        }
         //if enemy is still travling to destination after timelimit, choose a new destination
         resetDestCounter -= Time.deltaTime;
         if(resetDestCounter <= 0)
@@ -35,14 +55,16 @@ public class enemyMovement : MonoBehaviour
         }
 
         // Unity NavMesh Tutorial - Animated Character https://www.youtube.com/watch?v=blPglabGueM by Brackeys
-
-        if (agent.remainingDistance > agent.stoppingDistance)
+        if (agent.isActiveAndEnabled)
         {
-            charactor.Move(agent.desiredVelocity, false, true);
-        }
-        else
-        {
-            charactor.Move(Vector3.zero, false, false);
+            if (agent.remainingDistance > agent.stoppingDistance)
+            {
+                charactor.Move(agent.desiredVelocity, false, true);
+            }
+            else
+            {
+                charactor.Move(Vector3.zero, false, false);
+            }
         }
         
     }
@@ -63,20 +85,21 @@ public class enemyMovement : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Projectile")
-        {
-            Destroy(this.gameObject);
-        }
-    }
+  
+    //die when hit by food
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Projectile")
+        if (other.GetComponent<TagObject>())
         {
-            Destroy(this.gameObject);
+            if (TagManager.CompareTags(other.gameObject, "playerFood"))
+            {
+                //Destroy(this.gameObject);
+                EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+                ScoreManager.addEnemyDeath();
+            }
         }
     }
+
     private void resetValues()
     {
         moving = false; //get new destination
@@ -85,4 +108,13 @@ public class enemyMovement : MonoBehaviour
         Destination.IsOccupied = false; //cancle waypoint occupied booking
     }
     
+    public void SetLauncherActive(bool active)
+    {
+        enemyLauncher.enabled = active;
+    }
+
+    public void resetInSceneCounter()
+    {
+        inSceneCounter = inSceneTimelimit;
+    }
 }
