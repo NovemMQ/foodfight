@@ -40,7 +40,7 @@ public class LauncherTestV2 : MonoBehaviour
     private ShootState shoot = ShootState.shooting;
     [SerializeField]
     private int maxAmmoCount;
-    private int currentAmmo;
+    private int currentAmmo = 30;
     float timerwait = 2f;
     float reloadtimer = 0.1f;
     private void Awake()
@@ -59,12 +59,22 @@ public class LauncherTestV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer<=0)
-            timer -= Time.deltaTime;
-        if(timerwait<=0)
-            timerwait -= Time.deltaTime;
+        timer -= Time.deltaTime;
+        timerwait -= Time.deltaTime;
+        Debug.Log((float)currentAmmo / maxAmmoCount);
+        ammoGuage.fillAmount = (float)currentAmmo / maxAmmoCount;
+        ammoGuage.color = colors.Evaluate(1 - ammoGuage.fillAmount);
         trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab[0].GetComponent<Rigidbody>(), launchPoint.transform.position);
-        if (timer <= 0)
+        if (timerwait <= 0 && currentAmmo < maxAmmoCount)
+        {
+            reloadtimer -= Time.deltaTime;
+            if (reloadtimer <= 0)
+            {
+                reloadtimer = 0.1f;
+                currentAmmo++;
+            }
+        }
+        if (timer <= 0&&currentAmmo>0)
         {
             switch (gunSide) {
                 case GunSide.primary:
@@ -81,23 +91,9 @@ public class LauncherTestV2 : MonoBehaviour
                     break;
             }
         }
-        if (timerwait <= 0&&currentAmmo<maxAmmoCount)
-        {
-            reloadtimer -= Time.deltaTime;
-            if (reloadtimer <= 0)
-            {
-                reloadtimer = 0.1f;
-                currentAmmo++;
-            }
-        }
-
-        ammoGuage.fillAmount = currentAmmo / maxAmmoCount;
-        ammoGuage.color = colors.Evaluate(ammoGuage.fillAmount);
     }
     public void Shoot()
     {
-        if (currentAmmo > 0)
-        {
             timer = 0.2f;
             timerwait = 2f;
             GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
@@ -108,6 +104,6 @@ public class LauncherTestV2 : MonoBehaviour
             foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
             currentAmmo--;
             scoreManager.addFoodThrown();
-        }
     }
 }
+

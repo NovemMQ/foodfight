@@ -8,11 +8,7 @@ public class FollowHandsOneHanded : MonoBehaviour
 {
     [SerializeField]
     Transform HandHook;
-    [SerializeField]
-    FollowHandsOneHanded Gun;
-    [SerializeField]
-    FollowHandsOneHanded Shield;
-  
+
     private void FixedUpdate()
     {
         transform.position = HandHook.position + (Vector3.down*0.05f);
