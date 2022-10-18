@@ -33,6 +33,7 @@ public class LauncherTestV2 : MonoBehaviour
     private void Awake()
     {
     
+<<<<<<< HEAD
     }
 
     //scorekeeper
@@ -41,6 +42,8 @@ public class LauncherTestV2 : MonoBehaviour
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreKeeper>();
+=======
+>>>>>>> parent of bafe5ce... ahhhhhhhhhhh
     }
 
     // Update is called once per frame
@@ -70,6 +73,7 @@ public class LauncherTestV2 : MonoBehaviour
     public void Shoot()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (currentAmmo > 0)
         {
             timer = 0.2f;
@@ -84,6 +88,8 @@ public class LauncherTestV2 : MonoBehaviour
             scoreManager.addFoodThrown();
         }
 =======
+=======
+>>>>>>> parent of bafe5ce... ahhhhhhhhhhh
         timer = 0.2f;
         GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
         GameObject food = Instantiate(randomFoodRandom);
@@ -93,6 +99,9 @@ public class LauncherTestV2 : MonoBehaviour
         foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
         foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
         //foodRB.AddTorque(Vector3.left*rotatePower, ForceMode.Impulse);
+<<<<<<< HEAD
+>>>>>>> parent of bafe5ce... ahhhhhhhhhhh
+=======
 >>>>>>> parent of bafe5ce... ahhhhhhhhhhh
     }
 }
