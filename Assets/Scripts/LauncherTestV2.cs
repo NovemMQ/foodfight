@@ -1,4 +1,4 @@
-﻿using Liminal.SDK.VR;
+using Liminal.SDK.VR;
 using Liminal.SDK.VR.Input;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,14 +33,6 @@ public class LauncherTestV2 : MonoBehaviour
     private void Awake()
     {
     
-    }
-
-    //scorekeeper
-    ScoreKeeper scoreManager;
-
-    private void Start()
-    {
-        scoreManager = FindObjectOfType<ScoreKeeper>();
     }
 
     // Update is called once per frame
