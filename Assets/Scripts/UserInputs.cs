@@ -15,6 +15,10 @@ public class UserInputs : MonoBehaviour
     private IVRDevice device;
     private IVRInputDevice leftHand;
     private IVRInputDevice rightHand;
+    [SerializeField]
+    private FollowHandsOneHanded gun;
+    [SerializeField]
+    private FollowHandsOneHanded shield;
 
     public static UserInputs Instance { get => instance; }
     public Transform RightHandTransform { get => rightHandTransform; }
@@ -45,9 +49,19 @@ public class UserInputs : MonoBehaviour
     private void Update()
     {
         Debug.Log(leftHandAvatarHand.Transform.position);
-        
+        if (VRDevice.Device.GetButtonDown(VRButton.Three))
+        {
+            if (gun.gameObject.activeSelf)
+            {
+                shield.gameObject.SetActive(true);
+            }
+            else if (shield.gameObject.activeSelf)
+            {
+                gun.gameObject.SetActive(false);
+            }
+        }    
     }
-
+    
     //VR controller inputs here
 
 }
