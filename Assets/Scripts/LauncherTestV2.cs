@@ -104,6 +104,6 @@ public class LauncherTestV2 : MonoBehaviour
             foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
             currentAmmo--;
             scoreManager.addFoodThrown();
-        }
     }
 }
+
