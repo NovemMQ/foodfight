@@ -44,7 +44,7 @@ public class UserInputs : MonoBehaviour
     
     private void Update()
     {
-        //Debug.Log(leftHandAvatarHand.Transform.position);
+        Debug.Log(leftHandAvatarHand.Transform.position);
         
     }
 

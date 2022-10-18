@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Liminal.Core.Fader;
 using Liminal.SDK.Core;
-using Liminal.Experience;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Space(10)]
     [Header("Liminal game manager methods")]
-    private MyExperienceApp myExperienceApp;
+    [SerializeField] private ExperienceApp myExperienceApp;
 
     // holds current game time
     [Space(10)]
@@ -52,19 +51,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameTime = 0f;
     public float GameTime {get { return gameTime; }}
 
-    //UI
-    private UIManager uiManager;
+    private UIManager uiMnanager;
     //score
     private ScoreKeeper scorekeeper;
     private int foodThrown;
     private int enemyDeath;
     private int playerGotHit;
 
+    //UI
+    private UIManager uiManager;
+
     void Start(){
         //set up before update
-        uiManager = FindObjectOfType<UIManager>();
-        scorekeeper = FindObjectOfType<ScoreKeeper>();
-        myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        //set timer = 0
     }
 
     void Update() {
@@ -73,32 +72,30 @@ public class GameManager : MonoBehaviour
         //if timer is more than time limit, end the game.    
         if(gameTime > timeLimit){
             gameTime = -1000000;
-            StartLetterScoreEvent();// call UImanager for score display
+            EndGame();
         }
     }
 
     public void PauseGame()
     {
-        //not using liminal's pausegame
-        //turn off enemy and player launcher
+        myExperienceApp.Pause();
     }
 
     public void ResumeGame()
     {
-        
+        myExperienceApp.Resume();
     }
 
     public void EndGame(){
         //end the game when timer finishes
         //get scores
         //launch ending UI, score display
-        //stop enemy pause game
-       // myExperienceApp.IsEndGame = true;
+        //stop enemy
         // only in UI myExperienceApp.EndExperience();
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
     }
-    
+    /**
     public void addScore()
     {
         scorekeeper.addFoodThrown();
@@ -109,25 +106,20 @@ public class GameManager : MonoBehaviour
         foodThrown = scorekeeper.FoodThrown;
         enemyDeath = scorekeeper.EnemyDeath;
         playerGotHit = scorekeeper.PlayerGotHit;
+        sendScoresToUI();
     }
 
     //grab the scorekeeper data and send to Ui
     private void sendScoresToUI()
     {
-        setScores();//get and set the score from score keeper
         //UI manager score display ui method
-        uiManager.SetScoreUIText(foodThrown, enemyDeath, playerGotHit);
+        uiManager.setFoodThrownUI(foodThrown);
     }
-    
+    */
    private void StartLetterScoreEvent()
     {
-        Debug.Log("starting the score UI event");
         //launch ending UI event in UI manager
         // send scores to UI manager to display them on the letter
-        sendScoresToUI(); // get the scores form scorekeeper
-        uiManager.ActivateScoreUI(); // turns on score UI
-        PauseGame(); //pause the game
-        //end game button in the menu will fade and exit the game.
     }
 
  
@@ -135,7 +127,6 @@ public class GameManager : MonoBehaviour
     // This coroutine fades the camera and audio simultaneously over the same length of time.
     IEnumerator FadeAndExit(float fadeTime)
     {
-        Debug.Log("in fade and exit");
         var elapsedTime = 0f; //instantiate a float with a value of 0 for use as a timer.
         var startingVolume = AudioListener.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
 
@@ -152,7 +143,6 @@ public class GameManager : MonoBehaviour
         AudioListener.volume = 0f;
 
         ExperienceApp.End(); // This tells the platform to exit the experience.
-        //MyExperienceApp.EndExperience();
 
     }
 }
