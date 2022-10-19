@@ -89,6 +89,7 @@ public class enemyMovementManager : MonoBehaviour
     
     private void sendEnemiesIntoScene()
     {
+
         for (int i = 0; i < enemyPoolList.Length && !maxInScene; i++)
         {
             enemyPoolList[i].GetComponent<NavMeshAgent>().enabled = true;
@@ -98,6 +99,7 @@ public class enemyMovementManager : MonoBehaviour
             enemyPoolList[i].gameObject.transform.SetParent(enemyInSceneListOb.transform);//move enemy into scene
             //upodate the array lists 
             IsMaxEnemyInScene(); //update and check if there are max number of enemies in scene
+           
         }
     }
 
