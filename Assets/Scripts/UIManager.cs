@@ -7,9 +7,34 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI foodThrownText;
     [SerializeField] private TextMeshProUGUI enemiesDiedText;
     [SerializeField] private TextMeshProUGUI playerDamagedText;
-    [SerializeField] private GameObject scoreUI;
+    [SerializeField] private GameObject scoreUI; //ending ui panel
+    [SerializeField] private TextMeshProUGUI endingCountDownText;
+    [SerializeField] private string endingCounterStringFormat = "Ending in {0} Seconds ...";
+    [SerializeField] private float endingUITimer = 10;//secs
+    private float minInSec = 60f;
+    private float endingUICounter;
+    private GameManager gameManager;
     public delegate void UIUpdate();
     public static event UIUpdate UIUpdateFood;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        endingUICounter = endingUITimer;
+    }
+
+    private void Update()
+    {
+        endingUICounter -= Time.deltaTime;
+        int seconds = Mathf.CeilToInt(endingUICounter % minInSec);
+        endingCountDownText.text = string.Format(endingCounterStringFormat, seconds);
+
+
+        if (endingUICounter <= 0f)
+        {
+            gameManager.EndGame();
+        }
+    }
 
     public void SetScoreUIText(int food, int enemy, int player)
     {
