@@ -10,30 +10,51 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI; //ending ui panel
     [SerializeField] private TextMeshProUGUI endingCountDownText;
     [SerializeField] private string endingCounterStringFormat = "Ending in {0} Seconds ...";
-    [SerializeField] private float endingUITimer = 10;//secs
     private float minInSec = 60f;
-    private float endingUICounter;
     private GameManager gameManager;
-    public delegate void UIUpdate();
-    public static event UIUpdate UIUpdateFood;
+   // public delegate void UIUpdate();
+   // public static event UIUpdate UIUpdateFood;
+
+    #region singleton
+    //Singleton
+    private static UIManager instance;
+    public static UIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                Debug.LogError("There is no GameManger instance in the scene");
+            }
+            return instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            //destroy duplicates
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    #endregion
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        endingUICounter = endingUITimer;
+        endingCounterStringFormat = endingCountDownText.text;
     }
 
-    private void Update()
+    public void StartEndingCounter(float time)
     {
-        endingUICounter -= Time.deltaTime;
-        int seconds = Mathf.CeilToInt(endingUICounter % minInSec);
+        int seconds = Mathf.CeilToInt(time % minInSec);
         endingCountDownText.text = string.Format(endingCounterStringFormat, seconds);
-
-
-        if (endingUICounter <= 0f)
-        {
-            gameManager.EndGame();
-        }
     }
 
     public void SetScoreUIText(int food, int enemy, int player)

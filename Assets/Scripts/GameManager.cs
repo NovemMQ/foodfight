@@ -50,7 +50,13 @@ public class GameManager : MonoBehaviour
     [Tooltip("time in seconds")]
     [SerializeField] private float timeLimit = 180f; //secs
     [SerializeField] private float gameTime = 0f;
+    [SerializeField] private float endingUITimer = 10;//secs
+    private float endingUICounter;
     public float GameTime {get { return gameTime; }}
+    private bool gameOverEndingUIOn = false;
+    public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
+   
+
 
     //UI
     private UIManager uiManager;
@@ -65,6 +71,7 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         scorekeeper = FindObjectOfType<ScoreKeeper>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        endingUICounter = endingUITimer;
     }
 
     void Update() {
@@ -74,6 +81,19 @@ public class GameManager : MonoBehaviour
         if(gameTime > timeLimit){
             gameTime = -1000000;
             StartLetterScoreEvent();// call UImanager for score display
+            gameOverEndingUIOn = true;
+        }
+
+        if(gameOverEndingUIOn)
+        {
+            endingUICounter -= Time.deltaTime;
+            uiManager.StartEndingCounter(endingUICounter);
+        }
+
+        if (endingUICounter <= 0f)
+        {
+            gameOverEndingUIOn = false;
+            EndGame();
         }
     }
 
