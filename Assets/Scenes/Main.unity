@@ -1761,6 +1761,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1787907547}
     m_Modifications:
+    - target: {fileID: 4867968965036806216, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+        type: 3}
+      propertyPath: m_Name
+      value: UIManager
+      objectReference: {fileID: 0}
     - target: {fileID: 2991067486414827334, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
       propertyPath: m_text
@@ -1785,11 +1790,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ending count down
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867968965036806216, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
-        type: 3}
-      propertyPath: m_Name
-      value: UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 4867968965036806219, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
