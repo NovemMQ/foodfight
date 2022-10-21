@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd8fe937857484cb43314ca0f9e8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myExperienceApp: {fileID: 0}
   Notes: time in seconds, do not use 'dontDestoryonLoad'
   timeLimit: 180
   gameTime: 0
+  endingUITimer: 10

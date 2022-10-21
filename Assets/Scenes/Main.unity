@@ -825,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 5572842892266096069, guid: e186461c08b725e448c892f7de58eae8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5572842892266096069, guid: e186461c08b725e448c892f7de58eae8,
         type: 3}
@@ -1877,11 +1877,6 @@ PrefabInstance:
       propertyPath: myExperienceApp
       value: 
       objectReference: {fileID: 1787907546}
-    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
-        type: 3}
-      propertyPath: timeLimit
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6636247174337071039, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_Name
@@ -3630,7 +3625,7 @@ PrefabInstance:
     - target: {fileID: 9077667994894706320, guid: 37a51b569f97c654d957b784c46688d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9077667994894706320, guid: 37a51b569f97c654d957b784c46688d2,
         type: 3}
