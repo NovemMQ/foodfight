@@ -35,8 +35,13 @@ public class EnemyLauncher : MonoBehaviour
         {
             randomisedTimer -= Time.deltaTime;
             if(randomisedTimer<=0)
-                Shoot();
+                triggerShoot();
         }
+    }
+
+    void triggerShoot()
+    {
+        animator.SetTrigger("Throw"); //Trigger Throw animation
     }
 
     void Shoot()
@@ -49,11 +54,9 @@ public class EnemyLauncher : MonoBehaviour
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
 
         Vector3 direction = player.position - food.transform.position;
-        
 
         //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
         foodRB.velocity = (player.transform.position - transform.position).normalized * foodVelocity;
-        animator.SetTrigger("Throw"); //Trigger Throw animation
         foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
     }
 }
