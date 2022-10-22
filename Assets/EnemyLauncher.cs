@@ -18,6 +18,7 @@ public class EnemyLauncher : MonoBehaviour
     public float rotatePower;
     public List<GameObject> foodPrefabs;
     private Animator animator;
+    public Transform throwPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class EnemyLauncher : MonoBehaviour
         randomisedTimer = Random.Range(0, shootFrequencyRandomRange);
         GameObject randomFoodRandom = foodPrefabs[(int)Random.Range(0, foodPrefabs.Count - 0.01f)];
         GameObject food = Instantiate(randomFoodRandom);
-        food.transform.position = transform.position + (Vector3.up * 3);
+        food.transform.position = throwPoint.position;//transform.position + (Vector3.up * 3);
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
 
         Vector3 direction = player.position - food.transform.position;
