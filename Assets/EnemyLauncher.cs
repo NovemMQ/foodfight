@@ -17,9 +17,12 @@ public class EnemyLauncher : MonoBehaviour
     [Range(0,30)]
     public float rotatePower;
     public List<GameObject> foodPrefabs;
+    private Animator animator;
+    public Transform throwPoint;
     // Start is called before the first frame update
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         player = FindObjectOfType<VRAvatarHead>().GetComponent<Transform>();
         timer = shootFrequency;
         randomisedTimer = Random.Range(0,shootFrequencyRandomRange);
@@ -33,7 +36,9 @@ public class EnemyLauncher : MonoBehaviour
         {
             randomisedTimer -= Time.deltaTime;
             if(randomisedTimer<=0)
-                Shoot();
+            {
+                animator.SetTrigger("Throw");
+            }
         }
     }
 
@@ -43,11 +48,10 @@ public class EnemyLauncher : MonoBehaviour
         randomisedTimer = Random.Range(0, shootFrequencyRandomRange);
         GameObject randomFoodRandom = foodPrefabs[(int)Random.Range(0, foodPrefabs.Count - 0.01f)];
         GameObject food = Instantiate(randomFoodRandom);
-        food.transform.position = transform.position + (Vector3.up * 3);
+        food.transform.position = throwPoint.position;//transform.position + (Vector3.up * 3);
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
 
         Vector3 direction = player.position - food.transform.position;
-        
 
         //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
         foodRB.velocity = (player.transform.position - transform.position).normalized * foodVelocity;

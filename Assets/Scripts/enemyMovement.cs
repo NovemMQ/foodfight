@@ -24,6 +24,7 @@ public class enemyMovement : MonoBehaviour
 
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;
+    private Animator animator;
 
     void Start()
     {
@@ -36,6 +37,7 @@ public class enemyMovement : MonoBehaviour
         resetDestCounter = travelTimelimit;
         inSceneCounter = inSceneTimelimit;
         enemyLauncher.enabled = false;//turn off launcher
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -94,10 +96,17 @@ public class enemyMovement : MonoBehaviour
             if (TagManager.CompareTags(other.gameObject, "playerFood"))
             {
                 //Destroy(this.gameObject);
-                EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
-                ScoreManager.addEnemyDeath();
+                // EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+                // ScoreManager.addEnemyDeath();
+                animator.SetTrigger("Damage");
             }
         }
+    }
+
+    private void Die()
+    {
+        EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+        ScoreManager.addEnemyDeath();
     }
 
     private void resetValues()
