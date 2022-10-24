@@ -39,7 +39,7 @@ public class enemyMovementManager : MonoBehaviour
     void Update()
     {
         spawnRateChangeCounter -= Time.deltaTime;
-        if (spawnRateChangeCounter <= 0)
+        if (spawnRateChangeCounter <= 0) //randomly pick enemy wave numbers in scene after a time period
         {
             numEnemyInScene = (int) Random.Range(minEnemyInScene, (maxEnemyInScene+1));
             IsMaxEnemyInScene();

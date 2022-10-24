@@ -68,7 +68,19 @@ public class enemyMovement : MonoBehaviour
                 charactor.Move(Vector3.zero, false, false);
             }
         }
-        
+
+        //test stop and resume
+        /*
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            StopMoving();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            ResumeMoving();
+        }
+        */
     }
 
     void OnTriggerStay(Collider other)
@@ -114,7 +126,10 @@ public class enemyMovement : MonoBehaviour
         moving = false; //get new destination
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
-        Destination.IsOccupied = false; //cancle waypoint occupied booking
+        if (Destination != null)
+        {
+            Destination.IsOccupied = false; //cancle waypoint occupied booking
+        } 
     }
     
     public void SetLauncherActive(bool active)
@@ -125,5 +140,23 @@ public class enemyMovement : MonoBehaviour
     public void resetInSceneCounter()
     {
         inSceneCounter = inSceneTimelimit;
+    }
+
+    public void StopMoving()
+    {
+        moving = true;//don't get new destination
+        resetDestCounter = travelTimelimit;
+        waitCounter = pauseWaitTime;
+        Destination.IsOccupied = false; //cancle waypoint occupied booking
+        Destination = null;
+        if (Agent.isActiveAndEnabled == true)
+        {
+            agent.destination = transform.position;
+        }
+    }
+
+    public void ResumeMoving()
+    {
+        resetValues();//set new destinations
     }
 }

@@ -228,6 +228,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
 			}
+            //Debug.Log("enemy is on the ground = "+m_IsGrounded);
 		}
 
 	}
