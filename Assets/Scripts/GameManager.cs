@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             uiManager.StartEndingCounter(endingUICounter);
         }
 
-        if (endingUICounter <= 0f)
+        if (endingUICounter <= 0f && gameOverEndingUIOn)
         {
             gameOverEndingUIOn = false;
             EndGame();
