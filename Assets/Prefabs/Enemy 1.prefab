@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8441226532317841429}
   - component: {fileID: 3074904734167609149}
   - component: {fileID: 3734698183960290240}
+  - component: {fileID: 8865435931202439050}
   m_Layer: 0
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878281908875872866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.75, y: 0.3499998, z: 29.24}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1543433721808257526}
@@ -107,9 +108,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 3
+  m_Height: 2.9651258
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0}
+  m_Center: {x: 0, y: 1.5174371, z: 0}
 --- !u!95 &6599914288277055288
 Animator:
   serializedVersion: 3
@@ -184,6 +185,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tags:
   - enemy
+--- !u!114 &8865435931202439050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878281908875872866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2092ecef123dbc4a8d77df9e70d6035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GroundCheckDistance: 0.1
 --- !u!1 &1983529885786459208
 GameObject:
   m_ObjectHideFlags: 0

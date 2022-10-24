@@ -29,6 +29,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+        GroundRaycastScript GroundRaycast;
+
 
 		void Start()
 		{
@@ -40,6 +42,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
+            GroundRaycast = GetComponent<GroundRaycastScript>();
 		}
 
 
@@ -205,25 +208,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		void CheckGroundStatus()
 		{
-			RaycastHit hitInfo;
+            Vector3 startPos = transform.position;
+            Vector3 endPos = startPos + (Vector3.down * 0.2f);
 #if UNITY_EDITOR
-			// helper to visualise the ground check ray in the scene view
-			Debug.DrawLine(transform.position + (Vector3.up * 0.1f), transform.position + (Vector3.up * 0.1f) + (Vector3.down * m_GroundCheckDistance));
+            // helper to visualise the ground check ray in the scene view
+            //Debug.DrawLine(startPos, endPos, Color.yellow);
 #endif
 			// 0.1f is a small offset to start the ray from inside the character
 			// it is also good to note that the transform position in the sample assets is at the base of the character
-			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
+			if (GroundRaycast.CheckGroundRaycast())
 			{
-				m_GroundNormal = hitInfo.normal;
+				m_GroundNormal = GroundRaycast.HitInfomation.normal;
 				m_IsGrounded = true;
 				m_Animator.applyRootMotion = true;
 			}
 			else
 			{
-				m_IsGrounded = false;
+                m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
 			}
 		}
+
 	}
 }
