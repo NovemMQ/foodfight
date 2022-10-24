@@ -2789,11 +2789,6 @@ PrefabInstance:
       propertyPath: myExperienceApp
       value: 
       objectReference: {fileID: 1787907546}
-    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
-        type: 3}
-      propertyPath: timeLimit
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6636247174337071039, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_Name
