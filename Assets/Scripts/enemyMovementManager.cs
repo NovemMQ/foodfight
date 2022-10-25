@@ -17,7 +17,7 @@ public class enemyMovementManager : MonoBehaviour
     [Range(0,60)]
     [SerializeField] private float spawnRateChangeTime = 10;//sec, random number of enemy in the scene every #secs
     private float spawnRateChangeCounter;
-    [Range(0, 10)]
+   [Range(0, 10)]
     [SerializeField] private int minEnemyInScene = 5;
     [Range(0, 10)]
     [SerializeField] private int maxEnemyInScene = 10;
@@ -29,7 +29,7 @@ public class enemyMovementManager : MonoBehaviour
 
     void Start()
     {
-        spawnRateChangeCounter = spawnRateChangeTime;
+        spawnRateChangeCounter = 100000000;
         waypointList = waypointListOb.GetComponentsInChildren<waypointScript>();
         enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
         numEnemyInScene = minEnemyInScene;
@@ -41,12 +41,17 @@ public class enemyMovementManager : MonoBehaviour
         spawnRateChangeCounter -= Time.deltaTime;
         if (spawnRateChangeCounter <= 0) //randomly pick enemy wave numbers in scene after a time period
         {
-            numEnemyInScene = (int) Random.Range(minEnemyInScene, (maxEnemyInScene+1));
-            IsMaxEnemyInScene();
-            spawnRateChangeCounter += spawnRateChangeTime;
+            RandomEnemyWaves();
         }
         sendEnemiesIntoScene();
         SetAllEnemyMovementInList(enemyInSceneList);
+    }
+
+    private void RandomEnemyWaves()
+    {
+        numEnemyInScene = (int)Random.Range(minEnemyInScene, (maxEnemyInScene + 1));
+        IsMaxEnemyInScene();
+        spawnRateChangeCounter += spawnRateChangeTime;
     }
 
     //set an enemy waypoints
@@ -128,4 +133,15 @@ public class enemyMovementManager : MonoBehaviour
         enemy.SetLauncherActive(false);//turn off launcher
     }
 
+    public void StopEnemyWavesMovement()
+    {
+        numEnemyInScene = 0;
+        spawnRateChangeCounter = 1000000;
+        maxInScene = true;
+    }
+
+    public void StartEnemyWavesMovement()
+    {
+        RandomEnemyWaves();
+    }
 }

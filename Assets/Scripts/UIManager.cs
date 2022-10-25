@@ -4,12 +4,16 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI startCountDownText;
+    [SerializeField] private string startCounterStringFormat = "{0}";
+    [SerializeField] private GameObject startUI; //start splash screen ui panel
     [SerializeField] private TextMeshProUGUI foodThrownText;
     [SerializeField] private TextMeshProUGUI enemiesDiedText;
     [SerializeField] private TextMeshProUGUI playerDamagedText;
     [SerializeField] private GameObject scoreUI; //ending ui panel
     [SerializeField] private TextMeshProUGUI endingCountDownText;
     [SerializeField] private string endingCounterStringFormat = "Ending in {0} Seconds ...";
+   
     private float minInSec = 60f;
     private GameManager gameManager;
    // public delegate void UIUpdate();
@@ -49,6 +53,13 @@ public class UIManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         endingCounterStringFormat = endingCountDownText.text;
+        startCounterStringFormat = startCountDownText.text;
+    }
+
+    public void StartStartCounter(float time)
+    {
+        int seconds = Mathf.CeilToInt(time % minInSec);
+        startCountDownText.text = string.Format(startCounterStringFormat, seconds);
     }
 
     public void StartEndingCounter(float time)
@@ -86,6 +97,17 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("activate score UI");
         scoreUI.SetActive(true);
+    }
+
+    public void ActivateStartSplashScreenUI()
+    {
+        Debug.Log("activate start splash screen UI");
+        startUI.SetActive(true);
+    }
+    public void DeactivateStartSplashScreenUI()
+    {
+        Debug.Log("deactivate start splash screen UI");
+        startUI.SetActive(false);
     }
 
 }

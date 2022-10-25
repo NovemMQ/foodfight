@@ -53,10 +53,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float endingUITimer = 10;//secs
     private float endingUICounter;
     public float GameTime {get { return gameTime; }}
-    private bool gameOverEndingUIOn = false;
-    public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
-   
 
+    [SerializeField] private float startUITimer = 5;//secs
+    private float startUICounter;
+    private bool startGameUIOn = true;
+private bool gameOverEndingUIOn = false;
+    public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
+
+    //enemy movement manager
+    private enemyMovementManager enemyManager;
 
     //UI
     private UIManager uiManager;
@@ -68,15 +73,36 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         //set up before update
+        enemyManager = FindObjectOfType<enemyMovementManager>();
         uiManager = FindObjectOfType<UIManager>();
         scorekeeper = FindObjectOfType<ScoreKeeper>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        startUICounter = startUITimer;
         endingUICounter = endingUITimer;
+        uiManager.ActivateStartSplashScreenUI();
+        enemyManager.StopEnemyWavesMovement();
     }
 
     void Update() {
-        //update timer
-        gameTime += Time.deltaTime;
+
+        //start the game UI begining splash screen
+        if (startGameUIOn)
+        {
+            startUICounter -= Time.deltaTime;
+            uiManager.StartStartCounter(startUICounter); //send counter to UI
+            if(startUICounter <= 0f) //turn off start splash screen
+            {
+                startGameUIOn = false;
+                uiManager.DeactivateStartSplashScreenUI();
+                enemyManager.StartEnemyWavesMovement();
+            }
+        }
+        else
+        {
+            //update timer
+            gameTime += Time.deltaTime;
+        }
+
         //if timer is more than time limit, end the game.    
         if(gameTime > timeLimit){
             gameTime = -1000000;
@@ -101,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         //not using liminal's pausegame
         //turn off enemy and player launcher
+        
     }
 
     public void ResumeGame()
