@@ -123,7 +123,7 @@ private bool gameOverEndingUIOn = false;
             //update timer
             gameTime += Time.deltaTime;
             gameCountdown = gameTime;
-            if (gameTime == -1000000)
+            if (gameOverEndingUIOn)
             {
                 gameCountdown = timeLimit;
                 uiManager.StartGametimeCounter(timeLimit - gameCountdown);
@@ -226,7 +226,12 @@ private bool gameOverEndingUIOn = false;
     {
         setScores();//get and set the score from score keeper
         //UI manager score display ui method
-        uiManager.SetScoreUIText(foodThrown, enemyDeath, playerGotHit);
+        int accuracy = 0;
+        if (foodThrown != 0) { 
+            accuracy = (int)((enemyDeath / foodThrown) * 100); 
+        }
+
+        uiManager.SetScoreUIText(accuracy, enemyDeath, playerGotHit);
     }
     
    private void StartLetterScoreEvent()

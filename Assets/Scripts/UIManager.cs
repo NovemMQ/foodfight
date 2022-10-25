@@ -122,12 +122,10 @@ public class UIManager : MonoBehaviour
 
     public void ActivateStartSplashScreenUI()
     {
-        Debug.Log("activate start splash screen UI");
         startUI.SetActive(true);
     }
     public void DeactivateStartSplashScreenUI()
     {
-        Debug.Log("deactivate start splash screen UI");
         startUI.SetActive(false);
     }
 

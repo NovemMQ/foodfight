@@ -39,13 +39,11 @@ public class BackgroundMusicPicker : MonoBehaviour
 
         if (backgroundMusicList[trackNumber].isPlaying)
         {
-            Debug.Log("fade here is !!!!!!" + elapsedTime);
 
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime < fadeTime)
             {
-                Debug.Log("fade here is !!!!!! --- " + elapsedTime);
 
                 audioManger.SetAudioFadeIn(backgroundMusicList[trackNumber], elapsedTime, fadeTime);
 

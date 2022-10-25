@@ -4389,6 +4389,11 @@ PrefabInstance:
       propertyPath: myExperienceApp
       value: 
       objectReference: {fileID: 1372296994}
+    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
+        type: 3}
+      propertyPath: timeLimit
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a171c191595ea944fa32a83f0ecaf357, type: 3}
 --- !u!114 &1721054690 stripped
@@ -4577,11 +4582,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2991067486414827334, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
-        type: 3}
-      propertyPath: m_text
-      value: Ending in {0} Seconds ...
       objectReference: {fileID: 0}
     - target: {fileID: 2991067486414827334, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
