@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     private bool startGameUIOn = true;
 private bool gameOverEndingUIOn = false;
     public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
-
+    private float gameCountdown = 0;
 
     //enemy movement manager
     private enemyMovementManager enemyManager;
@@ -122,6 +122,16 @@ private bool gameOverEndingUIOn = false;
         {
             //update timer
             gameTime += Time.deltaTime;
+            gameCountdown = gameTime;
+            if (gameTime == -1000000)
+            {
+                gameCountdown = timeLimit;
+                uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+            } else
+            {
+                uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+            }
+            
             if((int)gameTime == 5f)
             {
                 played1MinBell = false;

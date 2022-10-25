@@ -13,7 +13,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scoreUI; //ending ui panel
     [SerializeField] private TextMeshProUGUI endingCountDownText;
     [SerializeField] private string endingCounterStringFormat = "Ending in {0} Seconds ...";
-   
+    [SerializeField] private GameObject gametimeCountdownUI; //ending ui panel
+    [SerializeField] private TextMeshProUGUI gametimeCountdownText;
+    [SerializeField] private string gametimeCountdownStringFormat = "{0}:{1}";
+
     private float minInSec = 60f;
     private GameManager gameManager;
    // public delegate void UIUpdate();
@@ -66,6 +69,24 @@ public class UIManager : MonoBehaviour
     {
         int seconds = Mathf.CeilToInt(time % minInSec);
         endingCountDownText.text = string.Format(endingCounterStringFormat, seconds);
+    }
+
+    public void StartGametimeCounter(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / minInSec);
+        int seconds = Mathf.FloorToInt(time % minInSec);
+        string minText = "{0}";
+        string secText = "{1}";
+        if (minutes<10)
+        {
+            minText = "0{0}";
+        }
+        if (seconds < 10)
+        {
+            secText = "0{1}";
+        }
+        gametimeCountdownStringFormat = minText + ":" + secText;
+        gametimeCountdownText.text = string.Format(gametimeCountdownStringFormat, minutes, seconds);
     }
 
     public void SetScoreUIText(int food, int enemy, int player)
