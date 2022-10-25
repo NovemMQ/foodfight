@@ -96,7 +96,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!136 &335429703053374316
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -235,11 +235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878281908875872867}
     m_Modifications:
-    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
-        type: 3}
-      propertyPath: m_Name
-      value: MacEnemy
-      objectReference: {fileID: 0}
     - target: {fileID: 4700504936077528275, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,6 +304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
+        type: 3}
+      propertyPath: m_Name
+      value: MacEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 306588489432114162, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}

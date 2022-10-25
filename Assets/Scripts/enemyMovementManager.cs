@@ -96,6 +96,7 @@ public class enemyMovementManager : MonoBehaviour
         for (int i = 0; i < enemyPoolList.Length && !maxInScene; i++)
         {
             enemyPoolList[i].GetComponent<NavMeshAgent>().enabled = true;
+            enemyPoolList[i].GetComponent<Animator>().enabled = true;
             enemyPoolList[i].moving = false;
             enemyPoolList[i].resetInSceneCounter();// reset the enemy scene time limit
             enemyPoolList[i].SetLauncherActive(true);//turn on launcher
@@ -112,6 +113,7 @@ public class enemyMovementManager : MonoBehaviour
         enemy.gameObject.transform.SetParent(enemyPoolListOb.transform);//move enemy into scene
         enemy.transform.position = startSpwanPoint.position;
         enemy.GetComponent<NavMeshAgent>().enabled = false;
+        enemy.GetComponent<Animator>().enabled = false;
         SetDestination(enemy, startSpwanPoint.GetComponent<waypointScript>());
         enemy.SetLauncherActive(false);//turn on launcher
         enemy.resetInSceneCounter();
