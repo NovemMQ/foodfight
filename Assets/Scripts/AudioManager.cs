@@ -33,15 +33,29 @@ public class AudioManager : MonoBehaviour
     }
 
     #endregion
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private AudioSource schoolBell;
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetAudioFadeandStop(AudioSource soundAudio, float elapsedTime, float fadeTime)
     {
-        
+        // AudioFade(soundAudio, fadeTime);
+        Debug.Log("Sound is trying to fade here!!!");
+
+        var startingVolume = soundAudio.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
+      
+
+        soundAudio.volume = Mathf.Lerp(startingVolume, 0f, elapsedTime / fadeTime); // This uses linear interpolation to change the volume of AudioListener over time.
+          
+   
+    }
+
+    public void PlaySchoolBell()
+    {
+        schoolBell.Play();
     }
 }

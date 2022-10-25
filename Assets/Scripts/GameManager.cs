@@ -55,10 +55,12 @@ public class GameManager : MonoBehaviour
     public float GameTime {get { return gameTime; }}
 
     [SerializeField] private float startUITimer = 5;//secs
+    public float StartUITimer { get => startUITimer; set => startUITimer = value; }
     private float startUICounter;
     private bool startGameUIOn = true;
 private bool gameOverEndingUIOn = false;
     public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
+
 
     //enemy movement manager
     private enemyMovementManager enemyManager;
@@ -71,13 +73,18 @@ private bool gameOverEndingUIOn = false;
     private int enemyDeath;
     private int playerGotHit;
 
+    //audio manager
+    private AudioManager audioManger;
+
+
     void Start(){
         //set up before update
         enemyManager = FindObjectOfType<enemyMovementManager>();
         uiManager = FindObjectOfType<UIManager>();
         scorekeeper = FindObjectOfType<ScoreKeeper>();
+        audioManger = FindObjectOfType<AudioManager>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
-        startUICounter = startUITimer;
+        startUICounter = StartUITimer;
         endingUICounter = endingUITimer;
         uiManager.ActivateStartSplashScreenUI();
         enemyManager.StopEnemyWavesMovement();
@@ -95,6 +102,7 @@ private bool gameOverEndingUIOn = false;
                 startGameUIOn = false;
                 uiManager.DeactivateStartSplashScreenUI();
                 enemyManager.StartEnemyWavesMovement();
+                audioManger.PlaySchoolBell();
             }
         }
         else
