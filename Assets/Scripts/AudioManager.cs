@@ -35,6 +35,7 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     [SerializeField] private AudioSource schoolBell;
+    [SerializeField] private BackgroundMusicPicker background;
 
     private void Update()
     {
@@ -44,7 +45,6 @@ public class AudioManager : MonoBehaviour
     public void SetAudioFadeandStop(AudioSource soundAudio, float elapsedTime, float fadeTime)
     {
         // AudioFade(soundAudio, fadeTime);
-        Debug.Log("Sound is trying to fade here!!!");
 
         var startingVolume = soundAudio.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
       
@@ -54,10 +54,25 @@ public class AudioManager : MonoBehaviour
    
     }
 
+    public void SetAudioFadeIn(AudioSource soundAudio, float elapsedTime, float fadeTime)
+    {
+        // AudioFade(soundAudio, fadeTime);
+        Debug.Log("Sound is trying to fade here!!!");
+
+        var startingVolume = soundAudio.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
+        soundAudio.volume = Mathf.Lerp(startingVolume, 1f, elapsedTime / fadeTime); // This uses linear interpolation to change the volume of AudioListener over time.
+
+    }
+
     public void PlaySchoolBell(float duration, float fadeTime)
     {
         schoolBell.Play();
         schoolBell.GetComponent<schoolBellScript>().Duration = duration;
         schoolBell.GetComponent<schoolBellScript>().FadeTime = fadeTime;
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        background.BackGroundAudio.Play();
     }
 }

@@ -36,7 +36,6 @@ public class schoolBellScript : MonoBehaviour
             durationCounter += Time.deltaTime;
             if(durationCounter >= duration)
             {
-                Debug.Log("bell is playing here");
                 elapsedTime += Time.deltaTime;
                 if (elapsedTime < fadeTime)
                 {

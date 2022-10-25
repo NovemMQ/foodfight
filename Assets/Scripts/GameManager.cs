@@ -65,6 +65,7 @@ private bool gameOverEndingUIOn = false;
     //enemy movement manager
     private enemyMovementManager enemyManager;
 
+  
     //UI
     private UIManager uiManager;
     //score
@@ -73,10 +74,18 @@ private bool gameOverEndingUIOn = false;
     private int enemyDeath;
     private int playerGotHit;
 
+    [Space(10)]
+    [Header("School Bell Time")]
+  
     //audio manager
     private AudioManager audioManger;
     private float minSec = 60f;//60 secs
     private bool played1MinBell = true;
+
+    [SerializeField] private float startSchoolBellDuration = 4f;
+    [SerializeField] private float startSchoolBellFadeOutDuration = 2f;
+    [SerializeField] private float oneMinSchoolBellDuration = 1f;
+    [SerializeField] private float oneMinSchoolBellFadeOutDuration = 0.5f;
 
     void Start(){
         //set up before update
@@ -103,7 +112,8 @@ private bool gameOverEndingUIOn = false;
                 startGameUIOn = false;
                 uiManager.DeactivateStartSplashScreenUI();
                 enemyManager.StartEnemyWavesMovement();
-                audioManger.PlaySchoolBell(4f,2f);
+                audioManger.PlaySchoolBell(startSchoolBellDuration, startSchoolBellFadeOutDuration);
+                audioManger.PlayBackgroundMusic();
                 gameTime = 0;
                 played1MinBell = true;
             }
@@ -149,7 +159,12 @@ private bool gameOverEndingUIOn = false;
             if (!played1MinBell)
             {
                 played1MinBell = true;
-                audioManger.PlaySchoolBell(2f, 0.5f);
+                if((int)gameTime == timeLimit)
+                {
+                    oneMinSchoolBellDuration = startSchoolBellDuration;
+                    oneMinSchoolBellFadeOutDuration = startSchoolBellFadeOutDuration;
+                }
+                audioManger.PlaySchoolBell(oneMinSchoolBellDuration, oneMinSchoolBellFadeOutDuration);
             }
         }
         else
