@@ -6,10 +6,15 @@ public class schoolBellScript : MonoBehaviour
 {
     private AudioSource soundAudio;
     private AudioManager audioManger;
-    [SerializeField]private float duration = 5f;//secs
+    private float duration = 5f;//secs
     private float durationCounter = 0f;
     private float elapsedTime = 0f;
-   [SerializeField] private float fadeTime = 2f;
+    private float fadeTime = 2f;
+
+    public float Duration { get => duration; set => duration = value; }
+    public float FadeTime { get => fadeTime; set => fadeTime = value; }
+
+    private bool volumeFaded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +25,10 @@ public class schoolBellScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (soundAudio.volume != 1f)
+        if (soundAudio.volume != 1f && volumeFaded)
         {
             soundAudio.volume = 1f;
+            volumeFaded = false;
         }
 
         if (soundAudio.isPlaying)
@@ -43,6 +49,7 @@ public class schoolBellScript : MonoBehaviour
                     soundAudio.Stop();
                     durationCounter = 0;
                     elapsedTime = 0;
+                    volumeFaded = true;
                 }
      
             }

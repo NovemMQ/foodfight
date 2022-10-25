@@ -54,8 +54,10 @@ public class AudioManager : MonoBehaviour
    
     }
 
-    public void PlaySchoolBell()
+    public void PlaySchoolBell(float duration, float fadeTime)
     {
         schoolBell.Play();
+        schoolBell.GetComponent<schoolBellScript>().Duration = duration;
+        schoolBell.GetComponent<schoolBellScript>().FadeTime = fadeTime;
     }
 }

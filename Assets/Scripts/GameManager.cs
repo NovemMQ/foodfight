@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     [Space(10)]
     [Tooltip("time in seconds")]
     [SerializeField] private float timeLimit = 180f; //secs
-    [SerializeField] private float gameTime = 0f;
+    [SerializeField] private float gameTime = -1f;
     [SerializeField] private float endingUITimer = 10;//secs
     private float endingUICounter;
     public float GameTime {get { return gameTime; }}
@@ -75,7 +75,8 @@ private bool gameOverEndingUIOn = false;
 
     //audio manager
     private AudioManager audioManger;
-
+    private float minSec = 60f;//60 secs
+    private bool played1MinBell = true;
 
     void Start(){
         //set up before update
@@ -102,17 +103,26 @@ private bool gameOverEndingUIOn = false;
                 startGameUIOn = false;
                 uiManager.DeactivateStartSplashScreenUI();
                 enemyManager.StartEnemyWavesMovement();
-                audioManger.PlaySchoolBell();
+                audioManger.PlaySchoolBell(4f,2f);
+                gameTime = 0;
+                played1MinBell = true;
             }
         }
         else
         {
             //update timer
             gameTime += Time.deltaTime;
+            if((int)gameTime == 5f)
+            {
+                played1MinBell = false;
+            }
         }
 
+        playSchoolBellsSchdule();
+
+
         //if timer is more than time limit, end the game.    
-        if(gameTime > timeLimit){
+        if (gameTime > timeLimit){
             gameTime = -1000000;
             StartLetterScoreEvent();// call UImanager for score display
             gameOverEndingUIOn = true;
@@ -128,6 +138,26 @@ private bool gameOverEndingUIOn = false;
         {
             gameOverEndingUIOn = false;
             EndGame();
+        }
+    }
+
+    private void playSchoolBellsSchdule()
+    {
+        
+        if ((((int)gameTime) % minSec) == 0)
+        {
+            if (!played1MinBell)
+            {
+                played1MinBell = true;
+                audioManger.PlaySchoolBell(2f, 0.5f);
+            }
+        }
+        else
+        {
+            if (played1MinBell)
+            {
+                played1MinBell = false;
+            }
         }
     }
 
