@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notes: time in seconds, do not use 'dontDestoryonLoad'
-  timeLimit: 60
+  timeLimit: 180
   gameTime: -1
   endingUITimer: 10
   startUITimer: 5
