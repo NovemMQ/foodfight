@@ -226,9 +226,10 @@ private bool gameOverEndingUIOn = false;
     {
         setScores();//get and set the score from score keeper
         //UI manager score display ui method
-        int accuracy = 0;
+        float accuracy = 0;
         if (foodThrown != 0) { 
-            accuracy = (int)((enemyDeath / foodThrown) * 100); 
+            accuracy = (int)(((float)enemyDeath / (float)foodThrown) * 10000);
+            accuracy /= 100;
         }
 
         uiManager.SetScoreUIText(accuracy, enemyDeath, playerGotHit);

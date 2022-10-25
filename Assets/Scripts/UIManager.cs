@@ -89,14 +89,14 @@ public class UIManager : MonoBehaviour
         gametimeCountdownText.text = string.Format(gametimeCountdownStringFormat, minutes, seconds);
     }
 
-    public void SetScoreUIText(int food, int enemy, int player)
+    public void SetScoreUIText(float food, int enemy, int player)
     {
         SetFoodThrownUI(food);
         SetEnemiesDefeatedUI(enemy);
         SetPlayerDamagedUI(player);
     }
 
-    public void SetFoodThrownUI(int foodThrown)
+    public void SetFoodThrownUI(float foodThrown)
     {
         Debug.Log("food thrown here "+ foodThrown);
         foodThrownText.text = string.Format(foodThrownText.text, foodThrown.ToString());
