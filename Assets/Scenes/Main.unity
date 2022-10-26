@@ -2784,16 +2784,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1787907547}
     m_Modifications:
-    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
-        type: 3}
-      propertyPath: myExperienceApp
-      value: 
-      objectReference: {fileID: 1787907546}
     - target: {fileID: 6636247174337071039, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
+        type: 3}
+      propertyPath: myExperienceApp
+      value: 
+      objectReference: {fileID: 1787907546}
     - target: {fileID: 6636247174337070977, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5137,6 +5137,7 @@ GameObject:
   - component: {fileID: 1260162968656223070}
   - component: {fileID: 1260162968656223064}
   - component: {fileID: 1260162968656223067}
+  - component: {fileID: 1260162968656223068}
   m_Layer: 0
   m_Name: VRAvatar
   m_TagString: Untagged
@@ -5160,6 +5161,22 @@ MonoBehaviour:
   m_ActivationPolicy: 1
   m_HoverDelay: 0.5
   m_HoverDuration: 2
+--- !u!114 &1260162968656223068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260162968656223066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9275181eb84f58c4491c59ea8e6e6875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras:
+  - {fileID: 1283792820}
+  - {fileID: 1260162969533168766}
+  - {fileID: 1260162970297629681}
 --- !u!114 &1260162968656223070
 MonoBehaviour:
   m_ObjectHideFlags: 0
