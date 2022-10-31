@@ -87,6 +87,9 @@ private bool gameOverEndingUIOn = false;
     [SerializeField] private float oneMinSchoolBellDuration = 1f;
     [SerializeField] private float oneMinSchoolBellFadeOutDuration = 0.5f;
 
+    //player's head, playerdamaged script
+    private PlayerDamage playerDamageScript;
+
     void Start(){
         //set up before update
         enemyManager = FindObjectOfType<enemyMovementManager>();
@@ -94,6 +97,7 @@ private bool gameOverEndingUIOn = false;
         scorekeeper = FindObjectOfType<ScoreKeeper>();
         audioManger = FindObjectOfType<AudioManager>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        playerDamageScript = FindObjectOfType<PlayerDamage>();
         startUICounter = StartUITimer;
         endingUICounter = endingUITimer;
         uiManager.ActivateStartSplashScreenUI();
@@ -207,6 +211,7 @@ private bool gameOverEndingUIOn = false;
         // only in UI myExperienceApp.EndExperience();
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
+        playerDamageScript.enabled = false;
     }
     
     public void addScore()
