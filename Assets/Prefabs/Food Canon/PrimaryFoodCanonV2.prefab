@@ -713,7 +713,7 @@ MonoBehaviour:
   foodVelocity: 24.2
   rotatePower: 12.34
   trajectooryTrace: {fileID: 9217818963420895262}
-  gunSide: 1
+  gunSide: 0
   maxAmmoCount: 30
 --- !u!114 &9217818963420895262
 MonoBehaviour:

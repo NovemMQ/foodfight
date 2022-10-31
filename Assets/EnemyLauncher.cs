@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyLauncher : MonoBehaviour
 {
     Transform player;
+    [SerializeField] private Vector3 PlayerTargetOffset;
     [Range(0,10)]
     public float shootFrequency;
     private float timer;
@@ -51,10 +52,10 @@ public class EnemyLauncher : MonoBehaviour
         food.transform.position = throwPoint.position;//transform.position + (Vector3.up * 3);
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
 
-        Vector3 direction = player.position - food.transform.position;
+        Vector3 direction = (player.position + PlayerTargetOffset) - food.transform.position;
 
         //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
-        foodRB.velocity = (player.transform.position - transform.position).normalized * foodVelocity;
+        foodRB.velocity = ((player.position + PlayerTargetOffset) - transform.position).normalized * foodVelocity;
         foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
     }
 }
