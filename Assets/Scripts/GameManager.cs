@@ -120,6 +120,7 @@ private bool gameOverEndingUIOn = false;
                 audioManger.PlayBackgroundMusic();
                 gameTime = 0;
                 played1MinBell = true;
+                playerDamageScript.FoodVisionImpairmentImage.enabled = true;
             }
         }
         else
@@ -212,6 +213,7 @@ private bool gameOverEndingUIOn = false;
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
         playerDamageScript.enabled = false;
+        
     }
     
     public void addScore()

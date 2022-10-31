@@ -11,18 +11,31 @@ public class PlayerDamage : MonoBehaviour
     private float visionImpairedCounter;
     [SerializeField] private float fadeTime;
     private float elapsedTime; //instantiate a float with a value of 0 for use as a timer.
-    float startingAlpha; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
+    [SerializeField] private float startingAlpha;
+
+    private bool gameOver = false;
+
+    public bool GameOver { get => gameOver; set => gameOver = value; }
+    public Image FoodVisionImpairmentImage { get => foodVisionImpairmentImage; set => foodVisionImpairmentImage = value; }
+
+    private bool playerHasBeenHit = false;
+
 
     private void Start()
     {
         ScoreManager = FindObjectOfType<ScoreKeeper>();
-        startingAlpha = foodVisionImpairmentImage.color.a;
-        foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, 100);
+        foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, 0);
+        visionImpairedCounter = -1f;
         elapsedTime = 0f;
+        startingAlpha /= 255f;
     }
 
     private void Update()
     {
+        if (!playerHasBeenHit)
+        {
+            foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, 0);
+        }
         visionImpairedCounter -= Time.deltaTime;
         if (visionImpairedCounter <= 0)
         {
@@ -34,6 +47,19 @@ public class PlayerDamage : MonoBehaviour
                 foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, Mathf.Lerp(startingAlpha, 0f, elapsedTime / fadeTime));
             }
         }
+
+        if (foodVisionImpairmentImage.color.a == 0f)
+            {
+                if (gameOver)
+                {
+                foodVisionImpairmentImage.enabled = false;
+                }
+                if (playerHasBeenHit)
+                {
+                    playerHasBeenHit = false;
+                }
+            }
+   
     }
     //die when hit by food
     private void OnTriggerEnter(Collider other)
@@ -45,6 +71,7 @@ public class PlayerDamage : MonoBehaviour
             //foodVisionImpairmentImage.enabled = true;
             foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, startingAlpha);
             ScoreManager.addPlayerGotHit();
+            playerHasBeenHit= true;
         }
     }
 }

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9528302, g: 0.19326274, b: 0.19326274, a: 0.392}
+  m_Color: {r: 0.9528302, g: 0.19326274, b: 0.19326274, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -309,6 +309,8 @@ GameObject:
   - component: {fileID: 366256531824026116}
   - component: {fileID: 366256531824026138}
   - component: {fileID: 1229145976777667876}
+  - component: {fileID: 3280623890142000731}
+  - component: {fileID: 2170465601854508011}
   m_Layer: 0
   m_Name: CenterEye
   m_TagString: MainCamera
@@ -394,6 +396,35 @@ MonoBehaviour:
   m_StartColor: {r: 0, g: 0, b: 0, a: 1}
   m_CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   CustomFaderMaterial: {fileID: 0}
+--- !u!65 &3280623890142000731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366256531824026117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2170465601854508011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366256531824026117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e525adff248d9f04a8f11341135c5b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodVisionImpairmentImage: {fileID: 4188933703575534058}
+  visionImpairedTimer: 1
+  fadeTime: 0.5
+  startingAlpha: 100
 --- !u!1 &366256532042682798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,8 +1202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 366256533597521121}
   - component: {fileID: 366256533597521120}
-  - component: {fileID: 4740753519633756064}
-  - component: {fileID: 3552808490203539032}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -1231,34 +1260,6 @@ MonoBehaviour:
   m_CenterEyeCamera: {fileID: 366256531824026138}
   m_LeftEyeCamera: {fileID: 366256533222323287}
   m_RightEyeCamera: {fileID: 366256533416260568}
---- !u!65 &4740753519633756064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366256533597521122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3552808490203539032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366256533597521122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e525adff248d9f04a8f11341135c5b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foodVisionImpairmentImage: {fileID: 4188933703575534058}
-  visionImpairedTimer: 1
-  fadeTime: 0.5
 --- !u!1 &7338856105988231484
 GameObject:
   m_ObjectHideFlags: 0
