@@ -5,6 +5,8 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     [SerializeField]
+    GameObject splatDecal;
+    [SerializeField]
     GameObject sparklePFX;
     [SerializeField]
     private float deathTimer = 3f;
@@ -25,6 +27,14 @@ public class Destroyer : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject splat = Instantiate(splatDecal);
+        splat.transform.position = this.transform.position;
+        Destroy(this.gameObject);
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
