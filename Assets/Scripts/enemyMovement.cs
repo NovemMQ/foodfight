@@ -14,6 +14,9 @@ public class enemyMovement : MonoBehaviour
     private waypointScript destination;  
     public waypointScript Destination { set { destination = value; } get { return destination; } }
     public NavMeshAgent Agent { set { agent = value; } get { return agent; } }
+    private bool enemyIsNotMoving;
+    public bool EnemyIsNotMoving { get => enemyIsNotMoving; set => enemyIsNotMoving = value; } // when at destination = true!
+
     [SerializeField] private float pauseWaitTime = 3; // secs
     private float waitCounter = 0; //secs
     [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
@@ -25,6 +28,8 @@ public class enemyMovement : MonoBehaviour
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;
     private Animator animator;
+
+    
 
     void Start()
     {
@@ -38,6 +43,7 @@ public class enemyMovement : MonoBehaviour
         inSceneCounter = inSceneTimelimit;
         enemyLauncher.enabled = false;//turn off launcher
         animator = GetComponent<Animator>();
+        enemyIsNotMoving = false;
     }
 
     private void Update()
@@ -62,10 +68,12 @@ public class enemyMovement : MonoBehaviour
             if (agent.remainingDistance > agent.stoppingDistance)
             {
                 charactor.Move(agent.desiredVelocity, false, true);
+                enemyIsNotMoving = false;
             }
             else
             {
                 charactor.Move(Vector3.zero, false, false);
+                enemyIsNotMoving = true;
             }
         }
 
