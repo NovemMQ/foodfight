@@ -34,9 +34,20 @@ public class Destroyer : MonoBehaviour
         splat.transform.position = this.transform.position;
         Destroy(this.gameObject);
 
-
+        if (collision.gameObject.GetComponent<TagObject>())
+        {
+            if (!TagManager.CompareTags(collision.gameObject, "playerFood"))
+            {
+                Debug.Log("penis");
+                GameObject spFX = Instantiate(sparklePFX);
+                spFX.transform.position = transform.position;
+                ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
+                spFXPFX.Play();
+                Destroy(this.gameObject);
+            }
+        }
     }
-    private void OnTriggerEnter(Collider other)
+  /*  private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<TagObject>())
         {
@@ -50,5 +61,5 @@ public class Destroyer : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-    }
+    }*/
 }

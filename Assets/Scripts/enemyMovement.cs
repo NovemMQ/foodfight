@@ -22,8 +22,9 @@ public class enemyMovement : MonoBehaviour
     [SerializeField] private float travelTimelimit = 10;// if takes too long to destination, reset
     private float resetDestCounter = 0;
 
-    [SerializeField] private float inSceneTimelimit = 15; // after this timelimit the enemy goes to end spwan point and despawns/leaves the scene
-    private float inSceneCounter = 0;
+    [SerializeField] private float inSceneTimelimit = 20f; // after this timelimit the enemy goes to end spwan point and despawns/leaves the scene
+    private float inSceneCounter = 0f;
+    private float inSceneMinLimit = 8f;
 
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;
@@ -147,7 +148,7 @@ public class enemyMovement : MonoBehaviour
 
     public void resetInSceneCounter()
     {
-        inSceneCounter = inSceneTimelimit;
+        inSceneCounter = Random.Range(inSceneMinLimit, inSceneTimelimit);
     }
 
     public void StopMoving()

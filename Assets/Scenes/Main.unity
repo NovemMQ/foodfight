@@ -2550,7 +2550,7 @@ PrefabInstance:
     - target: {fileID: 1002624494294355113, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.32
+      value: 10.514
       objectReference: {fileID: 0}
     - target: {fileID: 1002624494294355113, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
         type: 3}
@@ -4824,6 +4824,11 @@ PrefabInstance:
       propertyPath: enemyInSceneListOb
       value: 
       objectReference: {fileID: 859835033}
+    - target: {fileID: 3171020831702354860, guid: d2bdb253c49774947b8100d25b4e9277,
+        type: 3}
+      propertyPath: spawnRateChangeTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2bdb253c49774947b8100d25b4e9277, type: 3}
 --- !u!23 &3337437692920748579
@@ -5232,6 +5237,21 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 999393151}
+    - target: {fileID: 1826034383769437334, guid: eed3f0775f60bab4ca0e89e19fed7d89,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885305930051484542, guid: eed3f0775f60bab4ca0e89e19fed7d89,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967287
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885511605620069374, guid: eed3f0775f60bab4ca0e89e19fed7d89,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967287
+      objectReference: {fileID: 0}
     - target: {fileID: 5325922434688607247, guid: eed3f0775f60bab4ca0e89e19fed7d89,
         type: 3}
       propertyPath: m_Mesh

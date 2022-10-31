@@ -19,7 +19,7 @@ public class enemyMovementManager : MonoBehaviour
     private float spawnRateChangeCounter;
    [Range(0, 10)]
     [SerializeField] private int minEnemyInScene = 5;
-    [Range(0, 10)]
+    [Range(0, 14)]
     [SerializeField] private int maxEnemyInScene = 10;
     private int numEnemyInScene;
     private bool maxInScene = false;
