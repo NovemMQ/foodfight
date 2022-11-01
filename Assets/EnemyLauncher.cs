@@ -53,7 +53,6 @@ public class EnemyLauncher : MonoBehaviour
 
         Vector3 direction = player.position - food.transform.position;
 
-        //foodRB.AddForce(Vector3.Normalize(point2.transform.position-transform.position)*10, ForceMode.Impulse);
         foodRB.velocity = (player.transform.position - transform.position).normalized * foodVelocity;
         foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
     }
