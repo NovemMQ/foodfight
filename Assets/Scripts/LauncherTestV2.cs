@@ -61,7 +61,7 @@ public class LauncherTestV2 : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerwait -= Time.deltaTime;
-        Debug.Log((float)currentAmmo / maxAmmoCount);
+        //Debug.Log((float)currentAmmo / maxAmmoCount);
         ammoGuage.fillAmount = (float)currentAmmo / maxAmmoCount;
         ammoGuage.color = colors.Evaluate(1 - ammoGuage.fillAmount);
         trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab[0].GetComponent<Rigidbody>(), launchPoint.transform.position);

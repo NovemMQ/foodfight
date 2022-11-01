@@ -42,7 +42,10 @@ public class enemyMovement : MonoBehaviour
         waitCounter = pauseWaitTime;
         resetDestCounter = travelTimelimit;
         inSceneCounter = inSceneTimelimit;
-        enemyLauncher.enabled = false;//turn off launcher
+        if (enemyLauncher)
+        {
+            enemyLauncher.enabled = false;//turn off launcher
+        }
         animator = GetComponent<Animator>();
         enemyIsNotMoving = false;
     }
@@ -64,17 +67,20 @@ public class enemyMovement : MonoBehaviour
         }
 
         // Unity NavMesh Tutorial - Animated Character https://www.youtube.com/watch?v=blPglabGueM by Brackeys
-        if (agent.isActiveAndEnabled)
+        if (agent)
         {
-            if (agent.remainingDistance > agent.stoppingDistance)
+            if (agent.isActiveAndEnabled)
             {
-                charactor.Move(agent.desiredVelocity, false, true);
-                enemyIsNotMoving = false;
-            }
-            else
-            {
-                charactor.Move(Vector3.zero, false, false);
-                enemyIsNotMoving = true;
+                if (agent.remainingDistance > agent.stoppingDistance)
+                {
+                    charactor.Move(agent.desiredVelocity, false, true);
+                    enemyIsNotMoving = false;
+                }
+                else
+                {
+                    charactor.Move(Vector3.zero, false, false);
+                    enemyIsNotMoving = true;
+                }
             }
         }
 
@@ -92,13 +98,14 @@ public class enemyMovement : MonoBehaviour
         */
     }
 
-    void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision collision)
     {
+
         //Debug.Log("dest name is: " + destination.name + " time is "+ waitCounter);
         //when enemy is at destination, start idle/wait counter
-        if (destination)
+        if (destination) //if dest is not null
         {
-            if (other.name.Equals(destination.name))
+            if (collision.gameObject.name.Equals(destination.name))
             {
                 waitCounter -= Time.deltaTime;
                 if (waitCounter <= 0f)
@@ -108,13 +115,14 @@ public class enemyMovement : MonoBehaviour
             }
         }
     }
-  
+
     //die when hit by food
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.GetComponent<TagObject>())
+
+        if (collision.gameObject.GetComponent<TagObject>())
         {
-            if (TagManager.CompareTags(other.gameObject, "playerFood"))
+            if (TagManager.CompareTags(collision.gameObject, "playerFood"))
             {
                 //Destroy(this.gameObject);
                 // EnemyMovementManager.SendEnemyToStartSpwanPoint(this);

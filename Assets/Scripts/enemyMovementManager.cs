@@ -61,7 +61,7 @@ public class enemyMovementManager : MonoBehaviour
         wp.OccupiedBy = enemy;
         enemy.Destination = wp;
         enemy.moving = true;
-        if (enemy.Agent.isActiveAndEnabled == true)
+        if (enemy.Agent.isActiveAndEnabled)
         {
             enemy.Agent.destination = wp.transform.position;
         }

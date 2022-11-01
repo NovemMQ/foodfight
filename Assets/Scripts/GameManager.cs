@@ -212,7 +212,7 @@ private bool gameOverEndingUIOn = false;
         // only in UI myExperienceApp.EndExperience();
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
-        playerDamageScript.enabled = false;
+        playerDamageScript.GameOver = true;
         
     }
     

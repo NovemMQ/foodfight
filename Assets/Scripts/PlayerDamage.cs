@@ -62,6 +62,7 @@ public class PlayerDamage : MonoBehaviour
    
     }
     //die when hit by food
+ 
     private void OnTriggerEnter(Collider other)
     {
         if (TagManager.CompareTags(other.gameObject, "enemyFood"))
@@ -71,7 +72,7 @@ public class PlayerDamage : MonoBehaviour
             //foodVisionImpairmentImage.enabled = true;
             foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, startingAlpha);
             ScoreManager.addPlayerGotHit();
-            playerHasBeenHit= true;
+            playerHasBeenHit = true;
         }
     }
 }
