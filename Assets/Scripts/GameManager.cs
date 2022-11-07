@@ -79,7 +79,7 @@ private bool gameOverEndingUIOn = false;
   
     //audio manager
     private AudioManager audioManger;
-    private float minSec = 60f;//60 secs
+    private float minSec = 50f;//75 secs
     private bool played1MinBell = true;
 
     [SerializeField] private float startSchoolBellDuration = 4f;
@@ -102,6 +102,7 @@ private bool gameOverEndingUIOn = false;
         endingUICounter = endingUITimer;
         uiManager.ActivateStartSplashScreenUI();
         enemyManager.StopEnemyWavesMovement();
+        minSec = timeLimit / 3;
     }
 
     void Update() {
@@ -249,7 +250,7 @@ private bool gameOverEndingUIOn = false;
         // send scores to UI manager to display them on the letter
         sendScoresToUI(); // get the scores form scorekeeper
         uiManager.ActivateScoreUI(); // turns on score UI
-        PauseGame(); //pause the game
+        //PauseGame(); //pause the game
         //end game button in the menu will fade and exit the game.
     }
 

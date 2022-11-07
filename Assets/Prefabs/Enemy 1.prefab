@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf92126ed6c2ce94095b4f5356be761a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTargetOffset: {x: 0, y: 1, z: 0}
+  PlayerTargetOffset: {x: 0, y: 1, z: 1}
   shootFrequency: 1
   shootFrequencyRandomRange: 3
   foodVelocity: 18.2
@@ -236,6 +236,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878281908875872867}
     m_Modifications:
+    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
+        type: 3}
+      propertyPath: m_Name
+      value: MacEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4700504936077528275, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,11 +310,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
-        type: 3}
-      propertyPath: m_Name
-      value: MacEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 306588489432114162, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
