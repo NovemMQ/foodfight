@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4305025917746968}
   - component: {fileID: 33150059347195458}
   - component: {fileID: 23386995376923278}
-  - component: {fileID: 65161656924194470}
   m_Layer: 0
   m_Name: notepad_bottom
   m_TagString: Untagged
@@ -78,19 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65161656924194470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182431919570870}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24998605, y: 0.0140552735, z: 0.36456448}
-  m_Center: {x: -0.12714842, y: -0.006816587, z: 0}
 --- !u!1 &1832049472115158
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +88,6 @@ GameObject:
   - component: {fileID: 4975618768107374}
   - component: {fileID: 33228572326392114}
   - component: {fileID: 23117047845703346}
-  - component: {fileID: 65411172062421724}
   m_Layer: 0
   m_Name: notepad_top
   m_TagString: Untagged
@@ -169,19 +154,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &65411172062421724
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832049472115158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24998601, y: 0.008486626, z: 0.36456448}
-  m_Center: {x: -0.12756787, y: 0.0042433175, z: 0}
 --- !u!1 &1884156196641044
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +165,6 @@ GameObject:
   - component: {fileID: 4527064727974542}
   - component: {fileID: 33799047194329006}
   - component: {fileID: 23515938872195488}
-  - component: {fileID: 8619808587481284287}
   m_Layer: 0
   m_Name: Notepad
   m_TagString: Untagged
@@ -262,19 +233,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &8619808587481284287
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884156196641044}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 0
-  m_CollisionDetection: 0
