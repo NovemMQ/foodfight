@@ -4370,6 +4370,11 @@ PrefabInstance:
       propertyPath: myExperienceApp
       value: 
       objectReference: {fileID: 1372296994}
+    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
+        type: 3}
+      propertyPath: startUITimer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6636247174337070977, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_LocalPosition.x

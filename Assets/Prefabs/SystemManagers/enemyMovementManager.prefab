@@ -817,8 +817,8 @@ MonoBehaviour:
   startSpwanPoint: {fileID: 3171020831921143175}
   endSpwanPoint: {fileID: 3171020830861615575}
   spawnRateChangeTime: 10
-  minEnemyInScene: 6
-  maxEnemyInScene: 10
+  minEnemyInScene: 8
+  maxEnemyInScene: 14
 --- !u!1 &3171020831850142208
 GameObject:
   m_ObjectHideFlags: 0

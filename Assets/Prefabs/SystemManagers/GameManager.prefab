@@ -47,7 +47,7 @@ MonoBehaviour:
   timeLimit: 150
   gameTime: -1
   endingUITimer: 10
-  startUITimer: 4
+  startUITimer: 3
   startSchoolBellDuration: 4
   startSchoolBellFadeOutDuration: 2
   oneMinSchoolBellDuration: 1
