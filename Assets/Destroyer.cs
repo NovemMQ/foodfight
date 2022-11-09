@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    [SerializeField]
+    public GameObject[] splatDecals;
     GameObject splatDecal;
-    [SerializeField]
-    GameObject sparklePFX;
     [SerializeField]
     private float deathTimer = 3f;
     private float timer;
@@ -16,6 +14,7 @@ public class Destroyer : MonoBehaviour
     void Start()
     {
         timer = deathTimer;
+        splatDecal = splatDecals[Random.Range(0, splatDecals.Length)];
     }
 
     // Update is called once per frame
@@ -32,34 +31,8 @@ public class Destroyer : MonoBehaviour
     {
         GameObject splat = Instantiate(splatDecal);
         splat.transform.position = this.transform.position;
+        splat.transform.LookAt(collision.contacts[0].normal, Vector3.up);
+        splat.transform.localScale = splat.transform.localScale * Random.Range(0.5f, 0.9f);
         Destroy(this.gameObject);
-
-        if (collision.gameObject.GetComponent<TagObject>())
-        {
-            if (!TagManager.CompareTags(collision.gameObject, "playerFood"))
-            {
-                Debug.Log("penis");
-                GameObject spFX = Instantiate(sparklePFX);
-                spFX.transform.position = transform.position;
-                ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
-                spFXPFX.Play();
-                Destroy(this.gameObject);
-            }
-        }
     }
-  /*  private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<TagObject>())
-        {
-            if (!TagManager.CompareTags(other.gameObject, "playerFood"))
-            {
-                Debug.Log("penis");
-                GameObject spFX = Instantiate(sparklePFX);
-                spFX.transform.position = transform.position;
-                ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
-                spFXPFX.Play();
-                Destroy(this.gameObject);
-            }
-        }
-    }*/
 }
