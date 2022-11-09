@@ -693,8 +693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundListObj: {fileID: 91256672040537161}
   soundList: []
-  randomPlayTimerMax: 25
-  randomPlayTimerMin: 10
+  randomPlayTimerMax: 150
+  randomPlayTimerMin: 3
 --- !u!1 &5158422651455118855
 GameObject:
   m_ObjectHideFlags: 0

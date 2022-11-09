@@ -163,6 +163,7 @@ public class GameManager : MonoBehaviour
             endingUICounter -= Time.deltaTime;
             uiManager.StartEndingCounter(endingUICounter);
             gameStart = false;
+            playerDamageScript.GameOver = true;
         }
 
         if (endingUICounter <= 0f && gameOverEndingUIOn)
@@ -218,7 +219,6 @@ public class GameManager : MonoBehaviour
         // only in UI myExperienceApp.EndExperience();
         Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
-        playerDamageScript.GameOver = true;
         
     }
     

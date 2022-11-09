@@ -8,6 +8,7 @@ public class PlayerDamage : MonoBehaviour
     private ScoreKeeper ScoreManager;
     [SerializeField] private Image[] foodVisionImpairmentImageList;
     [SerializeField] private GameObject foodVisionImpairmentImageListObj;
+    [SerializeField] private int maxSplatsPerDamange;
     [SerializeField] private float visionImpairedTimer;
     [SerializeField] private float fadeTime;
     private GameManager gameManager;
@@ -59,7 +60,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (TagManager.CompareTags(other.gameObject, "enemyFood"))
         {
-            for(int i=0; i<4; i++)
+            for(int i=0; i<=maxSplatsPerDamange; i++)
             {
                 splatIndex = Random.Range(0, foodVisionImpairmentImageList.Length);
                 foodVisionImpairmentImageList[splatIndex].GetComponent<SplatHandler>().SplashImageOn();

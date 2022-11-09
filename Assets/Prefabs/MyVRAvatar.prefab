@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 183867796478629431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.05}
   m_Children:
   - {fileID: 4747330151388880488}
   - {fileID: 857707543032268864}
@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodVisionImpairmentImageList: []
   foodVisionImpairmentImageListObj: {fileID: 183867796478629431}
+  maxSplatsPerDamange: 3
   visionImpairedTimer: 3
   fadeTime: 3
 --- !u!1 &366256532042682798
@@ -1852,7 +1853,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7338856105988231484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.03}
   m_LocalScale: {x: 0.007, y: 0.007, z: 0.007}
   m_Children:
   - {fileID: 2246324405711757797}
