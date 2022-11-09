@@ -209,7 +209,7 @@ MonoBehaviour:
   m_margin: {x: 84.58294, y: 2.1778047, z: 84.09516, w: 1.4279108}
   m_textInfo:
     textComponent: {fileID: 5666185034126907260}
-    characterCount: 7
+    characterCount: 5
     spriteCount: 0
     spaceCount: 0
     wordCount: 2
@@ -477,7 +477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8067599104456689118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.165, y: 0.59, z: -14.6}
+  m_LocalPosition: {x: 10.514, y: 1.02, z: -5.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2862908201956689119}
