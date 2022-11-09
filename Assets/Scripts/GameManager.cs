@@ -58,9 +58,12 @@ public class GameManager : MonoBehaviour
     public float StartUITimer { get => startUITimer; set => startUITimer = value; }
     private float startUICounter;
     private bool startGameUIOn = true;
-private bool gameOverEndingUIOn = false;
-    public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
+    private bool gameOverEndingUIOn = false;
     private float gameCountdown = 0;
+    private bool gameStart = false;
+    public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
+    public bool GameStart { get => gameStart; set => gameStart = value; }
+
 
     //enemy movement manager
     private enemyMovementManager enemyManager;
@@ -121,7 +124,8 @@ private bool gameOverEndingUIOn = false;
                 audioManger.PlayBackgroundMusic();
                 gameTime = 0;
                 played1MinBell = true;
-                playerDamageScript.FoodVisionImpairmentImage.enabled = true;
+                gameStart = true;
+              //  playerDamageScript.FoodVisionImpairmentImage.enabled = true;
             }
         }
         else
@@ -158,6 +162,7 @@ private bool gameOverEndingUIOn = false;
         {
             endingUICounter -= Time.deltaTime;
             uiManager.StartEndingCounter(endingUICounter);
+            gameStart = false;
         }
 
         if (endingUICounter <= 0f && gameOverEndingUIOn)

@@ -6,71 +6,65 @@ using UnityEngine.UI;
 public class PlayerDamage : MonoBehaviour
 {
     private ScoreKeeper ScoreManager;
-    [SerializeField] private Image foodVisionImpairmentImage;
-    [SerializeField] private float visionImpairedTimer; //sec how long the image stays on for
-    private float visionImpairedCounter;
+    [SerializeField] private Image[] foodVisionImpairmentImageList;
+    [SerializeField] private GameObject foodVisionImpairmentImageListObj;
+    [SerializeField] private float visionImpairedTimer;
     [SerializeField] private float fadeTime;
-    private float elapsedTime; //instantiate a float with a value of 0 for use as a timer.
-    [SerializeField] private float startingAlpha;
-
+    private GameManager gameManager;
+    private int splatIndex = 0;
     private bool gameOver = false;
+    private bool flag1 = true;
+    private bool flag2 = true;
 
     public bool GameOver { get => gameOver; set => gameOver = value; }
-    public Image FoodVisionImpairmentImage { get => foodVisionImpairmentImage; set => foodVisionImpairmentImage = value; }
+    public Image[] FoodVisionImpairmentImageList { get => foodVisionImpairmentImageList; set => foodVisionImpairmentImageList = value; }
 
     private bool playerHasBeenHit = false;
 
+    public bool PlayerHasBeenHit { get => playerHasBeenHit; }
+    public float VisionImpairedTimer { get => visionImpairedTimer; }
+    public float FadeTime { get => fadeTime; }
 
     private void Start()
     {
         ScoreManager = FindObjectOfType<ScoreKeeper>();
-        foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, 0);
-        visionImpairedCounter = -1f;
-        elapsedTime = 0f;
-        startingAlpha /= 255f;
+        foodVisionImpairmentImageList = GetComponentsInChildren<Image>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        if (!playerHasBeenHit)
+        if(gameManager.GameStart && !gameOver && flag1)
         {
-            foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, 0);
-        }
-        visionImpairedCounter -= Time.deltaTime;
-        if (visionImpairedCounter <= 0)
-        {
-            //foodVisionImpairmentImage.enabled = false;
-           
-            if (elapsedTime < fadeTime)
+            foreach(Image i in foodVisionImpairmentImageList)
             {
-                elapsedTime += Time.deltaTime; // Count up
-                foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, Mathf.Lerp(startingAlpha, 0f, elapsedTime / fadeTime));
+                i.enabled = true;
             }
+            flag1 = false;
         }
 
-        if (foodVisionImpairmentImage.color.a == 0f)
+        if (gameOver && flag2)
+        {
+            foreach (Image i in foodVisionImpairmentImageList)
             {
-                if (gameOver)
-                {
-                foodVisionImpairmentImage.enabled = false;
-                }
-                if (playerHasBeenHit)
-                {
-                    playerHasBeenHit = false;
-                }
+                i.enabled = false;
             }
-   
+            flag2 = false;
+        }
     }
+
     //die when hit by food
  
     private void OnTriggerEnter(Collider other)
     {
         if (TagManager.CompareTags(other.gameObject, "enemyFood"))
         {
-            elapsedTime = 0f;
-            visionImpairedCounter = visionImpairedTimer;
-            //foodVisionImpairmentImage.enabled = true;
-            foodVisionImpairmentImage.color = new Color(foodVisionImpairmentImage.color.r, foodVisionImpairmentImage.color.g, foodVisionImpairmentImage.color.b, startingAlpha);
+            for(int i=0; i<4; i++)
+            {
+                splatIndex = Random.Range(0, foodVisionImpairmentImageList.Length);
+                foodVisionImpairmentImageList[splatIndex].GetComponent<SplatHandler>().SplashImageOn();
+            }
+          
             ScoreManager.addPlayerGotHit();
             playerHasBeenHit = true;
         }
