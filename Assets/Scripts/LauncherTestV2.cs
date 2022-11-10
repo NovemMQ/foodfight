@@ -18,6 +18,7 @@ public class LauncherTestV2 : MonoBehaviour
         reloading,
         overheating
     }
+    private AudioSource launchSound;
     [SerializeField] private GameManager gameMnager;
     [SerializeField] private Gradient colors;
     [SerializeField] private Image ammoGuage;
@@ -41,7 +42,7 @@ public class LauncherTestV2 : MonoBehaviour
     [SerializeField]
     private int maxAmmoCount;
     private int currentAmmo = 30;
-    float timerwait = 2f;
+    float timerwait = 0.3f;
     float reloadtimer = 0.1f;
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class LauncherTestV2 : MonoBehaviour
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreKeeper>();
+        launchSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -95,6 +97,7 @@ public class LauncherTestV2 : MonoBehaviour
     public void Shoot()
     {
             timer = 0.2f;
+            launchSound.Play();
             timerwait = 2f;
             GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
             GameObject food = Instantiate(randomFoodRandom);

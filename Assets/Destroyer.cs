@@ -31,7 +31,7 @@ public class Destroyer : MonoBehaviour
     {
         GameObject splat = Instantiate(splatDecal);
         splat.transform.position = this.transform.position;
-        splat.transform.LookAt(collision.contacts[0].normal, Vector3.up);
+        splat.transform.LookAt(collision.gameObject.transform.forward, Vector3.up);
         splat.transform.localScale = splat.transform.localScale * Random.Range(0.5f, 0.9f);
         Destroy(this.gameObject);
     }
