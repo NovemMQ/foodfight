@@ -4,23 +4,36 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [Space(10)]
+    [Header("Game countdown text")]
+    [SerializeField] private GameObject startUI; //start splash screen ui panel
     [SerializeField] private TextMeshProUGUI startCountDownText;
     [SerializeField] private string startCounterStringFormat = "{0}";
-    [SerializeField] private GameObject startUI; //start splash screen ui panel
+    [SerializeField] private GameObject gametimeCountdownUI; //ending ui panel
+    [SerializeField] private TextMeshProUGUI gametimeCountdownText;
+    [SerializeField] private string gametimeCountdownStringFormat = "{0}:{1}";
+    //current in game UI score text on Laptop
+    [Space(10)]
+    [Header("Current in game score text")]
+    [SerializeField] private TextMeshProUGUI foodThrownTextLaptop;
+    [SerializeField] private TextMeshProUGUI enemiesDiedTextLaptop;
+    [SerializeField] private TextMeshProUGUI playerDamagedTextLaptop;
+    private string foodThrownTextLaptopFormat;
+    private string enemiesDiedTextLaptopFormat;
+    private string playerDamagedTextLaptopFormat;
+    //ending UI score text 
+    [Space(10)]
+    [Header("Ending score UI text")]
     [SerializeField] private TextMeshProUGUI foodThrownText;
     [SerializeField] private TextMeshProUGUI enemiesDiedText;
     [SerializeField] private TextMeshProUGUI playerDamagedText;
     [SerializeField] private GameObject scoreUI; //ending ui panel
     [SerializeField] private TextMeshProUGUI endingCountDownText;
     [SerializeField] private string endingCounterStringFormat = "Ending in {0} Seconds ...";
-    [SerializeField] private GameObject gametimeCountdownUI; //ending ui panel
-    [SerializeField] private TextMeshProUGUI gametimeCountdownText;
-    [SerializeField] private string gametimeCountdownStringFormat = "{0}:{1}";
+    
 
     private float minInSec = 60f;
     private GameManager gameManager;
-   // public delegate void UIUpdate();
-   // public static event UIUpdate UIUpdateFood;
 
     #region singleton
     //Singleton
@@ -55,8 +68,13 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        //set counter string format
         endingCounterStringFormat = endingCountDownText.text;
         startCounterStringFormat = startCountDownText.text;
+        //current in game score UI on laptop string format
+        foodThrownTextLaptopFormat = foodThrownTextLaptop.text;
+        enemiesDiedTextLaptopFormat = enemiesDiedTextLaptop.text;
+        playerDamagedTextLaptopFormat = playerDamagedTextLaptop.text;
     }
 
     public void StartStartCounter(float time)
@@ -89,6 +107,27 @@ public class UIManager : MonoBehaviour
         gametimeCountdownText.text = string.Format(gametimeCountdownStringFormat, minutes, seconds);
     }
 
+    //current UI score text displayed during in game on the laptop
+    public void SetCurrentScoreText(float food, int enemy, int player)
+    {
+        SetFoodThrownUILaptop(food);
+        SetEnemiesDefeatedUILaptop(enemy);
+        SetPlayerDamagedUILaptop(player);
+    }
+        public void SetFoodThrownUILaptop(float foodThrown)
+    {
+        foodThrownTextLaptop.text = string.Format(foodThrownTextLaptopFormat, foodThrown.ToString());
+    }
+    public void SetEnemiesDefeatedUILaptop(float enemyDied)
+    {
+        enemiesDiedTextLaptop.text = string.Format(enemiesDiedTextLaptopFormat, enemyDied.ToString());
+    }
+    public void SetPlayerDamagedUILaptop(float playerDamaged)
+    {
+        playerDamagedTextLaptop.text = string.Format(playerDamagedTextLaptopFormat, playerDamaged.ToString());
+    }
+
+    //ending UI Score text total
     public void SetScoreUIText(float food, int enemy, int player)
     {
         SetFoodThrownUI(food);
@@ -98,25 +137,21 @@ public class UIManager : MonoBehaviour
 
     public void SetFoodThrownUI(float foodThrown)
     {
-        Debug.Log("food thrown here "+ foodThrown);
         foodThrownText.text = string.Format(foodThrownText.text, foodThrown.ToString());
     }
 
     public void SetEnemiesDefeatedUI(int enemyDied)
     {
-        Debug.Log("enemy died here " + enemyDied);
         enemiesDiedText.text = string.Format(enemiesDiedText.text, enemyDied.ToString());
     }
 
     public void SetPlayerDamagedUI(int playerDamaged)
     {
-        Debug.Log("player damaged here " + playerDamaged);
         playerDamagedText.text = string.Format(playerDamagedText.text, playerDamaged.ToString());
     }
 
     public void ActivateScoreUI()
     {
-        Debug.Log("activate score UI");
         scoreUI.SetActive(true);
     }
 

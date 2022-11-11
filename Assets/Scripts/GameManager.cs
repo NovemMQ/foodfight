@@ -116,7 +116,8 @@ public class GameManager : MonoBehaviour
         {
             startUICounter -= Time.deltaTime;
             uiManager.StartStartCounter(startUICounter); //send counter to UI
-            if(startUICounter <= 0f) //turn off start splash screen
+            SetCurrentScoreInGame();//reset current score displayed on laptoop to zero
+            if (startUICounter <= 0f) //turn off start splash screen
             {
                 StartSetGameUp();    
             }
@@ -125,7 +126,8 @@ public class GameManager : MonoBehaviour
         {
             //update timer
             gameTime += Time.deltaTime;
-            GameCountdownUIManger(gameTime);
+            GameCountdownUIManger(gameTime);//updates the current game time displayed on the digital clock
+            GameCurrentScoreDisplayManager();//updates the current score displayed on the laptop
             if ((int)gameTime == minSec) //after the fist bell long duration play the short bell duration
             {
                 played1MinBell = false;
@@ -147,6 +149,7 @@ public class GameManager : MonoBehaviour
         gameStart = true;
     }
 
+    //updates the current game time displayed on the digital clock
     private void GameCountdownUIManger(float currentGameTime)
     {
         gameCountdown = currentGameTime;
@@ -159,6 +162,21 @@ public class GameManager : MonoBehaviour
         {
             uiManager.StartGametimeCounter(timeLimit - gameCountdown);
         }
+    }
+
+    //updates the current score displayed on the laptop
+    private void GameCurrentScoreDisplayManager()
+    {
+        if (!gameOverEndingUIOn)
+        {
+            SetCurrentScoreInGame();
+        }
+    }
+
+    private void SetCurrentScoreInGame()
+    {
+        setScores();
+        uiManager.SetCurrentScoreText(foodThrown, enemyDeath, playerGotHit);
     }
 
     //end the game when timer finishes
