@@ -1322,7 +1322,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '{0}% Food Thrown Accuracy'
+  m_text: '{0} Food Thrown'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 69837cd25c1c1df44942ab533f32d2d0, type: 2}
   m_sharedMaterial: {fileID: -5847331020534231075, guid: 69837cd25c1c1df44942ab533f32d2d0,

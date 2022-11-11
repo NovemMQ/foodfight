@@ -47,24 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980da9419caa744786a65d8d8400c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startUI: {fileID: 790637749296723836}
   startCountDownText: {fileID: 5016365857005000022}
   startCounterStringFormat: '{0}'
-  startUI: {fileID: 790637749296723836}
+  gametimeCountdownUI: {fileID: 1002624494294355118}
+  gametimeCountdownText: {fileID: 3223876166568320524}
+  gametimeCountdownStringFormat: '{0}:{1}'
   foodThrownTextLaptop: {fileID: 7046743992191273047}
   enemiesDiedTextLaptop: {fileID: 7046743992615984119}
   playerDamagedTextLaptop: {fileID: 7046743992612387745}
-  foodThrownTextLaptopFormat: 
-  enemiesDiedTextLaptopFormat: 
-  playerDamagedTextLaptopFormat: 
   foodThrownText: {fileID: 3982163317934882498}
   enemiesDiedText: {fileID: 3982163317485137250}
   playerDamagedText: {fileID: 3982163317487815988}
   scoreUI: {fileID: 3982163316459760149}
   endingCountDownText: {fileID: 2991067486414827334}
   endingCounterStringFormat: Ending in {0} Seconds ...
-  gametimeCountdownUI: {fileID: 1002624494294355118}
-  gametimeCountdownText: {fileID: 3223876166568320524}
-  gametimeCountdownStringFormat: '{0}:{1}'
 --- !u!1001 &820274982134277705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +321,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618722499754729334, guid: f7b0aa72b68fdd1478b1001e9bfd2173,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618722499754729334, guid: f7b0aa72b68fdd1478b1001e9bfd2173,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4618722499754729334, guid: f7b0aa72b68fdd1478b1001e9bfd2173,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2811870796058842815, guid: f7b0aa72b68fdd1478b1001e9bfd2173,
         type: 3}

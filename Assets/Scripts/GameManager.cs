@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     private int foodThrown;
     private int enemyDeath;
     private int playerGotHit;
-   
+
     //audio manager
     private AudioManager audioManger;
     private float minSec = 50f;//75 secs
@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
         //enemyManager.StopEnemyWavesMovement(); // left here to uncomment if decided to only have the enemy move when dame starts after 3 sec, if uncommented you need to also uncomment enemyManager.StartEnemyWavesMovement() in SetGameUp();
         //school bell rings 3 times in the game
         minSec = timeLimit / 3;
+        //audio
+        audioManger.PlayCountdownBeep();
     }
 
     void Update() {

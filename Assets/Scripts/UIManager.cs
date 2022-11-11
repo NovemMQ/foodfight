@@ -77,18 +77,22 @@ public class UIManager : MonoBehaviour
         playerDamagedTextLaptopFormat = playerDamagedTextLaptop.text;
     }
 
+    //game counter UIs update methods
+    //This updates the counter on the starting logo UI
     public void StartStartCounter(float time)
     {
         int seconds = Mathf.CeilToInt(time % minInSec);
         startCountDownText.text = string.Format(startCounterStringFormat, seconds);
     }
 
+    //this updates the counter on the ending score UI
     public void StartEndingCounter(float time)
     {
         int seconds = Mathf.CeilToInt(time % minInSec);
         endingCountDownText.text = string.Format(endingCounterStringFormat, seconds);
     }
 
+    //this updates the counter during game time, displayed on the digital clock
     public void StartGametimeCounter(float time)
     {
         int minutes = Mathf.FloorToInt(time / minInSec);
@@ -150,11 +154,13 @@ public class UIManager : MonoBehaviour
         playerDamagedText.text = string.Format(playerDamagedText.text, playerDamaged.ToString());
     }
 
+    //ending score UI object activate state
     public void ActivateScoreUI()
     {
         scoreUI.SetActive(true);
     }
 
+    //starting UI logo / splash screen activate and deativate the object
     public void ActivateStartSplashScreenUI()
     {
         startUI.SetActive(true);
