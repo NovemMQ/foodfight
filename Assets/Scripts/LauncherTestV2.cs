@@ -83,12 +83,14 @@ public class LauncherTestV2 : MonoBehaviour
                     if (VRDevice.Device.PrimaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
+                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
                     }
                     break;
                 case GunSide.secondary:
                     if (VRDevice.Device.SecondaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
+                        OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
                     }
                     break;
             }
@@ -96,17 +98,17 @@ public class LauncherTestV2 : MonoBehaviour
     }
     public void Shoot()
     {
-            timer = 0.2f;
-            launchSound.Play();
-            timerwait = 2f;
-            GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
-            GameObject food = Instantiate(randomFoodRandom);
-            food.transform.position = launchPoint.transform.position;
-            Rigidbody foodRB = food.GetComponent<Rigidbody>();
-            foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
-            foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
-            currentAmmo--;
-            scoreManager.addFoodThrown();
+        timer = 0.2f;    
+        launchSound.Play();
+        timerwait = 2f;
+        GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
+        GameObject food = Instantiate(randomFoodRandom);
+        food.transform.position = launchPoint.transform.position;
+        Rigidbody foodRB = food.GetComponent<Rigidbody>();
+        foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
+        foodRB.AddTorque(new Vector3(Random.Range(0, rotatePower), Random.Range(0, rotatePower), Random.Range(0, rotatePower)), ForceMode.Impulse);
+        currentAmmo--;
+        scoreManager.addFoodThrown();
     }
 }
 
