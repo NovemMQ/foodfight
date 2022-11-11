@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     private bool gameStart = false;
     public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
     public bool GameStart { get => gameStart; set => gameStart = value; }
+    public float TimeLimit { get => timeLimit; }
 
 
     //enemy movement manager
@@ -95,16 +96,23 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         //set up before update
+        //get singleton managers
         enemyManager = FindObjectOfType<enemyMovementManager>();
         uiManager = FindObjectOfType<UIManager>();
         scorekeeper = FindObjectOfType<ScoreKeeper>();
         audioManger = FindObjectOfType<AudioManager>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        //player damage
         playerDamageScript = FindObjectOfType<PlayerDamage>();
+        //set up game time counters
         startUICounter = StartUITimer;
         endingUICounter = endingUITimer;
+        //start start log UI, and 3 sec counter
         uiManager.ActivateStartSplashScreenUI();
-        enemyManager.StopEnemyWavesMovement();
+        uiManager.StartGametimeCounter(timeLimit);
+        //enemy don't move yet, 
+        //enemyManager.StopEnemyWavesMovement(); //enemy don't move yet before 3 seconds
+        //school bell rings 3 times in the game
         minSec = timeLimit / 3;
     }
 
@@ -172,7 +180,8 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
-
+    
+   
     private void playSchoolBellsSchdule()
     {
         
