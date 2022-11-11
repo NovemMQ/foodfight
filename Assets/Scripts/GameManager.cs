@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             uiManager.StartStartCounter(startUICounter); //send counter to UI
             if(startUICounter <= 0f) //turn off start splash screen
             {
-                SetGameUp();    
+                StartSetGameUp();    
             }
         }
         else
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         ManageEndGame();
     }
     
-    private void SetGameUp()
+    private void StartSetGameUp()
     {
         startGameUIOn = false;
         uiManager.DeactivateStartSplashScreenUI();
