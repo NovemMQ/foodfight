@@ -48,8 +48,10 @@ public class EnemyLauncher : MonoBehaviour
         timer = shootFrequency;
         randomisedTimer = Random.Range(0, shootFrequencyRandomRange);
         GameObject randomFoodRandom = foodPrefabs[(int)Random.Range(0, foodPrefabs.Count - 0.01f)];
-        GameObject food = Instantiate(randomFoodRandom);
+        //GameObject food = Instantiate(randomFoodRandom);
+        GameObject food = FoodPoolManager.getRandomFoodEnemy();
         food.transform.position = throwPoint.position;//transform.position + (Vector3.up * 3);
+        food.SetActive(true);
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
 
         Vector3 direction = (player.position + PlayerTargetOffset) - food.transform.position;

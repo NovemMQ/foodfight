@@ -20,12 +20,16 @@ public class Destroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isActiveAndEnabled)
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Destroy(this.gameObject);
-
+            FoodPoolManager.AddItemPlayer(this.gameObject);
         }
+    }
+    private void OnDisable()
+    {
+        timer = deathTimer;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,6 +37,6 @@ public class Destroyer : MonoBehaviour
         splat.transform.position = this.transform.position;
         splat.transform.LookAt(collision.gameObject.transform.forward, Vector3.up);
         splat.transform.localScale = splat.transform.localScale * Random.Range(0.5f, 0.9f);
-        Destroy(this.gameObject);
+        FoodPoolManager.AddItemPlayer(this.gameObject);
     }
 }
