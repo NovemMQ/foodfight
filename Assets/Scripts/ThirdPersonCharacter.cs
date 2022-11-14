@@ -129,10 +129,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Animator.SetBool("onGround", m_IsGrounded);
 
 			//**Jump**
-			// if (!m_IsGrounded)
-			// {
-			// 	m_Animator.SetTrigger("Jump");
-			// }
+			if (!m_IsGrounded)
+			{
+				m_Animator.SetTrigger("Jump");
+			}
 
 			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 			// (This code is reliant on the specific run cycle offset in our animations,
