@@ -11,8 +11,8 @@ public class FoodPoolManager : MonoBehaviour
     List<GameObject> foodPrefabsPlayer;
     [SerializeField]
     List<GameObject> foodPrefabsEnemy;
-    public static List<GameObject> generatedFoodEnemy = new List<GameObject>();
-    public static List<GameObject> generatedFoodPlayer = new List<GameObject>();
+    static List<GameObject> generatedFoodEnemy = new List<GameObject>();
+    static List<GameObject> generatedFoodPlayer = new List<GameObject>();
     [SerializeField]
     private float maxNumberOfFood;
     // Start is called before the first frame update
@@ -57,7 +57,7 @@ public class FoodPoolManager : MonoBehaviour
     {
         int number = Random.Range(0, generatedFoodPlayer.Count);
         GameObject food = generatedFoodPlayer[number];
-        generatedFoodEnemy.RemoveAt(number);
+        generatedFoodPlayer.RemoveAt(number);
         return food;
     }
     public static void AddItemPlayer(GameObject food)

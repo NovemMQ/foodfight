@@ -102,7 +102,6 @@ public class LauncherTestV2 : MonoBehaviour
         launchSound.Play();
         timerwait = 2f;
         GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
-        //GameObject food = Instantiate(randomFoodRandom);
         GameObject food = FoodPoolManager.getRandomFoodPlayer();
         food.transform.position = launchPoint.transform.position;
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
