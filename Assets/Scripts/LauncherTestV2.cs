@@ -78,13 +78,13 @@ public class LauncherTestV2 : MonoBehaviour
         {
             switch (gunSide) {
                 case GunSide.primary:
-                    if (VRDevice.Device.PrimaryInputDevice.GetButton(VRButton.Trigger))
+                    if (Input.GetButton("Fire1"))
                     {
                         Shoot();
                     }
                     break;
                 case GunSide.secondary:
-                    if (VRDevice.Device.SecondaryInputDevice.GetButton(VRButton.Trigger))
+                    if (false)
                     {
                         Shoot();
                     }
