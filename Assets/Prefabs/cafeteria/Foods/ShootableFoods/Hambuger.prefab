@@ -109,14 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d65315d68c31648a7313e6a24b2e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatDecals:
-  - {fileID: 7324674520792868141, guid: 63edbfc785636d643a65d02b5a2ee693, type: 3}
-  - {fileID: 7324674520792868141, guid: a451d679773aae3469f5bb812c34291b, type: 3}
-  - {fileID: 7324674520792868141, guid: ee2bc2a8d14701442b16a04cf0adc9ea, type: 3}
-  - {fileID: 7324674520792868141, guid: aa5c4995f86fe8645a8b0fc15f22ff29, type: 3}
-  - {fileID: 7324674520792868141, guid: d6e5ba58573db1f408b7580d90e8ca3d, type: 3}
-  - {fileID: 7324674520792868141, guid: c5fe2714042cdfc40b27666a983578ae, type: 3}
-  - {fileID: 7324674520792868141, guid: 9bbcddc5485c4e9438763fd0d43c1823, type: 3}
+  splatDecal: {fileID: 0}
+  sparklePFX: {fileID: 0}
   deathTimer: 3
 --- !u!135 &4687542712190438562
 SphereCollider:

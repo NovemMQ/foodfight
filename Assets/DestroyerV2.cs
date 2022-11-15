@@ -16,17 +16,12 @@ public class DestroyerV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isActiveAndEnabled)
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            FoodPoolManager.AddItemEnemy(this.gameObject);
+            Destroy(this.gameObject);
 
         }
-    }
-    private void OnDisable()
-    {
-        timer = deathTimer;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -40,7 +35,7 @@ public class DestroyerV2 : MonoBehaviour
                 //       ParticleSystem spFXPFX = spFX.GetComponent<ParticleSystem>();
                 //       spFXPFX.Play();
 
-                FoodPoolManager.AddItemEnemy(this.gameObject);
+                Destroy(this.gameObject);
             }
         }
     }

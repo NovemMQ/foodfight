@@ -15,47 +15,33 @@ public class EnemySoundManager : MonoBehaviour
     void Start()
     {
         soundList = soundListObj.GetComponentsInChildren<AudioSource>();
-        PickRandomTrack();
+        if (soundList != null || soundList.Length > 0)
+        {
+            SetRandomTrack();
+        }
         SetRandomPlayCounter();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        ManageTrackPlayRate();
-    }
-
-    //play the sound when counter is finished
-    private void ManageTrackPlayRate()
-    {
+    { 
         randomePlayCounter -= Time.deltaTime;
         if (trackNumber > -1)
         {
-            if (soundList[trackNumber].isPlaying == false && randomePlayCounter <= 0f)
+            if(soundList[trackNumber].isPlaying == false && randomePlayCounter <= 0f)
             {
                 soundList[trackNumber].Play();
                 SetRandomPlayCounter();
             }
         }
+
     }
 
-    //pick a random sound track for this enemy to play
-    private void PickRandomTrack()
-    {
-        if (soundList != null || soundList.Length > 0)
-        {
-            SetRandomTrack();
-        }
-    }
-
-
-    //randomly set the play counter time for the next time the sound plays
     private void SetRandomPlayCounter()
     {
         randomePlayCounter = Random.Range(randomPlayTimerMin, randomPlayTimerMax);
     }
 
-    //get the random track number
     private void SetRandomTrack()
     {
         trackNumber = Random.Range(0, soundList.Length);

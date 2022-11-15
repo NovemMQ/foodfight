@@ -29,15 +29,29 @@ public class BackgroundMusicPicker : MonoBehaviour
 
     private void Update()
     {
+        /* if (trackNumber > -1)
+         {
+             if (backgroundMusicList[trackNumber].isPlaying == false)
+             {
+                 playTrack(trackNumber);
+             }
+         }*/
+
         if (backgroundMusicList[trackNumber].isPlaying)
         {
+
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime < fadeTime)
             {
+
                 audioManger.SetAudioFadeIn(backgroundMusicList[trackNumber], elapsedTime, fadeTime);
+
             }
         }
+            
+        
+        
     }
 
     private void playTrack(int trackNum)

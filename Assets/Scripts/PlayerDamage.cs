@@ -5,22 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerDamage : MonoBehaviour
 {
-    //score keeper and game manager singleton 
     private ScoreKeeper ScoreManager;
-    private GameManager gameManager;
     [SerializeField] private Image[] foodVisionImpairmentImageList;
     [SerializeField] private GameObject foodVisionImpairmentImageListObj;
     [SerializeField] private int maxSplatsPerDamange;
     [SerializeField] private float visionImpairedTimer;
     [SerializeField] private float fadeTime;
+    private GameManager gameManager;
     private int splatIndex = 0;
     private bool gameOver = false;
     private bool flag1 = true;
     private bool flag2 = true;
 
     public bool GameOver { get => gameOver; set => gameOver = value; }
-    public Image[] FoodVisionImpairmentImageList { get => foodVisionImpairmentImageList; }
+    public Image[] FoodVisionImpairmentImageList { get => foodVisionImpairmentImageList; set => foodVisionImpairmentImageList = value; }
+
     private bool playerHasBeenHit = false;
+
     public bool PlayerHasBeenHit { get => playerHasBeenHit; }
     public float VisionImpairedTimer { get => visionImpairedTimer; }
     public float FadeTime { get => fadeTime; }
@@ -28,28 +29,22 @@ public class PlayerDamage : MonoBehaviour
     private void Start()
     {
         ScoreManager = FindObjectOfType<ScoreKeeper>();
-        gameManager = FindObjectOfType<GameManager>();
         foodVisionImpairmentImageList = GetComponentsInChildren<Image>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        ManageSplatDisplayPeriod();
-    }
-
-    //make sure the splats are only on during game time
-    private void ManageSplatDisplayPeriod()
-    {
-        if (gameManager.GameStart && !gameOver && flag1) //if the game has started and is not game over
+        if(gameManager.GameStart && !gameOver && flag1)
         {
-            foreach (Image i in foodVisionImpairmentImageList)//turn on the player damaged splats
+            foreach(Image i in foodVisionImpairmentImageList)
             {
                 i.enabled = true;
             }
             flag1 = false;
         }
 
-        if (gameOver && flag2)//if the game is over and the score ui is on turn off the player damage splats
+        if (gameOver && flag2)
         {
             foreach (Image i in foodVisionImpairmentImageList)
             {
@@ -57,10 +52,10 @@ public class PlayerDamage : MonoBehaviour
             }
             flag2 = false;
         }
-
     }
 
     //die when hit by food
+ 
     private void OnTriggerEnter(Collider other)
     {
         if (TagManager.CompareTags(other.gameObject, "enemyFood"))

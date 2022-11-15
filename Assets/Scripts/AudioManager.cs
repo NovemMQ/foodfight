@@ -38,19 +38,33 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource countdownBeep;
     [SerializeField] private BackgroundMusicPicker background;
 
+    private void Update()
+    {
+        
+    }
+
     public void SetAudioFadeandStop(AudioSource soundAudio, float elapsedTime, float fadeTime)
     {
+        // AudioFade(soundAudio, fadeTime);
+
         var startingVolume = soundAudio.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
+      
+
         soundAudio.volume = Mathf.Lerp(startingVolume, 0f, elapsedTime / fadeTime); // This uses linear interpolation to change the volume of AudioListener over time.
+          
+   
     }
 
     public void SetAudioFadeIn(AudioSource soundAudio, float elapsedTime, float fadeTime)
     {
+        // AudioFade(soundAudio, fadeTime);
+        //Debug.Log("Sound is trying to fade here!!!");
+
         var startingVolume = soundAudio.volume; //this gets the current volume of the audio listener so that we can fade it to 0 over time.
         soundAudio.volume = Mathf.Lerp(startingVolume, 1f, elapsedTime / fadeTime); // This uses linear interpolation to change the volume of AudioListener over time.
+
     }
 
-    //used when the experience first loads during the start logo UI
     public void PlayCountdownBeep()
     {
         countdownBeep.Play();
