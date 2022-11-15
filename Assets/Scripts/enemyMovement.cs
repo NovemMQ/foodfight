@@ -33,7 +33,7 @@ public class enemyMovement : MonoBehaviour
 
     [SerializeField] private float inSceneTimelimit = 20f; // after this timelimit the enemy goes to end spwan point and despawns/leaves the scene
     private float inSceneCounter = 0f;
-    private float inSceneMinLimit = 8f;
+    [SerializeField] private float inSceneMinLimit = 8f;
 
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;

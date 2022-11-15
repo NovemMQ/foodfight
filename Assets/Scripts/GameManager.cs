@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     private bool gameOverEndingUIOn = false;
     private float gameCountdown = 0;
     private bool gameStart = false;
+    private bool gameOverFlag = true;
     public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
     public bool GameStart { get => gameStart; set => gameStart = value; }
     public float TimeLimit { get => timeLimit; }
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
                 played1MinBell = false;
             }
         }
-        playSchoolBellsSchdule();
+        PlaySchoolBellsSchdule();
         ManageEndGame();
     }
     
@@ -155,15 +156,19 @@ public class GameManager : MonoBehaviour
     private void GameCountdownUIManger(float currentGameTime)
     {
         gameCountdown = currentGameTime;
-        if (gameOverEndingUIOn) //if scoreUI is on dispaly, Clock gametime display is set to 00:00 else clock display countdown time. 
+        if (gameTime > timeLimit)
         {
             gameCountdown = timeLimit;
-            uiManager.StartGametimeCounter(timeLimit - gameCountdown);
         }
-        else
-        {
-            uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-        }
+        uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+        /*  if (gameOverEndingUIOn) //if scoreUI is on dispaly, Clock gametime display is set to 00:00 else clock display countdown time. 
+          {
+              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+          }
+          else
+          {
+              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+          }*/
     }
 
     //updates the current score displayed on the laptop
@@ -191,11 +196,12 @@ public class GameManager : MonoBehaviour
     {
 
         //if timer is more than time limit, end the game.    
-        if (gameTime > timeLimit)
+        if (gameTime > timeLimit && gameOverFlag)
         {
-            gameTime = -1000000;
+            //gameTime = -1000000;
             StartLetterScoreEvent();// call UImanager for score display
             gameOverEndingUIOn = true;
+            gameOverFlag = false;
         }
 
         if (gameOverEndingUIOn)
@@ -212,7 +218,7 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
-    private void playSchoolBellsSchdule()
+    private void PlaySchoolBellsSchdule()
     {
         
         if ((((int)gameTime) % minSec) == 0)
