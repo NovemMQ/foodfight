@@ -943,6 +943,11 @@ PrefabInstance:
       propertyPath: gameMnager
       value: 
       objectReference: {fileID: 889602315}
+    - target: {fileID: 9217818963420895263, guid: def5bce413ed75048a701e86902a5485,
+        type: 3}
+      propertyPath: shootHapticDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def5bce413ed75048a701e86902a5485, type: 3}
 --- !u!43 &440248382
@@ -3280,16 +3285,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1787907547}
     m_Modifications:
-    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
-        type: 3}
-      propertyPath: myExperienceApp
-      value: 
-      objectReference: {fileID: 1787907546}
     - target: {fileID: 6636247174337071039, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6636247174337071038, guid: a171c191595ea944fa32a83f0ecaf357,
+        type: 3}
+      propertyPath: myExperienceApp
+      value: 
+      objectReference: {fileID: 1787907546}
     - target: {fileID: 6636247174337070977, guid: a171c191595ea944fa32a83f0ecaf357,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4775,6 +4780,11 @@ PrefabInstance:
       propertyPath: gameMnager
       value: 
       objectReference: {fileID: 889602315}
+    - target: {fileID: 9217818963420895263, guid: 123b864f0daae01469df2e41a3f3855f,
+        type: 3}
+      propertyPath: shootHapticDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123b864f0daae01469df2e41a3f3855f, type: 3}
 --- !u!1001 &1981732292

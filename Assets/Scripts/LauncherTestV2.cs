@@ -12,13 +12,9 @@ public class LauncherTestV2 : MonoBehaviour
         primary,
         secondary
     }
-    private enum ShootState
-    {
-        shooting,
-        reloading,
-        overheating
-    }
+    
     private AudioSource launchSound;
+    [SerializeField] private float shootHapticDuration;
     [SerializeField] private GameManager gameMnager;
     [SerializeField] private Gradient colors;
     [SerializeField] private Image ammoGuage;
@@ -38,10 +34,11 @@ public class LauncherTestV2 : MonoBehaviour
     private float timer = 0f;
     [SerializeField]
     private GunSide gunSide;
-    private ShootState shoot = ShootState.shooting;
     [SerializeField]
     private int maxAmmoCount;
     private int currentAmmo = 30;
+    float hapticTimer;
+    private bool hapticFlag = false;
     float timerwait = 0.3f;
     float reloadtimer = 0.1f;
     private void Awake()
@@ -55,6 +52,7 @@ public class LauncherTestV2 : MonoBehaviour
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreKeeper>();
+        hapticTimer = shootHapticDuration;
         launchSound = GetComponent<AudioSource>();
     }
 
@@ -63,10 +61,10 @@ public class LauncherTestV2 : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerwait -= Time.deltaTime;
-        //Debug.Log((float)currentAmmo / maxAmmoCount);
+        if (!hapticFlag)
+            hapticTimer -= Time.deltaTime;
         ammoGuage.fillAmount = (float)currentAmmo / maxAmmoCount;
         ammoGuage.color = colors.Evaluate(1 - ammoGuage.fillAmount);
-        trajectooryTrace.UpdateTrajectory((launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity, foodPrefab[0].GetComponent<Rigidbody>(), launchPoint.transform.position);
         if (timerwait <= 0 && currentAmmo < maxAmmoCount)
         {
             reloadtimer -= Time.deltaTime;
@@ -76,6 +74,13 @@ public class LauncherTestV2 : MonoBehaviour
                 currentAmmo++;
             }
         }
+        if (hapticTimer <= 0)
+        {
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+            hapticTimer = shootHapticDuration;
+            hapticFlag = false;
+        }
         if (timer <= 0&&currentAmmo>0)
         {
             switch (gunSide) {
@@ -83,13 +88,16 @@ public class LauncherTestV2 : MonoBehaviour
                     if (VRDevice.Device.PrimaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
+                        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
                         OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                        
                     }
                     break;
                 case GunSide.secondary:
                     if (VRDevice.Device.SecondaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
+                        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
                         OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
                     }
                     break;
@@ -98,11 +106,12 @@ public class LauncherTestV2 : MonoBehaviour
     }
     public void Shoot()
     {
+        hapticFlag = true;
         timer = 0.2f;    
         launchSound.Play();
         timerwait = 2f;
-        GameObject randomFoodRandom = foodPrefab[(int)Random.Range(0, foodPrefab.Count - 0.01f)];
         GameObject food = FoodPoolManager.getRandomFoodPlayer();
+        food.SetActive(true);
         food.transform.position = launchPoint.transform.position;
         Rigidbody foodRB = food.GetComponent<Rigidbody>();
         foodRB.velocity = (launchPoint.transform.position - pivotPoint.transform.position).normalized * foodVelocity;
