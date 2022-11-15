@@ -74,17 +74,17 @@ public class LauncherTestV2 : MonoBehaviour
                 currentAmmo++;
             }
         }
-        if (hapticTimer <= 0)
-        {
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
-            OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
-            hapticTimer = shootHapticDuration;
-            hapticFlag = false;
-        }
+        
         if (timer <= 0&&currentAmmo>0)
         {
             switch (gunSide) {
                 case GunSide.primary:
+                    if (hapticTimer <= 0)
+                    {
+                        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+                        hapticTimer = shootHapticDuration;
+                        hapticFlag = false;
+                    }
                     if (VRDevice.Device.PrimaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
@@ -94,6 +94,12 @@ public class LauncherTestV2 : MonoBehaviour
                     }
                     break;
                 case GunSide.secondary:
+                    if (hapticTimer <= 0)
+                    {
+                        OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+                        hapticTimer = shootHapticDuration;
+                        hapticFlag = false;
+                    }
                     if (VRDevice.Device.SecondaryInputDevice.GetButton(VRButton.Trigger))
                     {
                         Shoot();
