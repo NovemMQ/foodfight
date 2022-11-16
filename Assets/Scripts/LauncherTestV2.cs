@@ -40,7 +40,7 @@ public class LauncherTestV2 : MonoBehaviour
     float hapticTimer;
     private bool hapticFlag = false;
     float timerwait = 0.3f;
-    float reloadtimer = 0.1f;
+    float reloadtimer = 0.05f;
     private void Awake()
     {
         currentAmmo = maxAmmoCount;
@@ -70,7 +70,7 @@ public class LauncherTestV2 : MonoBehaviour
             reloadtimer -= Time.deltaTime;
             if (reloadtimer <= 0)
             {
-                reloadtimer = 0.1f;
+                reloadtimer = 0.05f;
                 currentAmmo++;
             }
         }
@@ -115,7 +115,7 @@ public class LauncherTestV2 : MonoBehaviour
         hapticFlag = true;
         timer = 0.2f;    
         launchSound.Play();
-        timerwait = 2f;
+        timerwait = 1f;
         GameObject food = FoodPoolManager.getRandomFoodPlayer();
         food.SetActive(true);
         food.transform.position = launchPoint.transform.position;
