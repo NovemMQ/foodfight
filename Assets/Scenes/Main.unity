@@ -948,6 +948,16 @@ PrefabInstance:
       propertyPath: shootHapticDuration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6587252832718038362, guid: def5bce413ed75048a701e86902a5485,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a705e05512d2f64fb9038b1d0fce274, type: 2}
+    - target: {fileID: 5968042951420914641, guid: def5bce413ed75048a701e86902a5485,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 892a94eba00c7d34f9c954cf56980e4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def5bce413ed75048a701e86902a5485, type: 3}
 --- !u!43 &440248382
@@ -2241,7 +2251,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19160
+  m_Name: pb_Mesh-237896
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4853,6 +4863,16 @@ PrefabInstance:
       propertyPath: shootHapticDuration
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6587252832718038362, guid: 123b864f0daae01469df2e41a3f3855f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6a705e05512d2f64fb9038b1d0fce274, type: 2}
+    - target: {fileID: 5968042951420914641, guid: 123b864f0daae01469df2e41a3f3855f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 892a94eba00c7d34f9c954cf56980e4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 123b864f0daae01469df2e41a3f3855f, type: 3}
 --- !u!1001 &1981732292
