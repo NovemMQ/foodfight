@@ -2517,6 +2517,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcdd8fe937857484cb43314ca0f9e8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &892314773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3982163317934882498, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010274409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &999393151
 Mesh:
   m_ObjectHideFlags: 0
@@ -3032,6 +3044,26 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4867968965036806218, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+        type: 3}
+      propertyPath: foodThrownTextLaptop
+      value: 
+      objectReference: {fileID: 1694250910}
+    - target: {fileID: 4867968965036806218, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+        type: 3}
+      propertyPath: foodThrownText
+      value: 
+      objectReference: {fileID: 892314773}
+    - target: {fileID: 4867968965036806218, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+        type: 3}
+      propertyPath: enemiesDiedTextLaptop
+      value: 
+      objectReference: {fileID: 1470911178}
+    - target: {fileID: 4867968965036806218, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+        type: 3}
+      propertyPath: playerDamagedTextLaptop
+      value: 
+      objectReference: {fileID: 1110748018}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01ac3ec8849e14d408492b5fa63fd1c7, type: 3}
 --- !u!4 &1010274410 stripped
@@ -3521,6 +3553,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1110748018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7046743992612387745, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010274409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1123731484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6643564788456962785, guid: 06ea24486edb94246ac4bebc70ac8df9,
@@ -4016,6 +4060,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1470911178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7046743992615984119, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010274409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1562543469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4294,6 +4350,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1694250910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7046743992191273047, guid: 01ac3ec8849e14d408492b5fa63fd1c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1010274409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787907544
 GameObject:
   m_ObjectHideFlags: 0

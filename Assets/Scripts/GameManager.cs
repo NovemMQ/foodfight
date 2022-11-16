@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     private enemyMovementManager enemyManager;
     //score
     private ScoreKeeper scorekeeper;
-    private int foodThrown;
+    private int foodThrown =3;
     private int enemyDeath;
     private int playerGotHit;
 
