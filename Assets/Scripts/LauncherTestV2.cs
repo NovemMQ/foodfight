@@ -61,7 +61,7 @@ public class LauncherTestV2 : MonoBehaviour
     {
         timer -= Time.deltaTime;
         timerwait -= Time.deltaTime;
-        if (!hapticFlag)
+        if (hapticFlag)
             hapticTimer -= Time.deltaTime;
         ammoGuage.fillAmount = (float)currentAmmo / maxAmmoCount;
         ammoGuage.color = colors.Evaluate(1 - ammoGuage.fillAmount);
