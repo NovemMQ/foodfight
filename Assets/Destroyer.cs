@@ -5,6 +5,7 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     public GameObject[] splatDecals;
+    [SerializeField] AudioSource[] SplatSounds;
     GameObject splatDecal;
     [SerializeField]
     private float deathTimer = 3f;
