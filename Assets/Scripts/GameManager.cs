@@ -53,7 +53,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float endingUITimer = 10;//secs
     private float endingUICounter;
     public float GameTime {get { return gameTime; }}
-
+    //UI 
+    private UIManager uiManager;
     [SerializeField] private float startUITimer = 5;//secs
     public float StartUITimer { get => startUITimer; set => startUITimer = value; }
     private float startUICounter;
@@ -61,30 +62,24 @@ public class GameManager : MonoBehaviour
     private bool gameOverEndingUIOn = false;
     private float gameCountdown = 0;
     private bool gameStart = false;
+    private bool gameOverFlag = true;
     public bool GameOverEndingUIOn { get => gameOverEndingUIOn; set => gameOverEndingUIOn = value; }
     public bool GameStart { get => gameStart; set => gameStart = value; }
-
-
+    public float TimeLimit { get => timeLimit; }
     //enemy movement manager
     private enemyMovementManager enemyManager;
-
-  
-    //UI
-    private UIManager uiManager;
     //score
     private ScoreKeeper scorekeeper;
-    private int foodThrown;
+    private int foodThrown =3;
     private int enemyDeath;
     private int playerGotHit;
 
-    [Space(10)]
-    [Header("School Bell Time")]
-  
     //audio manager
     private AudioManager audioManger;
     private float minSec = 50f;//75 secs
     private bool played1MinBell = true;
-
+    [Space(10)]
+    [Header("School Bell Time")]
     [SerializeField] private float startSchoolBellDuration = 4f;
     [SerializeField] private float startSchoolBellFadeOutDuration = 2f;
     [SerializeField] private float oneMinSchoolBellDuration = 1f;
@@ -95,70 +90,121 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         //set up before update
+        //get singleton managers
         enemyManager = FindObjectOfType<enemyMovementManager>();
         uiManager = FindObjectOfType<UIManager>();
         scorekeeper = FindObjectOfType<ScoreKeeper>();
         audioManger = FindObjectOfType<AudioManager>();
         myExperienceApp = FindObjectOfType<MyExperienceApp>();
+        //player damage
         playerDamageScript = FindObjectOfType<PlayerDamage>();
+        //set up game time counters
         startUICounter = StartUITimer;
         endingUICounter = endingUITimer;
+        //start start log UI, and 3 sec counter
         uiManager.ActivateStartSplashScreenUI();
-        enemyManager.StopEnemyWavesMovement();
+        uiManager.StartGametimeCounter(timeLimit);
+        //enemy don't move yet, before 3 seconds, now they move straight away because they take long to walk into the scene anyway
+        //enemyManager.StopEnemyWavesMovement(); // left here to uncomment if decided to only have the enemy move when dame starts after 3 sec, if uncommented you need to also uncomment enemyManager.StartEnemyWavesMovement() in SetGameUp();
+        //school bell rings 3 times in the game
         minSec = timeLimit / 3;
+        //audio
+        audioManger.PlayCountdownBeep();
     }
 
     void Update() {
 
         //start the game UI begining splash screen
-        if (startGameUIOn)
+        if (startGameUIOn)// if the start logo is on display
         {
             startUICounter -= Time.deltaTime;
             uiManager.StartStartCounter(startUICounter); //send counter to UI
-            if(startUICounter <= 0f) //turn off start splash screen
+            SetCurrentScoreInGame();//reset current score displayed on laptoop to zero
+            if (startUICounter <= 0f) //turn off start splash screen
             {
-                startGameUIOn = false;
-                uiManager.DeactivateStartSplashScreenUI();
-                enemyManager.StartEnemyWavesMovement();
-                audioManger.PlaySchoolBell(startSchoolBellDuration, startSchoolBellFadeOutDuration);
-                audioManger.PlayBackgroundMusic();
-                gameTime = 0;
-                played1MinBell = true;
-                gameStart = true;
-              //  playerDamageScript.FoodVisionImpairmentImage.enabled = true;
+                StartSetGameUp();    
             }
         }
         else
         {
             //update timer
             gameTime += Time.deltaTime;
-            gameCountdown = gameTime;
-            if (gameOverEndingUIOn)
-            {
-                gameCountdown = timeLimit;
-                uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-            } else
-            {
-                uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-            }
-            
-            if((int)gameTime == 5f)
+            GameCountdownUIManger(gameTime);//updates the current game time displayed on the digital clock
+            GameCurrentScoreDisplayManager();//updates the current score displayed on the laptop
+            if ((int)gameTime == minSec) //after the fist bell long duration play the short bell duration
             {
                 played1MinBell = false;
             }
         }
+        PlaySchoolBellsSchdule();
+        ManageEndGame();
+    }
+    
+    private void StartSetGameUp()
+    {
+        startGameUIOn = false;
+        uiManager.DeactivateStartSplashScreenUI();
+        //enemyManager.StartEnemyWavesMovement(); //enemy movement in the start is not stopped/uncommented so we don't need to start the enemy movement, they are already moving
+        audioManger.PlaySchoolBell(startSchoolBellDuration, startSchoolBellFadeOutDuration);
+        audioManger.PlayBackgroundMusic();
+        gameTime = 0;
+        played1MinBell = true;
+        gameStart = true;
+    }
 
-        playSchoolBellsSchdule();
+    //updates the current game time displayed on the digital clock
+    private void GameCountdownUIManger(float currentGameTime)
+    {
+        gameCountdown = currentGameTime;
+        if (gameTime > timeLimit)
+        {
+            gameCountdown = timeLimit;
+        }
+        uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+        /*  if (gameOverEndingUIOn) //if scoreUI is on dispaly, Clock gametime display is set to 00:00 else clock display countdown time. 
+          {
+              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+          }
+          else
+          {
+              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
+          }*/
+    }
 
+    //updates the current score displayed on the laptop
+    private void GameCurrentScoreDisplayManager()
+    {
+        if (!gameOverEndingUIOn)
+        {
+            SetCurrentScoreInGame();
+        }
+    }
+
+    private void SetCurrentScoreInGame()
+    {
+        setScores();
+        uiManager.SetCurrentScoreText(foodThrown, enemyDeath, playerGotHit);
+    }
+
+    //end the game when timer finishes
+    //get scores
+    //launch ending UI, score display
+    //stop enemy pause game
+    // myExperienceApp.IsEndGame = true;
+    // only in UI myExperienceApp.EndExperience();
+    private void ManageEndGame()
+    {
 
         //if timer is more than time limit, end the game.    
-        if (gameTime > timeLimit){
-            gameTime = -1000000;
+        if (gameTime > timeLimit && gameOverFlag)
+        {
+            //gameTime = -1000000;
             StartLetterScoreEvent();// call UImanager for score display
             gameOverEndingUIOn = true;
+            gameOverFlag = false;
         }
 
-        if(gameOverEndingUIOn)
+        if (gameOverEndingUIOn)
         {
             endingUICounter -= Time.deltaTime;
             uiManager.StartEndingCounter(endingUICounter);
@@ -172,8 +218,7 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
     }
-
-    private void playSchoolBellsSchdule()
+    private void PlaySchoolBellsSchdule()
     {
         
         if ((((int)gameTime) % minSec) == 0)
@@ -198,28 +243,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PauseGame()
-    {
-        //not using liminal's pausegame
-        //turn off enemy and player launcher
-        
-    }
-
-    public void ResumeGame()
-    {
-        
-    }
-
     public void EndGame(){
-        //end the game when timer finishes
-        //get scores
-        //launch ending UI, score display
-        //stop enemy pause game
-       // myExperienceApp.IsEndGame = true;
-        // only in UI myExperienceApp.EndExperience();
-        Debug.Log("end game now!");
         StartCoroutine(FadeAndExit(2f));
-        
     }
     
     public void addScore()
@@ -250,16 +275,12 @@ public class GameManager : MonoBehaviour
     
    private void StartLetterScoreEvent()
     {
-        Debug.Log("starting the score UI event");
         //launch ending UI event in UI manager
         // send scores to UI manager to display them on the letter
         sendScoresToUI(); // get the scores form scorekeeper
         uiManager.ActivateScoreUI(); // turns on score UI
-        //PauseGame(); //pause the game
-        //end game button in the menu will fade and exit the game.
+        //game will fade and exit after scoreUI pops up and countdown in the display finishes 
     }
-
- 
 
     // This coroutine fades the camera and audio simultaneously over the same length of time.
     IEnumerator FadeAndExit(float fadeTime)
