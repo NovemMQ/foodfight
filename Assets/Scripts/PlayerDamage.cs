@@ -8,6 +8,8 @@ public class PlayerDamage : MonoBehaviour
     //score keeper and game manager singleton 
     private ScoreKeeper ScoreManager;
     private GameManager gameManager;
+    [Space(10)]
+    [Header("Splats Images")]
     [SerializeField] private Image[] foodVisionImpairmentImageList;
     [SerializeField] private GameObject foodVisionImpairmentImageListObj;
     [SerializeField] private int maxSplatsPerDamange;
@@ -17,6 +19,11 @@ public class PlayerDamage : MonoBehaviour
     private bool gameOver = false;
     private bool flag1 = true;
     private bool flag2 = true;
+
+    [Space(10)]
+    [Header("Splats Audio")]
+    [SerializeField] private GameObject splatSoundsListObj;
+    private AudioSource[] splatSoundsList;
 
     public bool GameOver { get => gameOver; set => gameOver = value; }
     public Image[] FoodVisionImpairmentImageList { get => foodVisionImpairmentImageList; }
@@ -30,6 +37,7 @@ public class PlayerDamage : MonoBehaviour
         ScoreManager = FindObjectOfType<ScoreKeeper>();
         gameManager = FindObjectOfType<GameManager>();
         foodVisionImpairmentImageList = GetComponentsInChildren<Image>();
+        splatSoundsList = splatSoundsListObj.GetComponentsInChildren<AudioSource>();
     }
 
     private void Update()
@@ -70,7 +78,7 @@ public class PlayerDamage : MonoBehaviour
                 splatIndex = Random.Range(0, foodVisionImpairmentImageList.Length);
                 foodVisionImpairmentImageList[splatIndex].GetComponent<SplatHandler>().SplashImageOn();
             }
-          
+            splatSoundsList[Random.Range(0, splatSoundsList.Length)].Play();
             ScoreManager.addPlayerGotHit();
             playerHasBeenHit = true;
         }

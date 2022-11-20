@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource schoolBell;
     [SerializeField] private AudioSource countdownBeep;
+    [SerializeField] private AudioSource reportCardPaperSound;
     [SerializeField] private BackgroundMusicPicker background;
 
     public void SetAudioFadeandStop(AudioSource soundAudio, float elapsedTime, float fadeTime)
@@ -61,6 +62,11 @@ public class AudioManager : MonoBehaviour
         schoolBell.Play();
         schoolBell.GetComponent<schoolBellScript>().Duration = duration;
         schoolBell.GetComponent<schoolBellScript>().FadeTime = fadeTime;
+    }
+
+    public void PlayReportCardPaperSound()
+    {
+        reportCardPaperSound.Play();
     }
 
     public void PlayBackgroundMusic()

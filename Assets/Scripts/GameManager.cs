@@ -161,14 +161,6 @@ public class GameManager : MonoBehaviour
             gameCountdown = timeLimit;
         }
         uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-        /*  if (gameOverEndingUIOn) //if scoreUI is on dispaly, Clock gametime display is set to 00:00 else clock display countdown time. 
-          {
-              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-          }
-          else
-          {
-              uiManager.StartGametimeCounter(timeLimit - gameCountdown);
-          }*/
     }
 
     //updates the current score displayed on the laptop
@@ -279,6 +271,7 @@ public class GameManager : MonoBehaviour
         // send scores to UI manager to display them on the letter
         sendScoresToUI(); // get the scores form scorekeeper
         uiManager.ActivateScoreUI(); // turns on score UI
+        audioManger.PlayReportCardPaperSound();
         //game will fade and exit after scoreUI pops up and countdown in the display finishes 
     }
 
