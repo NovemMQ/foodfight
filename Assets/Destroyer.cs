@@ -5,7 +5,7 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     public GameObject[] splatDecals;
-    [SerializeField] AudioSource[] SplatSounds;
+    [SerializeField] AudioSource[] splatSounds;
     GameObject splatDecal;
     [SerializeField]
     private float deathTimer = 3f;
@@ -39,5 +39,6 @@ public class Destroyer : MonoBehaviour
         splat.transform.LookAt(collision.gameObject.transform.forward, Vector3.up);
         splat.transform.localScale = splat.transform.localScale * Random.Range(0.5f, 0.9f);
         FoodPoolManager.AddItemPlayer(this.gameObject);
+        splatSounds[Random.Range(0, splatSounds.Length)].Play();
     }
 }
