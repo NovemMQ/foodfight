@@ -141,11 +141,11 @@ public class enemyMovement : MonoBehaviour
         }
     }
 
-    //It's used within the Damage animation, see the enmy animation controller where this is being called
-    private void Die()
+    //This method is used within the Damage animation, in an event. see the enemy animation controller where this is being called
+    public void Die()
     {
-
-        EnemyMovementManager.SendEnemyToStartSpwanPoint(this); 
+        EnemyMovementManager.SendEnemyToStartSpwanPoint(this);
+        EnemyAudioManager.PlayDyingSound();
         ScoreManager.addEnemyDeath();
     }
 
