@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7691564381616516919}
   - component: {fileID: 5931805912381143435}
   - component: {fileID: 1826907301133900681}
+  - component: {fileID: 8179799842364137445}
   m_Layer: 0
   m_Name: FoodThrown Num Shadow
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8179799842364137445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571677651793475434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035c9e876b7516548b4ee0463300f9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentText: {fileID: 4618722499754729334}
 --- !u!1 &576058499883321670
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +184,7 @@ GameObject:
   - component: {fileID: 9197656039717801305}
   - component: {fileID: 2740390240106513944}
   - component: {fileID: 3286057913682386284}
+  - component: {fileID: 8980423510514430199}
   m_Layer: 0
   m_Name: EnemiesDefeated Num Shadow White
   m_TagString: Untagged
@@ -318,6 +333,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8980423510514430199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576058499883321670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035c9e876b7516548b4ee0463300f9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentText: {fileID: 4618722499095399638}
 --- !u!1 &1380179373405815901
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +768,7 @@ GameObject:
   - component: {fileID: 1014528677444451204}
   - component: {fileID: 4357792291735814271}
   - component: {fileID: 2108253918353785907}
+  - component: {fileID: 4684809286287386601}
   m_Layer: 0
   m_Name: EnemiesDefeated Num Shadow Black
   m_TagString: Untagged
@@ -888,6 +917,19 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4684809286287386601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971672704908931047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035c9e876b7516548b4ee0463300f9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentText: {fileID: 4618722499095399638}
 --- !u!1 &3621265603274722214
 GameObject:
   m_ObjectHideFlags: 0
