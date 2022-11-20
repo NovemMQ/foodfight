@@ -88,7 +88,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 9
   m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -116,7 +116,7 @@ MonoBehaviour:
   moving: 0
   pauseWaitTime: 3
   travelTimelimit: 10
-  inSceneTimelimit: 30
+  inSceneTimelimit: 50
   inSceneMinLimit: 20
   enemyLauncher: {fileID: 3074904734167609149}
 --- !u!54 &878281908875872876
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTargetOffset: {x: 0, y: 0, z: 0}
   shootFrequency: 1
-  shootFrequencyRandomRange: 3
+  shootFrequencyRandomRange: 1
   foodVelocity: 18.2
   rotatePower: 9.2
   foodPrefabs:
@@ -1084,6 +1084,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 878281908875872867}
     m_Modifications:
+    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
+        type: 3}
+      propertyPath: m_Name
+      value: MacEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4700504936077528275, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1153,11 +1158,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8602110090587799232, guid: 445292a04b3babf49a80b704dee8beb1,
-        type: 3}
-      propertyPath: m_Name
-      value: MacEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 306588489432114162, guid: 445292a04b3babf49a80b704dee8beb1,
         type: 3}
