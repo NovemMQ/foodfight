@@ -35,6 +35,9 @@ public class enemyMovement : MonoBehaviour
     private float inSceneCounter = 0f;
     [SerializeField] private float inSceneMinLimit = 8f;
 
+    //enemy audio
+    private EnemySoundManager EnemyAudioManager;
+
     //launcher script 
     [SerializeField] private EnemyLauncher enemyLauncher;
     private Animator animator;
@@ -44,6 +47,8 @@ public class enemyMovement : MonoBehaviour
         //get singletons 
         EnemyMovementManager = FindObjectOfType<enemyMovementManager>();
         ScoreManager = FindObjectOfType<ScoreKeeper>();
+        //get audio manager
+        EnemyAudioManager = GetComponentInChildren<EnemySoundManager>();
         //get nav mesh agent AI, set wait time, and counter
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -139,6 +144,7 @@ public class enemyMovement : MonoBehaviour
     //It's used within the Damage animation, see the enmy animation controller where this is being called
     private void Die()
     {
+
         EnemyMovementManager.SendEnemyToStartSpwanPoint(this); 
         ScoreManager.addEnemyDeath();
     }
