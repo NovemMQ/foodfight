@@ -73,12 +73,15 @@ public class PlayerDamage : MonoBehaviour
     {
         if (TagManager.CompareTags(other.gameObject, "enemyFood"))
         {
-            for(int i=0; i<=maxSplatsPerDamange; i++)
+            if (foodVisionImpairmentImageList.Length > 0)
             {
-                splatIndex = Random.Range(0, foodVisionImpairmentImageList.Length);
-                foodVisionImpairmentImageList[splatIndex].GetComponent<SplatHandler>().SplashImageOn();
+                for (int i = 0; i <= maxSplatsPerDamange; i++)
+                {
+                    splatIndex = Random.Range(0, foodVisionImpairmentImageList.Length);
+                    foodVisionImpairmentImageList[splatIndex].GetComponent<SplatHandler>().SplashImageOn();
+                }
             }
-            splatSoundsList[Random.Range(0, splatSoundsList.Length)].Play();
+            if(splatSoundsList.Length > 0){splatSoundsList[Random.Range(0, splatSoundsList.Length)].Play();}
             ScoreManager.addPlayerGotHit();
             playerHasBeenHit = true;
         }
