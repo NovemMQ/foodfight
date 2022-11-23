@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 4700504936077528275}
   - component: {fileID: 306588489432114162}
   m_Layer: 0
-  m_Name: MacadamiaNJ@Throw
+  m_Name: MacEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

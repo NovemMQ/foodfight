@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4932318808296516568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8062671174818127582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93344a53b827bd84a8a8a214e975eb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTimer: 3
+--- !u!1001 &1342794598460392540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9027126964885609090, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_Name
+      value: grape - Copy Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1.7112914e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000000754979
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412647243105544337, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027126964885609213, guid: 7448ab464ff6f744e868b9eed4028a32,
+        type: 3}
+      propertyPath: Tags.Array.data[0]
+      value: enemyFood
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9027126964885609215, guid: 7448ab464ff6f744e868b9eed4028a32, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 7448ab464ff6f744e868b9eed4028a32, type: 3}
+--- !u!1 &8062671174818127582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9027126964885609090, guid: 7448ab464ff6f744e868b9eed4028a32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1342794598460392540}
+  m_PrefabAsset: {fileID: 0}

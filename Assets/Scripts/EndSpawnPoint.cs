@@ -14,7 +14,6 @@ public class EndSpawnPoint : MonoBehaviour
     {
         if (other.GetComponent<enemyMovement>())
         {
-
             EnemyMovementManager.SendEnemyToStartSpwanPoint(other.GetComponent<enemyMovement>());//despawns the enemy to the start spwanpoint
         }
     }

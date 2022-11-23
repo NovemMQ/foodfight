@@ -25,12 +25,14 @@ public class schoolBellScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //make sure to reset the volume to 1 when the sound finished playing
         if (soundAudio.volume != 1f && volumeFaded)
         {
             soundAudio.volume = 1f;
             volumeFaded = false;
         }
 
+        //if the sound is playing, only play the sound for the duration time and fade the volume to 0
         if (soundAudio.isPlaying)
         {
             durationCounter += Time.deltaTime;

@@ -17,9 +17,9 @@ public class enemyMovementManager : MonoBehaviour
     [Range(0,60)]
     [SerializeField] private float spawnRateChangeTime = 10;//sec, random number of enemy in the scene every #secs
     private float spawnRateChangeCounter;
-   [Range(0, 10)]
+    [Range(0, 10)]
     [SerializeField] private int minEnemyInScene = 5;
-    [Range(0, 14)]
+    [Range(0, 19)]
     [SerializeField] private int maxEnemyInScene = 10;
     private int numEnemyInScene;
     private bool maxInScene = false;
@@ -29,7 +29,7 @@ public class enemyMovementManager : MonoBehaviour
 
     void Start()
     {
-        spawnRateChangeCounter = 100000000;
+        spawnRateChangeCounter = 100000000;//set to unreasonable big number, will be reset to differnt number in random enemy wave
         waypointList = waypointListOb.GetComponentsInChildren<waypointScript>();
         enemyPoolList = enemyPoolListOb.GetComponentsInChildren<enemyMovement>();
         numEnemyInScene = minEnemyInScene;
@@ -43,7 +43,7 @@ public class enemyMovementManager : MonoBehaviour
         {
             RandomEnemyWaves();
         }
-        sendEnemiesIntoScene();
+        SendEnemiesIntoScene();
         SetAllEnemyMovementInList(enemyInSceneList);
     }
 
@@ -57,16 +57,14 @@ public class enemyMovementManager : MonoBehaviour
     //set an enemy waypoints
     private void SetDestination(enemyMovement enemy, waypointScript wp)
     {
-        wp.IsOccupied = true;
-        wp.OccupiedBy = enemy;
-        enemy.Destination = wp;
-        enemy.moving = true;
-        if (enemy.Agent.isActiveAndEnabled)
+        wp.IsOccupied = true;//tell the waypoint that is has a booking
+        wp.OccupiedBy = enemy;//booking by
+        enemy.Destination = wp;//tell the enemy what destination was booked for them
+        enemy.moving = true;//make sure they are moving so no new destination is set for them when true
+        if (enemy.Agent.isActiveAndEnabled) //turn of nav mesh agent
         {
             enemy.Agent.destination = wp.transform.position;
-        }
-        //Debug.Log("EM is " + wp.gameObject.name);
-        
+        }        
     }
 
     //set the enemies list waypoints if they are not moving
@@ -95,15 +93,14 @@ public class enemyMovementManager : MonoBehaviour
         return maxInScene;
     }
     
-    private void sendEnemiesIntoScene()
+    private void SendEnemiesIntoScene()
     {
-
         for (int i = 0; i < enemyPoolList.Length && !maxInScene; i++)
         {
             enemyPoolList[i].GetComponent<NavMeshAgent>().enabled = true;
             enemyPoolList[i].GetComponent<Animator>().enabled = true;
             enemyPoolList[i].moving = false;
-            enemyPoolList[i].resetInSceneCounter();// reset the enemy scene time limit
+            enemyPoolList[i].ResetInSceneCounter();// reset the enemy scene time limit
             enemyPoolList[i].SetLauncherActive(true);//turn on launcher
             enemyPoolList[i].gameObject.transform.SetParent(enemyInSceneListOb.transform);//move enemy into scene
             //upodate the array lists 
@@ -112,7 +109,6 @@ public class enemyMovementManager : MonoBehaviour
         }
     }
 
-  
     public void SendEnemyToStartSpwanPoint(enemyMovement enemy)
     {
         enemy.gameObject.transform.SetParent(enemyPoolListOb.transform);//move enemy into scene
@@ -121,13 +117,12 @@ public class enemyMovementManager : MonoBehaviour
         enemy.GetComponent<Animator>().enabled = false;
         SetDestination(enemy, startSpwanPoint.GetComponent<waypointScript>());
         enemy.SetLauncherActive(false);//turn on launcher
-        enemy.resetInSceneCounter();
+        enemy.ResetInSceneCounter();
         //upodate the array lists 
         IsMaxEnemyInScene(); //update and check if there are max number of enemies in scene
     }
 
     public void SendEnemyToEndSpwanPoint(enemyMovement enemy)
-
     {
         SetDestination(enemy, endSpwanPoint.GetComponent<waypointScript>());
         enemy.SetLauncherActive(false);//turn off launcher
